@@ -9,6 +9,7 @@ function model.create_schema()
     schema.create_table("task", {
         {"id", types.serial},
         {"quiz_id", types.foreign_key},
+        {"name", types.varchar},
         {"text", types.varchar},
         {"a1", types.varchar},
         {"a2", types.varchar},
