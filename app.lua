@@ -125,9 +125,13 @@ app:get("schema", "/schema", function()
     model.create_schema()
 end)
 
-app:get("all-tests", "/tests", function(self)
-    return "All tests"
-end)
+app:get("all-tests", "/tests", check_user(function(self)
+    return {render='all-tests'}
+end))
+
+app:post("new-quiz", "/tests/new", check_user(function(self)
+    return 'TODO'
+end))
 
 return app
 
