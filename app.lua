@@ -30,27 +30,6 @@ app.__class:before_filter(function(self)
     self.title = self._("Kodomo Quiz")
 end)
 
-local check_user = function(f)
-    return function(self)
-        if not self.session.user then
-            return {redirect_to='/'}
-        else
-            return f(self)
-        end
-    end
-end
-
-local check_prep = function(f)
-    return check_user(function(self)
-        if preps.as_dict[self.session.user] == nil then
-            self.title = self._("Permission denied")
-            return self._("Only preps can see this page")
-        else
-            return f(self)
-        end
-    end)
-end
-
 local check_csrf = function(f)
     return function(self)
         if not csrf.validate_token(self) then
@@ -67,6 +46,38 @@ local gen_csrf = function(f)
         self.new_csrf = csrf.generate_token(self)
         return f(self)
     end
+end
+
+local any_csrf = function(f)
+    return function(self)
+        if next(self.req.params_post) then
+            -- POST
+            return gen_csrf(check_csrf(f))(self)
+        else
+            return gen_csrf(f)(self)
+        end
+    end
+end
+
+local check_user = function(f)
+    return any_csrf(function(self)
+        if not self.session.user then
+            return {redirect_to='/'}
+        else
+            return f(self)
+        end
+    end)
+end
+
+local check_prep = function(f)
+    return check_user(function(self)
+        if preps.as_dict[self.session.user] == nil then
+            self.title = self._("Permission denied")
+            return self._("Only preps can see this page")
+        else
+            return f(self)
+        end
+    end)
 end
 
 app:get("/", gen_csrf(function(self)
