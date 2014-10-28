@@ -76,6 +76,32 @@ local check_prep = function(f)
     end)
 end
 
+local check_quiz = function(f)
+    return check_user(function(self)
+        if not self.quiz then
+            self.quiz = model.Quiz:find(self.params.id)
+        end
+        if not self.quiz then
+            return self:_("Can't find this quiz")
+        end
+        if self.quiz.user ~= self.session.user then
+            return self:_("It is not your quiz")
+        end
+        return f(self)
+    end)
+end
+
+local check_task = function(f)
+    return function(self)
+        self.task = model.Task:find(self.params.id)
+        if not self.task then
+            return self:_("Can't find this task")
+        end
+        self.quiz = self.task:quiz()
+        return check_quiz(f)(self)
+    end
+end
+
 app:get("/", gen_csrf(function(self)
     if self.session.user then
         return {redirect_to = self:url_for('all-tests')}
@@ -131,14 +157,7 @@ app:post("new-quiz", "/tests/new", check_user(function(self)
     return {redirect_to = url}
 end))
 
-app:get("quiz", "/tests/quiz/:id", check_user(function(self)
-    self.quiz = model.Quiz:find(self.params.id)
-    if not self.quiz then
-        return self:_("Can't find this quiz")
-    end
-    if self.quiz.user ~= self.session.user then
-        return self:_("It is not your quiz")
-    end
+app:get("quiz", "/tests/quiz/:id", check_quiz(function(self)
     if self.quiz.state == model.ACTIVE then
         local fresh_task = self.quiz:fresh_task()
         if fresh_task then
@@ -155,18 +174,7 @@ app:get("quiz", "/tests/quiz/:id", check_user(function(self)
     return "???"
 end))
 
-app:get("task", "/tests/task/:id", check_user(function(self)
-    self.task = model.Task:find(self.params.id)
-    if not self.task then
-        return self:_("Can't find this task")
-    end
-    self.quiz = self.task:quiz()
-    if not self.quiz then
-        return self:_("Can't find this quiz")
-    end
-    if self.quiz.user ~= self.session.user then
-        return self:_("It is not your quiz")
-    end
+app:get("task", "/tests/task/:id", check_task(function(self)
     if self.quiz.state ~= model.ACTIVE then
         return self:_("This quiz is not active")
     end
@@ -174,18 +182,7 @@ app:get("task", "/tests/task/:id", check_user(function(self)
 end))
 
 app:post("answer", "/tests/task/:id/answer",
-check_user(function(self)
-    self.task = model.Task:find(self.params.id)
-    if not self.task then
-        return self:_("Can't find this task")
-    end
-    self.quiz = self.task:quiz()
-    if not self.quiz then
-        return self:_("Can't find this quiz")
-    end
-    if self.quiz.user ~= self.session.user then
-        return self:_("It is not your quiz")
-    end
+check_task(function(self)
     if self.quiz.state ~= model.ACTIVE then
         return self:_("This quiz is not active")
     end
@@ -196,14 +193,7 @@ check_user(function(self)
 end))
 
 app:post("finish", "/tests/quiz/:id/finish",
-check_user(function(self)
-    self.quiz = model.Quiz:find(self.params.id)
-    if not self.quiz then
-        return self:_("Can't find this quiz")
-    end
-    if self.quiz.user ~= self.session.user then
-        return self:_("It is not your quiz")
-    end
+check_quiz(function(self)
     if self.quiz.state ~= model.ACTIVE then
         return self:_("This quiz is not active")
     end
