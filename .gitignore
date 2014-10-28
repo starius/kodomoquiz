@@ -7,5 +7,5 @@ secret.lua
 
 *.mo
 
-view/*.lua
+views/*.lua
 
