@@ -127,7 +127,6 @@ function model.new_quiz(app)
 end
 
 function model.my_quizs(app, state)
-    --return model.Quiz:select()
     local user = app.session.user
     return model.Quiz:select('where "user" = ? and state = ?',
         user, state)
