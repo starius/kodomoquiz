@@ -1,0 +1,9 @@
+*.log
+*.compiled
+*.orig
+*.pid
+
+secret.lua
+
+*.mo
+
