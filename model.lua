@@ -53,6 +53,16 @@ local table_size = function(t)
     return size
 end
 
+local rand_sequence = function()
+    local ttt = {1,2,3,4}
+    local result = ''
+    while #ttt > 0 do
+        local i = table.remove(ttt, math.random(1, #ttt))
+        result = result .. i
+    end
+    return result
+end
+
 function model.new_quiz(app)
     local user = app.session.user
     local quiz_name = app.req.params_post.name
@@ -69,7 +79,7 @@ function model.new_quiz(app)
         local text, a1, a2, a3, a4 = func(app)
         model.Task:create({quiz_id=quiz.id, name=task_name,
             text=text, a1=a1, a2=a2, a3=a3, a4=a4,
-            selected=0})
+            sequence=rand_sequence(), selected=0})
     end
     return quiz
 end
