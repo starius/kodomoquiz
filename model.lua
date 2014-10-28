@@ -32,6 +32,8 @@ function model.create_schema()
         {"user", types.varchar},
         {"created_at", types.time},
         {"updated_at", types.time},
+        {"tasks", types.integer},
+        {"answers", types.integer},
         {"right_answers", types.integer},
         {"state", types.integer},
         {"ip", types.varchar},
@@ -43,6 +45,14 @@ end
 model.Task = Model:extend("task")
 model.Quiz = Model:extend("quiz", {timestamp=true})
 
+local table_size = function(t)
+    local size = 0
+    for _ in pairs(t) do
+        size = size + 1
+    end
+    return size
+end
+
 function model.new_quiz(app)
     local user = app.session.user
     local quiz_name = app.req.params_post.name
@@ -53,7 +63,8 @@ function model.new_quiz(app)
     local ip = app.req.headers['X-Forwarded-For']
     local ua = app.req.headers['User-Agent']
     local quiz = model.Quiz:create({name=quiz_name, user=user,
-        right_answers=0, state=model.ACTIVE, ip=ip, ua=ua})
+        tasks=table_size(q), answers=0, right_answers=0,
+        state=model.ACTIVE, ip=ip, ua=ua})
     for task_name, func in pairs(q) do
         if task_name ~= 'task' then
             local text, a1, a2, a3, a4 = func(app)
