@@ -195,5 +195,22 @@ check_user(function(self)
     return {redirect_to = url}
 end))
 
+app:post("finish", "/tests/quiz/:id/finish",
+check_user(function(self)
+    self.quiz = model.Quiz:find(self.params.id)
+    if not self.quiz then
+        return self:_("Can't find this quiz")
+    end
+    if self.quiz.user ~= self.session.user then
+        return self:_("It is not your quiz")
+    end
+    if self.quiz.state ~= model.ACTIVE then
+        return self:_("This quiz is not active")
+    end
+    self.quiz:update({state=model.FINISHED})
+    local url = self:url_for('quiz', {id=self.quiz.id})
+    return {redirect_to = url}
+end))
+
 return app
 

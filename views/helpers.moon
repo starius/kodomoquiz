@@ -1,3 +1,16 @@
+model = require('model')
+
+bgcolor = (task, i) ->
+  form = task\quiz().state == model.ACTIVE
+  bc = 'white'
+  if task\ans_i(i) == task.selected
+    bc = 'yellow'
+  if not form and task\ans_i(i) == task.selected
+    bc = 'red'
+  if not form and task\ans_i(i) == 1
+    bc = 'green'
+  return bc
+
 class Helpers
   ans_form: (task, i) =>
     url = @url_for("answer", {id: task.id})
@@ -8,7 +21,8 @@ class Helpers
       input type: "hidden", name: "ans", value: i
       input type: "submit", value: @_('Select')
 
-  task_form: (task) =>
+  task_table: (task) =>
+    form = task\quiz().state == model.ACTIVE
     element "table", border: 1, ->
       element "tr", ->
         element "td", colspan: 4, ->
@@ -17,10 +31,9 @@ class Helpers
           pre task.text
       element "tr", ->
         for i = 1, 4
-          bgcolor = 'white'
-          if task\ans_i(i) == task.selected
-            bgcolor = 'yellow'
-          element "td", bgcolor: bgcolor, ->
+          element "td", {width: 100,
+              bgcolor: bgcolor(task, i)}, ->
             pre task\ans(i)
-            @ans_form task, i
+            if form
+              @ans_form task, i
 
