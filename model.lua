@@ -30,6 +30,8 @@ function model.create_schema()
         {"updated_at", types.time},
         {"right_answers", types.integer},
         {"finished", types.boolean},
+        {"ip", types.varchar},
+        {"ua", types.varchar},
         "PRIMARY KEY (id)"
     })
 end
@@ -44,8 +46,10 @@ function model.new_quiz(app)
     if not q then
         error(app._("No such quiz found"))
     end
+    local ip = app.req.headers['X-Forwarded-For']
+    local ua = app.req.headers['User-Agent']
     local quiz = model.Quiz:create({name=quiz_name, user=user,
-        right_answers=0, finished=false})
+        right_answers=0, finished=false, ip=ip, ua=ua})
     for task_name, func in pairs(q) do
         if task_name ~= 'task' then
             local text, a1, a2, a3, a4 = func(app)
