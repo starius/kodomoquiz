@@ -6,7 +6,6 @@ class QuizFinalCheck extends Widget
   @include Helpers
 
   content: =>
-    h1 class: "header", @_("Kodomo Quiz")
     h2 @_("Quiz ") .. @quiz.name
     url = @url_for("finish", {id: @quiz.id})
     font color: 'red', @_([[Quiz is not finished untill

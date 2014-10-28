@@ -9,5 +9,9 @@ class extends html.Widget
           rel: "icon", type: "image/x-icon",
           href: "/favicon.ico"
         title @title or @_ "Kodomo Quiz"
-      body -> @content_for "inner"
+      body ->
+        h1 class: "header", @_("Kodomo Quiz")
+        a href: @url_for('index'), ->
+          text @_ "Main page"
+        @content_for "inner"
 

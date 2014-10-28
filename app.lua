@@ -104,7 +104,7 @@ local check_task = function(f)
     end
 end
 
-app:get("/", gen_csrf(function(self)
+app:get("index", "/", gen_csrf(function(self)
     if self.session.user then
         return {redirect_to = self:url_for('all-tests')}
     else
