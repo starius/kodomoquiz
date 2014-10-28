@@ -42,8 +42,41 @@ function model.create_schema()
     })
 end
 
-model.Task = Model:extend("task")
-model.Quiz = Model:extend("quiz", {timestamp=true})
+model.Task = Model:extend("task", {
+    quiz = function(self)
+        return model.Quiz:find({id=self.quiz_id})
+    end,
+
+    ans_i = function(self, i)
+        assert(i >= 1)
+        assert(i <= 4)
+        return tonumber(self.sequence:sub(i, i))
+    end,
+
+    ans = function(self, i)
+        return self['a' .. self:ans_i(i)]
+    end
+})
+
+model.Quiz = Model:extend("quiz", {
+    timestamp = true,
+
+    fresh_task = function(self)
+        local all_fresh = model.Task:select(
+            "where quiz_id = ? and selected = ? order by id",
+            self.id, 0)
+        if #all_fresh == 0 then
+            return nil
+        else
+            return all_fresh[math.random(1, #all_fresh)]
+        end
+    end,
+
+    all_tasks = function(self)
+        return model.Task:select(
+            "where quiz_id = ? order by id", self.id)
+    end
+})
 
 local table_size = function(t)
     local size = 0
@@ -68,9 +101,9 @@ function model.new_quiz(app)
     local quiz_name = app.req.params_post.name
     local q = quizs[quiz_name]
     if not q then
-        error(app._("No such quiz found"))
+        error(app:_("No such quiz found"))
     end
-    local ip = app.req.headers['X-Forwarded-For']
+    local ip = app.req.headers['X-Forwarded-For'] or '0.0.0.0'
     local ua = app.req.headers['User-Agent']
     local quiz = model.Quiz:create({name=quiz_name, user=user,
         tasks=table_size(q), answers=0, right_answers=0,
@@ -82,29 +115,6 @@ function model.new_quiz(app)
             sequence=rand_sequence(), selected=0})
     end
     return quiz
-end
-
-model.Quiz.all_tasks = function(self)
-    return model.Task:find_all({quiz_id=self.id})
-end
-
-model.Quiz.fresh_task = function(self)
-    local all_fresh = self:all_tasks()
-    if #all_fresh == 0 then
-        return nil
-    else
-        return all_fresh[math.random(1, #all_fresh)]
-    end
-end
-
-model.Task.quiz = function(self)
-    return model.Quiz:find({id=self.id})
-end
-
-model.Task.ans = function(self, i)
-    assert(i >= 1)
-    assert(i <= 4)
-    return self['a' .. self.sequence:sub(i, i)]
 end
 
 return model
