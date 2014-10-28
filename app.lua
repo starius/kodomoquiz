@@ -132,8 +132,67 @@ app:post("new-quiz", "/tests/new", check_user(function(self)
 end))
 
 app:get("quiz", "/tests/quiz/:id", check_user(function(self)
-    -- TODO
-    return tostring(self.params.id)
+    self.quiz = model.Quiz:find(self.params.id)
+    if not self.quiz then
+        return self:_("Can't find this quiz")
+    end
+    if self.quiz.user ~= self.session.user then
+        return self:_("It is not your quiz")
+    end
+    if self.quiz.state == model.ACTIVE then
+        local fresh_task = self.quiz:fresh_task()
+        if fresh_task then
+            local url = self:url_for("task", {id=fresh_task.id})
+            return {redirect_to = url}
+        else
+            return {render='quiz-final-check'}
+        end
+    elseif self.quiz.state == model.FINISHED then
+        return {render='quiz-results'}
+    elseif self.quiz.state == model.CANCELLED then
+        return self:_("This quiz was cancelled")
+    end
+    return "???"
+end))
+
+app:get("task", "/tests/task/:id", check_user(function(self)
+    self.task = model.Task:find(self.params.id)
+    if not self.task then
+        return self:_("Can't find this task")
+    end
+    self.quiz = self.task:quiz()
+    if not self.quiz then
+        return self:_("Can't find this quiz")
+    end
+    if self.quiz.user ~= self.session.user then
+        return self:_("It is not your quiz")
+    end
+    if self.quiz.state ~= model.ACTIVE then
+        return self:_("This quiz is not active")
+    end
+    return {render='task'}
+end))
+
+app:post("answer", "/tests/task/:id/answer",
+check_user(function(self)
+    self.task = model.Task:find(self.params.id)
+    if not self.task then
+        return self:_("Can't find this task")
+    end
+    self.quiz = self.task:quiz()
+    if not self.quiz then
+        return self:_("Can't find this quiz")
+    end
+    if self.quiz.user ~= self.session.user then
+        return self:_("It is not your quiz")
+    end
+    if self.quiz.state ~= model.ACTIVE then
+        return self:_("This quiz is not active")
+    end
+    local ans = tonumber(self.req.params_post.ans)
+    self.task:update({selected = self.task:ans_i(ans)})
+    local url = self:url_for('quiz', {id=self.quiz.id})
+    return {redirect_to = url}
 end))
 
 return app
