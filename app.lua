@@ -54,7 +54,7 @@ end
 local gen_csrf = function(f)
     return function(self)
         self.new_csrf = csrf.generate_token(self)
-        f(self)
+        return f(self)
     end
 end
 
