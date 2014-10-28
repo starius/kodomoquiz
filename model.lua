@@ -44,7 +44,10 @@ end
 
 model.Task = Model:extend("task", {
     quiz = function(self)
-        return model.Quiz:find({id=self.quiz_id})
+        if not self._quiz then
+            self._quiz = model.Quiz:find({id=self.quiz_id})
+        end
+        return self._quiz
     end,
 
     ans_i = function(self, i)
