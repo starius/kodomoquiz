@@ -51,6 +51,13 @@ local check_csrf = function(f)
     end
 end
 
+local gen_csrf = function(f)
+    return function(self)
+        self.new_csrf = csrf.generate_token(self)
+        f(self)
+    end
+end
+
 app:get("/", function()
   return "Welcome to Lapis " .. require("lapis.version")
 end)
