@@ -17,6 +17,7 @@ app.__class:before_filter(function(self)
     else
         self._ = function(t) return t end
     end
+    self.title = self._("Kodomo Quiz")
 end)
 
 local check_user = function(f)
