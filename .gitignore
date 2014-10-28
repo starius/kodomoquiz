@@ -2,6 +2,7 @@
 *.compiled
 *.orig
 *.pid
+*.swp
 
 secret.lua
 
