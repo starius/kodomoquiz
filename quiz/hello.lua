@@ -22,7 +22,7 @@ function hello.print1(req)
     f('(%i)', val),
     f('print(%i)', val),
     f('"%i"', val),
-    task()
+    task(req)
 end
 
 function hello.print_sum(req)
@@ -35,7 +35,7 @@ function hello.print_sum(req)
     f('%i', val),
     f('a+b', val),
     f('"a+b"', val),
-    task()
+    task(req)
 end
 
 return hello
