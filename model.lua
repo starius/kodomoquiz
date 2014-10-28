@@ -66,12 +66,10 @@ function model.new_quiz(app)
         tasks=table_size(q), answers=0, right_answers=0,
         state=model.ACTIVE, ip=ip, ua=ua})
     for task_name, func in pairs(q) do
-        if task_name ~= 'task' then
-            local text, a1, a2, a3, a4 = func(app)
-            model.Task:create({quiz_id=quiz.id, name=task_name,
-                text=text, a1=a1, a2=a2, a3=a3, a4=a4,
-                selected=0})
-        end
+        local text, a1, a2, a3, a4 = func(app)
+        model.Task:create({quiz_id=quiz.id, name=task_name,
+            text=text, a1=a1, a2=a2, a3=a3, a4=a4,
+            selected=0})
     end
     return quiz
 end
