@@ -7,6 +7,7 @@ local random_token = require("random_token")
 local fbb = require("fbb")
 local preps = require("preps")
 local kodomo = require("kodomo")
+local model = require("model")
 
 local app = lapis.Application()
 
@@ -109,8 +110,13 @@ app:post("login", "/login", check_csrf(function(self)
     return {redirect_to = self:url_for('all-tests')}
 end))
 
+app:get("schema", "/schema", function()
+    model.create_schema()
+end)
+
 app:get("all-tests", "/tests", function(self)
     return "All tests"
 end)
 
 return app
+
