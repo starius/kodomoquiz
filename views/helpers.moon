@@ -30,7 +30,7 @@ class Helpers
     form method: "POST", action: url, ->
       input {type: "hidden", name: "csrf_token",
           value: @new_csrf}
-      input {type: "submit", value: @_('Cancell quiz'),
+      input {type: "submit", value: @_('Cancel quiz'),
         style: 'background-color: pink'}
 
   task_table: (task) =>
