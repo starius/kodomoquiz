@@ -130,7 +130,14 @@ app:get("all-tests", "/tests", check_user(function(self)
 end))
 
 app:post("new-quiz", "/tests/new", check_user(function(self)
-    return 'TODO'
+    local quiz = model.new_quiz(self)
+    local url = self:url_for('quiz', {id=quiz.id})
+    return {redirect_to = url}
+end))
+
+app:get("quiz", "/tests/quiz/:id", check_user(function(self)
+    -- TODO
+    return tostring(self.params.id)
 end))
 
 return app
