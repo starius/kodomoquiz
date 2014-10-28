@@ -11,6 +11,12 @@
 -----------------------------------------------------------
 
 return function(mo_file)
+    if not mo_file then
+        return function(text)
+            return text
+        end
+    end
+
     --------------------------------
     -- open file and read data
     --------------------------------
