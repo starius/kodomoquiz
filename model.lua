@@ -25,6 +25,7 @@ function model.create_schema()
         {"created_at", types.time},
         {"updated_at", types.time},
         {"right_answers", types.integer},
+        {"finished", types.boolean},
         "PRIMARY KEY (id)"
     })
 end
