@@ -11,6 +11,8 @@ local model = require("model")
 
 local app = lapis.Application()
 
+app.layout = require("views.layout")
+
 -- FIXME https://github.com/leafo/lapis/issues/188
 app.__class:before_filter(function(self)
     local lang = self.req.headers['Accept-Language']:sub(1, 2)
