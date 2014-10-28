@@ -84,5 +84,28 @@ function model.new_quiz(app)
     return quiz
 end
 
+model.Quiz.all_tasks = function(self)
+    return model.Task:find_all({quiz_id=self.id})
+end
+
+model.Quiz.fresh_task = function(self)
+    local all_fresh = self:all_tasks()
+    if #all_fresh == 0 then
+        return nil
+    else
+        return all_fresh[math.random(1, #all_fresh)]
+    end
+end
+
+model.Task.quiz = function(self)
+    return model.Quiz:find({id=self.id})
+end
+
+model.Task.ans = function(self, i)
+    assert(i >= 1)
+    assert(i <= 4)
+    return self['a' .. self.sequence:sub(i, i)]
+end
+
 return model
 
