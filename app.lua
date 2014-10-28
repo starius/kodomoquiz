@@ -59,8 +59,12 @@ local gen_csrf = function(f)
     end
 end
 
-app:get("/", function()
-  return "Welcome to Lapis " .. require("lapis.version")
-end)
+app:get("/", gen_csrf(function(self)
+    return {render = 'welcome'}
+end))
+
+app:post("login", "/login", check_csrf(function(self)
+    return 'Ok'
+end))
 
 return app
