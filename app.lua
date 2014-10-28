@@ -1,8 +1,10 @@
 local lapis = require("lapis")
-local app = lapis.Application()
+local csrf = require("lapis.csrf")
 
 local fbb = require("fbb")
 local preps = require("preps")
+
+local app = lapis.Application()
 
 local _ = function(t) return t end
 
@@ -25,6 +27,17 @@ local check_prep = function(f)
             return f(self)
         end
     end)
+end
+
+local check_csrf = function(f)
+    return function(self)
+        if not csrf.validate_token(self) then
+            self.title = _("Permission denied")
+            return _("Bad csrf token")
+        else
+            return f(self)
+        end
+    end
 end
 
 app:get("/", function()
