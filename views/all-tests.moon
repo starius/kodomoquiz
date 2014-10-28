@@ -4,7 +4,7 @@ quizs = require('quiz.all')
 
 class AllTests extends Widget
   content: =>
-    h1 class: "header", @._("Kodomo Quiz")
+    h1 class: "header", @_("Kodomo Quiz")
     div class: "body", ->
       p @_("Start new quiz:")
       for name, _ in pairs quizs

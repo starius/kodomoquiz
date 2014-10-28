@@ -20,21 +20,17 @@ app.__class:before_filter(function(self)
     else
         _ = function(t) return t end
     end
-    self._ = function(a, b)
-        if b then
-            return _(b)
-        else
-            return _(a)
-        end
+    self._ = function(a, t)
+        return _(t)
     end
-    self.title = self._("Kodomo Quiz")
+    self.title = self:_("Kodomo Quiz")
 end)
 
 local check_csrf = function(f)
     return function(self)
         if not csrf.validate_token(self) then
-            self.title = self._("Permission denied")
-            return self._("Bad csrf token")
+            self.title = self:_("Permission denied")
+            return self:_("Bad csrf token")
         else
             return f(self)
         end
@@ -72,8 +68,8 @@ end
 local check_prep = function(f)
     return check_user(function(self)
         if preps.as_dict[self.session.user] == nil then
-            self.title = self._("Permission denied")
-            return self._("Only preps can see this page")
+            self.title = self:_("Permission denied")
+            return self:_("Only preps can see this page")
         else
             return f(self)
         end
@@ -104,13 +100,13 @@ app:post("login", "/login", check_csrf(function(self)
     end
     local user = self.req.params_post.user
     if fbb.as_dict[user] == nil then
-        self.title = self._("Permission denied")
-        return self._('error: invalid username')
+        self.title = self:_("Permission denied")
+        return self:_('error: invalid username')
     end
     local url = kodomo.url_of(user) .. self.session.filename
     local body, status_code, headers = http.simple(url)
     if not body:find(self.session.token) then
-        self.title = self._("Permission denied")
+        self.title = self:_("Permission denied")
         return 'Error! Please make sure file ' ..
             '<a href="' .. url .. '">' .. url .. '</a>' ..
             ' exists and contains ' .. self.session.token ..

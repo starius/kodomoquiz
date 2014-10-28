@@ -2,7 +2,7 @@ import Widget from require "lapis.html"
 
 class Welcome extends Widget
   content: =>
-    h1 class: "header", @._("Kodomo Quiz")
+    h1 class: "header", @_("Kodomo Quiz")
     div class: "body", ->
       p @_("Welcome to Kodomo Quiz!")
       element 'ol', ->
