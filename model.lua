@@ -64,6 +64,12 @@ model.Task = Model:extend("task", {
 model.Quiz = Model:extend("quiz", {
     timestamp = true,
 
+    anchor = function(self, app)
+        local url = app:url_for('quiz', {id=self.id})
+        return string.format('<a href="%s">%s</a>',
+            url, self.name)
+    end,
+
     fresh_task = function(self)
         local all_fresh = model.Task:select(
             "where quiz_id = ? and selected = ? order by id",
@@ -118,6 +124,13 @@ function model.new_quiz(app)
             sequence=rand_sequence(), selected=0})
     end
     return quiz
+end
+
+function model.my_quizs(app, state)
+    --return model.Quiz:select()
+    local user = app.session.user
+    return model.Quiz:select('where "user" = ? and state = ?',
+        user, state)
 end
 
 return model
