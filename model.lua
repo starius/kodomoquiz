@@ -5,6 +5,10 @@ local quizs = require('quiz.all')
 
 local model = {}
 
+model.ACTIVE = 1
+model.CANCELLED = 2
+model.FINISHED = 3
+
 function model.create_schema()
     local types = schema.types
 
@@ -29,7 +33,7 @@ function model.create_schema()
         {"created_at", types.time},
         {"updated_at", types.time},
         {"right_answers", types.integer},
-        {"finished", types.boolean},
+        {"state", types.integer},
         {"ip", types.varchar},
         {"ua", types.varchar},
         "PRIMARY KEY (id)"
@@ -49,7 +53,7 @@ function model.new_quiz(app)
     local ip = app.req.headers['X-Forwarded-For']
     local ua = app.req.headers['User-Agent']
     local quiz = model.Quiz:create({name=quiz_name, user=user,
-        right_answers=0, finished=false, ip=ip, ua=ua})
+        right_answers=0, state=model.ACTIVE, ip=ip, ua=ua})
     for task_name, func in pairs(q) do
         if task_name ~= 'task' then
             local text, a1, a2, a3, a4 = func(app)
