@@ -12,10 +12,18 @@ local tr_ru = assert(load_mo_file(nil))
 -- FIXME https://github.com/leafo/lapis/issues/188
 app.__class:before_filter(function(self)
     local lang = self.req.headers['Accept-Language']:sub(1, 2)
+    local _
     if lang == 'ru' then
-        self._ = tr_ru
+        _ = tr_ru
     else
-        self._ = function(t) return t end
+        _ = function(t) return t end
+    end
+    self._ = function(a, b)
+        if b then
+            return _(b)
+        else
+            return _(a)
+        end
     end
     self.title = self._("Kodomo Quiz")
 end)
