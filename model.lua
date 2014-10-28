@@ -17,6 +17,7 @@ function model.create_schema()
         {"a2", types.varchar},
         {"a3", types.varchar},
         {"a4", types.varchar},
+        {"sequence", types.varchar}, -- e.g. "2143"
         {"selected", types.integer},
         "PRIMARY KEY (id)"
     })
