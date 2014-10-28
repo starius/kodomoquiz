@@ -10,4 +10,5 @@ class Task extends Widget
     h2 @_("Quiz ") .. @quiz.name
     h3 @_("Task ") .. @task.name
     @task_table @task
+    @cancel_form!
 

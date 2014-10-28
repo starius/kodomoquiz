@@ -19,4 +19,5 @@ class QuizFinalCheck extends Widget
     for task in *(@quiz\all_tasks!)
       @task_table task
       raw '<br/>'
+    @cancel_form!
 

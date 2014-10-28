@@ -169,7 +169,7 @@ app:get("quiz", "/tests/quiz/:id", check_quiz(function(self)
     elseif self.quiz.state == model.FINISHED then
         return {render='quiz-results'}
     elseif self.quiz.state == model.CANCELLED then
-        return self:_("This quiz was cancelled")
+        return self:_("This quiz was canceled")
     end
     return "???"
 end))
@@ -198,6 +198,16 @@ check_quiz(function(self)
         return self:_("This quiz is not active")
     end
     self.quiz:update({state=model.FINISHED})
+    local url = self:url_for('quiz', {id=self.quiz.id})
+    return {redirect_to = url}
+end))
+
+app:post("cancel", "/tests/quiz/:id/cancel",
+check_quiz(function(self)
+    if self.quiz.state ~= model.ACTIVE then
+        return self:_("This quiz is not active")
+    end
+    self.quiz:update({state=model.CANCELLED})
     local url = self:url_for('quiz', {id=self.quiz.id})
     return {redirect_to = url}
 end))

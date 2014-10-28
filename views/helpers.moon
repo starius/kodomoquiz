@@ -21,6 +21,18 @@ class Helpers
       input type: "hidden", name: "ans", value: i
       input type: "submit", value: @_('Select')
 
+  cancel_form: =>
+    url = @url_for("cancel", {id: @quiz.id})
+    raw '<br/><br/>'
+    element 'hr'
+    raw '<br/><br/>'
+    font color: 'red', @_("Dangerous zone")
+    form method: "POST", action: url, ->
+      input {type: "hidden", name: "csrf_token",
+          value: @new_csrf}
+      input {type: "submit", value: @_('Cancell quiz'),
+        style: 'background-color: pink'}
+
   task_table: (task) =>
     form = task\quiz().state == model.ACTIVE
     element "table", border: 1, ->
