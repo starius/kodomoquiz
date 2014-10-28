@@ -1,7 +1,7 @@
 local lapis = require("lapis")
 local http = require("lapis.nginx.http")
 local csrf = require("lapis.csrf")
-local load_mo_file = require("load_mo_file")
+local tr_ru = require('tr_ru')
 local random_token = require("random_token")
 
 local fbb = require("fbb")
@@ -9,8 +9,6 @@ local preps = require("preps")
 local kodomo = require("kodomo")
 
 local app = lapis.Application()
-
-local tr_ru = assert(load_mo_file(nil))
 
 -- FIXME https://github.com/leafo/lapis/issues/188
 app.__class:before_filter(function(self)
