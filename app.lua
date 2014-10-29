@@ -15,7 +15,10 @@ app.layout = require("views.layout")
 
 -- FIXME https://github.com/leafo/lapis/issues/188
 app.__class:before_filter(function(self)
-    local lang = self.req.headers['Accept-Language']:sub(1, 2)
+    local lang = self.session.lang
+    if not lang then
+        self.req.headers['Accept-Language']:sub(1, 2)
+    end
     local _
     if lang == 'ru' then
         _ = tr_ru
@@ -231,6 +234,16 @@ app:get("prep-quiz", "/admin/quiz/:id",
 check_quiz(check_prep(function(self)
     return {render='quiz-results'}
 end)))
+
+app:get("russian", "/ru", function(self)
+    self.session.lang = 'ru'
+    return {redirect_to = self.req.headers.Referer}
+end)
+
+app:get("english", "/en", function(self)
+    self.session.lang = 'en'
+    return {redirect_to = self.req.headers.Referer}
+end)
 
 return app
 

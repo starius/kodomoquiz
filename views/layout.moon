@@ -13,6 +13,12 @@ class extends html.Widget
         h1 class: "header", @_("Kodomo Quiz")
         a href: @url_for('index'), ->
           text @_ "Main page"
+        text " | "
+        a href: @url_for('russian'), ->
+          text @_ "Русский"
+        text " | "
+        a href: @url_for('english'), ->
+          text @_ "English"
         raw '<br/>'
         @content_for "inner"
 
