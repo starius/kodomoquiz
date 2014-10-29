@@ -231,6 +231,7 @@ check_task(function(self)
     local ans = tonumber(self.req.params_post.ans)
     self.task:update({selected = self.task:ans_i(ans)})
     local url = self:url_for('quiz', {id=self.quiz.id})
+    url = url .. '#' .. self.task.name
     return {redirect_to = url}
 end))
 

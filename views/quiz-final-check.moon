@@ -17,6 +17,7 @@ class QuizFinalCheck extends Widget
       input type: "submit", value: @_('Finish this quiz')
     raw '<br/>'
     for task in *(@quiz\all_tasks!)
+      a name: task.name, id: task.name
       @task_table task
       raw '<br/>'
     @cancel_form!
