@@ -93,7 +93,11 @@ local check_quiz = function(f)
             return self:_("Can't find this quiz")
         end
         if self.quiz.user ~= self.session.user then
-            return self:_("It is not your quiz")
+            -- preps can view finished quizes
+            if not (self.quiz.state == model.FINISHED and
+                    self.prep) then
+                return self:_("It is not your quiz")
+            end
         end
         return f(self)
     end)
