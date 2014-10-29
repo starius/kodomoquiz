@@ -42,14 +42,14 @@ class Helpers
     form = task\quiz().state == model.ACTIVE
     element "table", border: 1, ->
       element "tr", ->
-        element "td", colspan: 4, ->
+        element "td", colspan: 4, style: "padding:10px", ->
           if task\quiz().state == model.FINISHED
             b task.name
           p @help_for(task)
           pre task.text
       element "tr", ->
         for i = 1, 4
-          element "td", {width: 100,
+          element "td", {width: 100, style: "padding:10px",
               bgcolor: bgcolor(task, i)}, ->
             pre task\ans(i)
             if form
