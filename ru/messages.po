@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-29 05:52+0300\n"
+"POT-Creation-Date: 2014-10-29 12:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,22 @@ msgstr " в вашем <b>public_html</b>"
 msgid "(today)"
 msgstr "(сегодня)"
 
+#: views/prep-quizs.lua:22
+msgid "All quizes"
+msgstr ""
+
+#: views/prep-quizs.lua:19
+msgid "All quizes of "
+msgstr ""
+
+#: views/helpers.lua:126
+msgid "All tasks at one page"
+msgstr ""
+
+#: views/welcome.lua:54
+msgid "Alternatively, you can use "
+msgstr ""
+
 #: app.lua:38
 msgid "Bad csrf token"
 msgstr "Плохой csrf"
@@ -41,15 +57,15 @@ msgstr "Не могу найти тест"
 msgid "Can't find this task"
 msgstr "Не могу найти задание"
 
-#: views/helpers.lua:71
+#: views/helpers.lua:71 views/helpers.lua:68
 msgid "Cancel quiz"
 msgstr "Отменить тест"
 
-#: views/helpers.lua:59
+#: views/helpers.lua:59 views/helpers.lua:56
 msgid "Dangerous zone"
 msgstr "Осторожно, не нажмите на эту кнопку по ошибке vv"
 
-#: views/quiz-final-check.lua:31
+#: views/quiz-final-check.lua:31 views/quiz-final-check.lua:32
 msgid "Finish this quiz"
 msgstr "Завершить этот тест"
 
@@ -83,27 +99,42 @@ msgstr "Это чужой тест"
 msgid "Kodomo Quiz"
 msgstr "Тесты Кодомо"
 
+#: views/welcome.lua:78
+msgid ""
+"Let us know your transient username, otherwise\n"
+"        all your results will be lost"
+msgstr ""
+
 #: views/welcome.lua:41
 msgid "Login"
 msgstr "Войти"
 
-#: views/layout.lua:51
+#: views/layout.lua:51 views/layout.lua:71
 msgid "Logout"
 msgstr "Выйти"
 
-#: views/layout.lua:25
+#: views/layout.lua:25 views/layout.lua:28
 msgid "Main page"
 msgstr "Главная страница"
 
-#: model.lua:129
+#: model.lua:129 model.lua:132
 msgid "No such quiz found"
 msgstr "Такого теста нет"
+
+#: views/helpers.lua:145
+msgid "One task at one page"
+msgstr ""
 
 #: app.lua:80
 msgid "Only preps can see this page"
 msgstr "Эта страница только для преподавателей"
 
+#: views/quiz-results.lua:21
+msgid "Other quizes by "
+msgstr ""
+
 #: app.lua:37 app.lua:79 app.lua:137 app.lua:143 app.lua:141 app.lua:147
+#: app.lua:153
 msgid "Permission denied"
 msgstr "Доступ отклонен"
 
@@ -115,13 +146,13 @@ msgstr "Пожалуйста, создайте файл "
 msgid "Quiz "
 msgstr "Тест "
 
-#: views/quiz-final-check.lua:18
+#: views/quiz-final-check.lua:18 views/quiz-final-check.lua:19
 msgid ""
 "Quiz is not finished untill\n"
 "      you press the button"
 msgstr "Тест не будет завершен, пока Вы не нажмёте кнопку под этим текстом"
 
-#: views/helpers.lua:46
+#: views/helpers.lua:46 views/helpers.lua:43
 msgid "Select"
 msgstr "Выберите"
 
@@ -137,14 +168,26 @@ msgstr "Учащийся "
 msgid "Task "
 msgstr "Задание "
 
+#: views/welcome.lua:46
+msgid ""
+"Then you can remove the file.\n"
+"            It is checked only when you press\n"
+"            the button above."
+msgstr ""
+
 #: app.lua:187 app.lua:195 app.lua:206 app.lua:216 app.lua:191 app.lua:199
 #: app.lua:210 app.lua:220 app.lua:196 app.lua:204 app.lua:215 app.lua:225
+#: app.lua:221 app.lua:229 app.lua:240 app.lua:250
 msgid "This quiz is not active"
 msgstr "Этот тест не является активным"
 
-#: app.lua:180 app.lua:184 app.lua:189
+#: app.lua:180 app.lua:184 app.lua:189 app.lua:200
 msgid "This quiz was canceled"
 msgstr "Этот тест отменен"
+
+#: views/prep-quizs.lua:16
+msgid "Today quizes"
+msgstr ""
 
 #: views/welcome.lua:14
 msgid "Welcome to Kodomo Quiz!"
@@ -165,10 +208,12 @@ msgid "Which Python code produces output 123?"
 msgstr "Какой код производит выход 123?"
 
 #: views/all-tests.lua:64 views/all-tests.lua:66 views/all-tests.lua:73
+#: views/all-tests.lua:80
 msgid "Your active quizes:"
 msgstr "Ваши активные тесты:"
 
 #: views/all-tests.lua:65 views/all-tests.lua:67 views/all-tests.lua:74
+#: views/all-tests.lua:81
 msgid "Your finished quizes:"
 msgstr "Ваши завершенные тесты:"
 
@@ -176,30 +221,34 @@ msgstr "Ваши завершенные тесты:"
 msgid "Your username: "
 msgstr "Ваше имя: "
 
-#: app.lua:138 app.lua:142
+#: app.lua:138 app.lua:142 app.lua:148
 msgid "error: invalid username"
 msgstr "ошибка, неверное имя"
 
-#: views/prep-quizs.lua:33
+#: views/prep-quizs.lua:33 views/prep-quizs.lua:38
 msgid "finished"
 msgstr "завершено"
 
-#: views/prep-quizs.lua:24
+#: views/welcome.lua:69
+msgid "guest login"
+msgstr ""
+
+#: views/prep-quizs.lua:24 views/prep-quizs.lua:29
 msgid "quiz"
 msgstr "тест"
 
-#: views/prep-quizs.lua:39
+#: views/prep-quizs.lua:39 views/prep-quizs.lua:41
 msgid "right answers"
 msgstr "правильные ответы"
 
-#: views/prep-quizs.lua:30
+#: views/prep-quizs.lua:30 views/prep-quizs.lua:35
 msgid "started"
 msgstr "начато"
 
-#: views/prep-quizs.lua:36
+#: views/prep-quizs.lua:36 views/prep-quizs.lua:44
 msgid "tasks"
 msgstr "заданий"
 
-#: views/prep-quizs.lua:27
+#: views/prep-quizs.lua:27 views/prep-quizs.lua:32
 msgid "user"
 msgstr "пользователь"
