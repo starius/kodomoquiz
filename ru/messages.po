@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-29 04:30+0300\n"
-"PO-Revision-Date: 2014-10-29 04:43+0300\n"
-"Last-Translator: Boris Nagaev <bnagaev@gmail.com>\n"
+"POT-Creation-Date: 2014-10-29 04:49+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -36,7 +37,7 @@ msgstr "Плохой csrf"
 msgid "Can't find this quiz"
 msgstr "Не могу найти тест"
 
-#: app.lua:106
+#: app.lua:106 app.lua:110
 msgid "Can't find this task"
 msgstr "Не могу найти задание"
 
@@ -56,13 +57,17 @@ msgstr "Завершить этот тест"
 msgid "Finished quizes"
 msgstr "Завершенные тесты"
 
-#: app.lua:96
+#: quiz/hello.lua:96
+msgid ""
+"How to execute Python script\n"
+"        from command line?"
+msgstr ""
+
+#: app.lua:96 app.lua:99
 msgid "It is not your quiz"
 msgstr "Это чужой тест"
 
-#: app.lua:31
-#: views/layout.lua:16
-#: views/layout.lua:21
+#: app.lua:31 views/layout.lua:16 views/layout.lua:21
 msgid "Kodomo Quiz"
 msgstr "Тесты Кодомо"
 
@@ -82,10 +87,7 @@ msgstr "Такого теста нет"
 msgid "Only preps can see this page"
 msgstr "Эта страница только для преподавателей"
 
-#: app.lua:37
-#: app.lua:79
-#: app.lua:137
-#: app.lua:143
+#: app.lua:37 app.lua:79 app.lua:137 app.lua:143 app.lua:141 app.lua:147
 msgid "Permission denied"
 msgstr "Доступ отклонен"
 
@@ -93,9 +95,7 @@ msgstr "Доступ отклонен"
 msgid "Please, create file "
 msgstr "Пожалуйста, создайте файл "
 
-#: views/quiz-final-check.lua:12
-#: views/quiz-results.lua:12
-#: views/task.lua:12
+#: views/quiz-final-check.lua:12 views/quiz-results.lua:12 views/task.lua:12
 msgid "Quiz "
 msgstr "Тест "
 
@@ -121,14 +121,12 @@ msgstr "Учащийся "
 msgid "Task "
 msgstr "Задание"
 
-#: app.lua:187
-#: app.lua:195
-#: app.lua:206
-#: app.lua:216
+#: app.lua:187 app.lua:195 app.lua:206 app.lua:216 app.lua:191 app.lua:199
+#: app.lua:210 app.lua:220
 msgid "This quiz is not active"
 msgstr "Этот тест не является активным"
 
-#: app.lua:180
+#: app.lua:180 app.lua:184
 msgid "This quiz was canceled"
 msgstr "Этот тест отменен"
 
@@ -136,11 +134,21 @@ msgstr "Этот тест отменен"
 msgid "Welcome to Kodomo Quiz!"
 msgstr "Добро пожаловать на Тесты Кодомо"
 
-#: views/all-tests.lua:64
+#: quiz/hello.lua:21
+msgid ""
+"What does Python print\n"
+"            if you enter the following commands?"
+msgstr ""
+
+#: quiz/hello.lua:107
+msgid "What is the Python's official site?"
+msgstr ""
+
+#: views/all-tests.lua:64 views/all-tests.lua:66
 msgid "Your active quizes:"
 msgstr "Ваши активные тесты:"
 
-#: views/all-tests.lua:65
+#: views/all-tests.lua:65 views/all-tests.lua:67
 msgid "Your finished quizes:"
 msgstr "Ваши завершенные тесты:"
 
@@ -148,7 +156,7 @@ msgstr "Ваши завершенные тесты:"
 msgid "Your username: "
 msgstr "Ваше имя: "
 
-#: app.lua:138
+#: app.lua:138 app.lua:142
 msgid "error: invalid username"
 msgstr "ошибка, неверное имя"
 
@@ -175,4 +183,3 @@ msgstr "заданий"
 #: views/prep-quizs.lua:27
 msgid "user"
 msgstr "пользователь"
-
