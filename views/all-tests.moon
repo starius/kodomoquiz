@@ -20,9 +20,11 @@ class AllTests extends Widget
           input {type: "hidden", name: "name", value: name}
           input type: "submit", value: name
       my_quizs = (text, state) ->
-        p text
+        qq = model.my_quizs(@, state)
+        if #qq > 0
+          p text
         element 'ul', ->
-          for quiz in *(model.my_quizs(@, state))
+          for quiz in *qq
             element 'li', ->
               raw quiz\anchor(@)
       my_quizs @_("Your active quizes:"), model.ACTIVE
