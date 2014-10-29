@@ -38,7 +38,6 @@ class Helpers
     quiz_name = task\quiz().name
     func = quizs[quiz_name][task.name]
     r, a1, a2, a3, a4, help = func(@)
-    print(help)
     return help
 
   task_table: (task) =>
