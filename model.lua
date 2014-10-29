@@ -40,6 +40,9 @@ function model.create_schema()
         {"ua", types.varchar},
         "PRIMARY KEY (id)"
     })
+    schema.create_index('quiz', 'user')
+    schema.create_index('quiz', 'created_at')
+    schema.create_index('quiz', 'state')
 end
 
 model.Task = Model:extend("task", {
