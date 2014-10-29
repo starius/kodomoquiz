@@ -62,6 +62,9 @@ local check_user = function(f)
         if not self.session.user then
             return {redirect_to='/'}
         else
+            if preps.as_dict[self.session.user] then
+                self.prep = true
+            end
             return f(self)
         end
     end)
@@ -69,7 +72,7 @@ end
 
 local check_prep = function(f)
     return check_user(function(self)
-        if preps.as_dict[self.session.user] == nil then
+        if not self.prep then
             self.title = self:_("Permission denied")
             return self:_("Only preps can see this page")
         else
