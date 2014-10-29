@@ -22,6 +22,10 @@ local task = function(req)
             if you enter the following commands?]], req)
 end
 
+local task2 = function(req)
+    return _([[Which Python code produces this output?]], req)
+end
+
 local shortrand = function()
     local t = {}
     local l = math.random(3, 7)
@@ -140,13 +144,14 @@ end
 
 function hello.raw_input(req)
     local v = 'v' .. math.random(0, 9)
+    local i = math.random(100, 1000)
     return
-    '',
-    f('>>> %s = raw_input()\n123\n>>>print(%s)', v, v),
-    f('>>> %s = raw_input()\n123\n>>>%s', v, v),
-    f('>>> %s = int(raw_input()\n123\n>>>%s', v, v),
-    f('>>> %s = str(raw_input())\n123\n>>>%s', v, v),
-    _("Which Python code produces output 123?", req)
+    f('%i', i),
+    f('>>> %s = raw_input()\n%i\n>>>print(%s)', v, i, v),
+    f('>>> %s = raw_input()\n%i\n>>>%s', v, i, v),
+    f('>>> %s = int(raw_input()\n%i\n>>>%s', v, i, v),
+    f('>>> %s = str(raw_input())\n%i\n>>>%s', v, i, v),
+    task2(req)
 end
 
 function hello.sqrt(req)
