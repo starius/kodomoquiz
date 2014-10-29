@@ -49,17 +49,9 @@ msgstr "Отменить тест"
 msgid "Dangerous zone"
 msgstr "Осторожно, не нажмите на эту кнопку по ошибке vv"
 
-#: views/layout.lua:37
-msgid "English"
-msgstr "English"
-
 #: views/quiz-final-check.lua:31
 msgid "Finish this quiz"
 msgstr "Завершить этот тест"
-
-#: views/all-tests.lua:20
-msgid "Finished quized"
-msgstr ""
 
 #: views/all-tests.lua:20
 msgid "Finished quizes"
@@ -175,6 +167,3 @@ msgstr ""
 msgid "user"
 msgstr ""
 
-#: views/layout.lua:31
-msgid "Русский"
-msgstr ""
