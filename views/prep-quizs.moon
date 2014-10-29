@@ -8,10 +8,13 @@ class PrepQuizs extends Widget
     local quizs
     if @today_only
       quizs = model.today_quizs(model.FINISHED)
+      h1 @_[[Today quizes]]
     elseif @target_user
       quizs = model.quizs_of(@target_user, model.FINISHED)
+      h1 @_[[All quizes of ]] .. @target_user
     else
       quizs = model.all_quizs(model.FINISHED)
+      h1 @_[[All quizes]]
     element 'table', border: 1, ->
       element 'tr', ->
         element 'td', -> text @_("quiz")
