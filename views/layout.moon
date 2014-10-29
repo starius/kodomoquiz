@@ -15,10 +15,10 @@ class extends html.Widget
           text @_ "Main page"
         text " | "
         a href: @url_for('russian'), ->
-          text @_ "Русский"
+          text "Русский"
         text " | "
         a href: @url_for('english'), ->
-          text @_ "English"
+          text "English"
         raw '<br/>'
         @content_for "inner"
 
