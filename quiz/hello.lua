@@ -47,6 +47,17 @@ function hello.print1(req)
     task(req)
 end
 
+function hello.print2(req)
+    local val = math.random(0, 100)
+    return
+    f('%i', val),
+    f('>>> print("%i")', val),
+    f('>>> "%i"', val),
+    f('>>> (print)"%i"', val),
+    f('>>> "%i" -> print', val),
+    task2(req)
+end
+
 function hello.print_sum(req)
     local val = math.random(10, 100)
     return
@@ -71,6 +82,47 @@ function hello.division_int(req)
     f('%i', result - 1),
     f('%i', result - 2),
     task(req)
+end
+
+function hello.division_int2(req)
+    local a = math.random(60, 100)
+    local b = math.random(10, 50)
+    local result = math.floor(a / b)
+    return
+    f('%i', result),
+    f(">>> print(%i // %i)", a, b),
+    f(">>> print(%i.0 / %i.0)", a, b),
+    f(">>> a = %i // %i", a, b),
+    f(">>> a = %i.0 / %i.0", a, b),
+    task2(req)
+end
+
+function hello.vars(req)
+    local a = math.random(6, 10)
+    local b = math.random(1, 5)
+    local result = (a + b) ^ 2
+    return
+    f('%i', result),
+    f([[>>> a = %i
+        >>> b = %i
+        >>> c = a + b
+        >>> a = c * c
+        >>> print(a)]], a, b),
+    f([[>>> a = %i
+        >>> a = %i
+        >>> c = a + b
+        >>> a = c * c
+        >>> print(a)]], a, b),
+    f([[>>> a = %i
+        >>> a = %i
+        >>> c = a + b
+        >>> b = c * c
+        >>> print(a)]], a, b),
+    f([[>>> a = %i
+        >>> b = %i
+        >>> c = a + b
+        >>> a = c * c]], a, b),
+    task2(req)
 end
 
 function hello.division_float(req)
@@ -176,6 +228,17 @@ function hello.pow10(req)
     task(req)
 end
 
+function hello.pow10_2(req)
+    local val = math.random(3, 7)
+    return
+    f('%i', 10 ^ val),
+    f('>>> print(10 ** %i)', val),
+    f('>>> print(10 ^ %i)', val),
+    f('>>> print(10 * %i)', val),
+    f('>>> print("10" * %i)', val),
+    task2(req)
+end
+
 function hello.pow10f(req)
     local val = math.random(5, 15)
     return
@@ -274,6 +337,19 @@ function hello.stringmulnumber(req)
     f('%s', s .. i),
     f('%i', i),
     task(req)
+end
+
+
+function hello.stringmulnumber2(req)
+    local s = shortrand()
+    local i = math.random(3, 7)
+    return
+    f('%s', string.rep(s, i)),
+    f('>>> print("%s" * %i)', s, i),
+    f('>>> print("%s" ** %i)', s, i),
+    f('>>> print("%s" ^ %i)', s, i),
+    f('>>> print(%s ^ "%i")', s, i),
+    task2(req)
 end
 
 function hello.fakemul(req)
