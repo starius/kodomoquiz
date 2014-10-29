@@ -11,7 +11,7 @@ local hello = {}
 
 local task = function(req)
     if req then
-        return req._([[What does Python print after
+        return req:_([[What does Python print after
             typing following commands?]])
     end
 end
