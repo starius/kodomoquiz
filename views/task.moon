@@ -8,6 +8,9 @@ class Task extends Widget
   content: =>
     h2 @_("Quiz ") .. @quiz.name
     h3 @_("Task ") .. @task.name
+    a href: @url_for("quiz", {id: @quiz.id}), ->
+      text @_("Set aside this task")
+    raw '<br/><br/>'
     @tasks_number_switcher @quiz
     @task_table @task
     @cancel_form!
