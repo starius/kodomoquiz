@@ -206,8 +206,16 @@ function hello.minusplus(req)
     task(req)
 end
 
+local d19 = function()
+    return math.random(1, 9)
+end
+
+local zeroless = function()
+    return d19() + d19() * 10 + d19() * 100 + d19() * 1000
+end
+
 function hello.lastdigit(req)
-    local a = math.random(1110, 9999)
+    local a = zeroless()
     return
     f('>>> print(%i %% 10)', a),
     f('%i', a % 10),
@@ -218,7 +226,7 @@ function hello.lastdigit(req)
 end
 
 function hello.last2digits(req)
-    local a = math.random(1110, 9999)
+    local a = zeroless()
     return
     f('>>> print(%i %% 100)', a),
     f('%i', a % 100),
