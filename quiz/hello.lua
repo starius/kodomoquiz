@@ -210,9 +210,9 @@ function hello.sqrt(req)
     local result = math.random(10, 20)
     return
     f('>>> print(%i ** 0.5)', result ^ 2),
-    f('%i', result),
-    f('%i', result * 0.5),
-    f('%i', result / 0.5),
+    f('%0.1f', result),
+    f('%0.1f', result * 0.5),
+    f('%0.1f', result / 0.5),
     f('Error:'),
     task(req)
 end
