@@ -1,4 +1,5 @@
 model = require('model')
+quizs = require('quiz.all')
 
 bgcolor = (task, i) ->
   form = task\quiz().state == model.ACTIVE
@@ -33,13 +34,20 @@ class Helpers
       input {type: "submit", value: @_('Cancel quiz'),
         style: 'background-color: pink'}
 
+  help_for: (task) =>
+    quiz_name = task\quiz().name
+    func = quizs[quiz_name][task.name]
+    r, a1, a2, a3, a4, help = func(@)
+    print(help)
+    return help
+
   task_table: (task) =>
     form = task\quiz().state == model.ACTIVE
     element "table", border: 1, ->
       element "tr", ->
         element "td", colspan: 4, ->
           b task.name
-          raw ' '
+          p @help_for(task)
           pre task.text
       element "tr", ->
         for i = 1, 4
