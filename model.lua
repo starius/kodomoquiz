@@ -70,6 +70,22 @@ model.Quiz = Model:extend("quiz", {
             url, self.name)
     end,
 
+    finish = function(self)
+        local answers = 0
+        local right_answers = 0
+        for _, task in ipairs(self:all_tasks()) do
+            if task.selected == 1 then
+                right_answers = right_answers + 1
+            end
+            if task.selected ~= 0 then
+                answers = answers + 1
+            end
+        end
+        self:update({state = model.FINISHED,
+            answers = answers, right_answers = right_answers,
+        })
+    end,
+
     fresh_task = function(self)
         local all_fresh = model.Task:select(
             "where quiz_id = ? and selected = ? order by id",

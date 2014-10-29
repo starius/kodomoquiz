@@ -199,7 +199,7 @@ check_quiz(function(self)
     if self.quiz.state ~= model.ACTIVE then
         return self:_("This quiz is not active")
     end
-    self.quiz:update({state=model.FINISHED})
+    self.quiz:finish()
     local url = self:url_for('quiz', {id=self.quiz.id})
     return {redirect_to = url}
 end))
