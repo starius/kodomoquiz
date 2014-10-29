@@ -289,7 +289,7 @@ function hello.lastdigit(req)
     f('%i', a % 10),
     f('%i', a % 100),
     f('%i', a % 1000),
-    f('%i', -a % 10),
+    f('%i', -(a % 10)),
     task(req)
 end
 
@@ -300,7 +300,7 @@ function hello.last2digits(req)
     f('%i', a % 100),
     f('%i', a % 10),
     f('%i', a % 1000),
-    f('%i', -a % 10),
+    f('%i', -(a % 10)),
     task(req)
 end
 
