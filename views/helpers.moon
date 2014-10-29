@@ -43,7 +43,8 @@ class Helpers
     element "table", border: 1, ->
       element "tr", ->
         element "td", colspan: 4, ->
-          b task.name
+          if task\quiz().state == model.FINISHED
+            b task.name
           p @help_for(task)
           pre task.text
       element "tr", ->
