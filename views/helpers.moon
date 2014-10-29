@@ -4,12 +4,10 @@ quizs = require('quiz.all')
 bgcolor = (task, i) ->
   form = task\quiz().state == model.ACTIVE
   bc = 'white'
-  if task\ans_i(i) == task.selected
-    bc = 'yellow'
-  if not form and task\ans_i(i) == task.selected
-    bc = 'red'
   if not form and task\ans_i(i) == 1
     bc = 'green'
+  if task\ans_i(i) == task.selected
+    bc = 'yellow'
   return bc
 
 class Helpers
