@@ -2,6 +2,7 @@ import Widget from require "lapis.html"
 
 quizs = require('quiz.all')
 model = require('model')
+msk_time = require "msk_time"
 
 class AllTests extends Widget
   content: =>
@@ -26,7 +27,8 @@ class AllTests extends Widget
         element 'ul', ->
           for quiz in *qq
             element 'li', ->
-              raw quiz\anchor(@)
+              time = msk_time(quiz.created_at)
+              raw quiz\anchor(@) .. ', ' .. time
       my_quizs @_("Your active quizes:"), model.ACTIVE
       my_quizs @_("Your finished quizes:"), model.FINISHED
 
