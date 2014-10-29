@@ -199,10 +199,10 @@ function hello.raw_input(req)
     local i = math.random(100, 1000)
     return
     f('%i', i),
-    f('>>> %s = raw_input()\n%i\n>>>print(%s)', v, i, v),
-    f('>>> %s = raw_input()\n%i\n>>>%s', v, i, v),
-    f('>>> %s = int(raw_input()\n%i\n>>>%s', v, i, v),
-    f('>>> %s = str(raw_input())\n%i\n>>>%s', v, i, v),
+    f('>>> %s = raw_input()\n%i\n>>> print(%s)', v, i, v),
+    f('>>> %s = raw_input()\n%i\n>>> %s', v, i, v),
+    f('>>> %s = int(raw_input()\n%i\n>>> %s', v, i, v),
+    f('>>> %s = str(raw_input())\n%i\n>>> %s', v, i, v),
     task2(req)
 end
 
