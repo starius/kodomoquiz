@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-29 04:30+0300\n"
-"PO-Revision-Date: 2014-10-29 04:38+0300\n"
+"PO-Revision-Date: 2014-10-29 04:43+0300\n"
 "Last-Translator: Boris Nagaev <bnagaev@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -115,7 +115,7 @@ msgstr "Начать новый тест:"
 
 #: views/quiz-results.lua:13
 msgid "Student "
-msgstr "Учащийся"
+msgstr "Учащийся "
 
 #: views/task.lua:13
 msgid "Task "
