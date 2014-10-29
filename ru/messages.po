@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-29 12:08+0300\n"
+"POT-Creation-Date: 2014-10-29 12:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,19 +31,19 @@ msgstr "(сегодня)"
 
 #: views/prep-quizs.lua:22
 msgid "All quizes"
-msgstr ""
+msgstr "Все тесты"
 
 #: views/prep-quizs.lua:19
 msgid "All quizes of "
-msgstr ""
+msgstr "Все тесты участника "
 
 #: views/helpers.lua:126
 msgid "All tasks at one page"
-msgstr ""
+msgstr "Все задания на одной странице"
 
 #: views/welcome.lua:54
 msgid "Alternatively, you can use "
-msgstr ""
+msgstr "А ещё можно использовать "
 
 #: app.lua:38
 msgid "Bad csrf token"
@@ -103,7 +103,7 @@ msgstr "Тесты Кодомо"
 msgid ""
 "Let us know your transient username, otherwise\n"
 "        all your results will be lost"
-msgstr ""
+msgstr "Сообщите нам временное гостевое имя, иначе результат пропадёт"
 
 #: views/welcome.lua:41
 msgid "Login"
@@ -123,7 +123,7 @@ msgstr "Такого теста нет"
 
 #: views/helpers.lua:145
 msgid "One task at one page"
-msgstr ""
+msgstr "Одно задание на одной странице"
 
 #: app.lua:80
 msgid "Only preps can see this page"
@@ -131,7 +131,7 @@ msgstr "Эта страница только для преподавателей
 
 #: views/quiz-results.lua:21
 msgid "Other quizes by "
-msgstr ""
+msgstr "Остальные тесты участника "
 
 #: app.lua:37 app.lua:79 app.lua:137 app.lua:143 app.lua:141 app.lua:147
 #: app.lua:153
@@ -174,6 +174,7 @@ msgid ""
 "            It is checked only when you press\n"
 "            the button above."
 msgstr ""
+"После этот файл можно удалить. Он проверяется, когда нажимают кнопку входа."
 
 #: app.lua:187 app.lua:195 app.lua:206 app.lua:216 app.lua:191 app.lua:199
 #: app.lua:210 app.lua:220 app.lua:196 app.lua:204 app.lua:215 app.lua:225
@@ -187,7 +188,7 @@ msgstr "Этот тест отменен"
 
 #: views/prep-quizs.lua:16
 msgid "Today quizes"
-msgstr ""
+msgstr "Тесты за сегодня"
 
 #: views/welcome.lua:14
 msgid "Welcome to Kodomo Quiz!"
@@ -231,7 +232,7 @@ msgstr "завершено"
 
 #: views/welcome.lua:69
 msgid "guest login"
-msgstr ""
+msgstr "гостевой вход"
 
 #: views/prep-quizs.lua:24 views/prep-quizs.lua:29
 msgid "quiz"
