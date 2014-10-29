@@ -9,7 +9,7 @@ end
 
 local hello = {}
 
-local _ = function(req, text)
+local _ = function(text, req)
     if req then
         return req:_(text)
     else
@@ -18,8 +18,8 @@ local _ = function(req, text)
 end
 
 local task = function(req)
-    return _(req, [[What does Python print
-            if you enter the following commands?]])
+    return _([[What does Python print
+            if you enter the following commands?]], req)
 end
 
 function hello.print1(req)
@@ -93,8 +93,8 @@ function hello.start_file(req)
     f('%s', target_file),
     f('C:\\\\ %s', target_file),
     f(':) %s :)', target_file),
-    _(req, [[How to execute Python script
-        from command line?]])
+    _([[How to execute Python script
+        from command line?]], req)
 end
 
 function hello.python_org(req)
@@ -104,7 +104,7 @@ function hello.python_org(req)
     'python.com',
     'python.ru',
     'kodomo.fbb.msu.ru',
-    _(req, "What is the Python's official site?")
+    _("What is the Python's official site?", req)
 end
 
 return hello
