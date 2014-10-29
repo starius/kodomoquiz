@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-29 05:49+0300\n"
+"POT-Creation-Date: 2014-10-29 05:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr " и напишите следующий текст: "
 msgid " in your <b>public_html</b>"
 msgstr " в вашем <b>public_html</b>"
 
-#: views/all-tests.lua:26
+#: views/all-tests.lua:26 views/all-tests.lua:27
 msgid "(today)"
 msgstr "(сегодня)"
 
@@ -53,7 +53,7 @@ msgstr "Осторожно, не нажмите на эту кнопку по о
 msgid "Finish this quiz"
 msgstr "Завершить этот тест"
 
-#: views/all-tests.lua:20
+#: views/all-tests.lua:20 views/all-tests.lua:21
 msgid "Finished quizes"
 msgstr "Завершенные тесты"
 
@@ -86,6 +86,10 @@ msgstr "Тесты Кодомо"
 #: views/welcome.lua:41
 msgid "Login"
 msgstr "Войти"
+
+#: views/layout.lua:51
+msgid "Logout"
+msgstr "Выйти"
 
 #: views/layout.lua:25
 msgid "Main page"
@@ -121,7 +125,7 @@ msgstr "Тест не будет завершен, пока Вы не нажмё
 msgid "Select"
 msgstr "Выберите"
 
-#: views/all-tests.lua:29
+#: views/all-tests.lua:29 views/all-tests.lua:30
 msgid "Start new quiz:"
 msgstr "Начать новый тест:"
 
@@ -134,11 +138,11 @@ msgid "Task "
 msgstr "Задание "
 
 #: app.lua:187 app.lua:195 app.lua:206 app.lua:216 app.lua:191 app.lua:199
-#: app.lua:210 app.lua:220
+#: app.lua:210 app.lua:220 app.lua:196 app.lua:204 app.lua:215 app.lua:225
 msgid "This quiz is not active"
 msgstr "Этот тест не является активным"
 
-#: app.lua:180 app.lua:184
+#: app.lua:180 app.lua:184 app.lua:189
 msgid "This quiz was canceled"
 msgstr "Этот тест отменен"
 
@@ -160,11 +164,11 @@ msgstr "Какой официальный сайт Python?"
 msgid "Which Python code produces output 123?"
 msgstr "Какой код производит выход 123?"
 
-#: views/all-tests.lua:64 views/all-tests.lua:66
+#: views/all-tests.lua:64 views/all-tests.lua:66 views/all-tests.lua:73
 msgid "Your active quizes:"
 msgstr "Ваши активные тесты:"
 
-#: views/all-tests.lua:65 views/all-tests.lua:67
+#: views/all-tests.lua:65 views/all-tests.lua:67 views/all-tests.lua:74
 msgid "Your finished quizes:"
 msgstr "Ваши завершенные тесты:"
 
