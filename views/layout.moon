@@ -29,6 +29,8 @@ class extends html.Widget
             element 'td', ->
               text "|"
             element 'td', ->
+              b @session.user
+            element 'td', ->
               url = @url_for("logout")
               form method: "POST", action: url, ->
                 input {type: "hidden", name: "csrf_token",
