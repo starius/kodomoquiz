@@ -74,7 +74,7 @@ function hello.division_float(req)
     local b = math.random(10, 50)
     local a = result * b
     return
-    f(">>> print(%i.0 / %i.0)", a, b),
+    f(">>> print(%0.1f / %0.1f)", a, b),
     f('%0.1f', result),
     f('%0.1f', result - 0.5),
     f('%0.1f', result + 0.5),
@@ -222,7 +222,7 @@ function hello.stringcat(req)
     f('>>> print("%s" + "%s")', s, s),
     f('%s', s .. s),
     f('%s', s),
-    f(''),
+    f('""'),
     f('Error'),
     task(req)
 end
