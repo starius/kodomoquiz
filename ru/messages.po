@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-29 04:30+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2014-10-29 04:38+0300\n"
+"Last-Translator: Boris Nagaev <bnagaev@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -55,115 +54,125 @@ msgstr "Завершить этот тест"
 
 #: views/all-tests.lua:20
 msgid "Finished quizes"
-msgstr ""
+msgstr "Завершенные тесты"
 
 #: app.lua:96
 msgid "It is not your quiz"
-msgstr ""
+msgstr "Это чужой тест"
 
-#: app.lua:31 views/layout.lua:16 views/layout.lua:21
+#: app.lua:31
+#: views/layout.lua:16
+#: views/layout.lua:21
 msgid "Kodomo Quiz"
-msgstr ""
+msgstr "Тесты Кодомо"
 
 #: views/welcome.lua:41
 msgid "Login"
-msgstr ""
+msgstr "Войти"
 
 #: views/layout.lua:25
 msgid "Main page"
-msgstr ""
+msgstr "Главная страница"
 
 #: model.lua:129
 msgid "No such quiz found"
-msgstr ""
+msgstr "Такого теста нет"
 
 #: app.lua:80
 msgid "Only preps can see this page"
-msgstr ""
+msgstr "Эта страница только для преподавателей"
 
-#: app.lua:37 app.lua:79 app.lua:137 app.lua:143
+#: app.lua:37
+#: app.lua:79
+#: app.lua:137
+#: app.lua:143
 msgid "Permission denied"
-msgstr ""
+msgstr "Доступ отклонен"
 
 #: views/welcome.lua:17
 msgid "Please, create file "
-msgstr ""
+msgstr "Пожалуйста, создайте файл "
 
-#: views/quiz-final-check.lua:12 views/quiz-results.lua:12 views/task.lua:12
+#: views/quiz-final-check.lua:12
+#: views/quiz-results.lua:12
+#: views/task.lua:12
 msgid "Quiz "
-msgstr ""
+msgstr "Тест "
 
 #: views/quiz-final-check.lua:18
 msgid ""
 "Quiz is not finished untill\n"
 "      you press the button"
-msgstr ""
+msgstr "Тест не будет завершен, пока Вы не нажмёте кнопку под этим текстом"
 
 #: views/helpers.lua:46
 msgid "Select"
-msgstr ""
+msgstr "Выберите"
 
 #: views/all-tests.lua:29
 msgid "Start new quiz:"
-msgstr ""
+msgstr "Начать новый тест:"
 
 #: views/quiz-results.lua:13
 msgid "Student "
-msgstr ""
+msgstr "Учащийся"
 
 #: views/task.lua:13
 msgid "Task "
-msgstr ""
+msgstr "Задание"
 
-#: app.lua:187 app.lua:195 app.lua:206 app.lua:216
+#: app.lua:187
+#: app.lua:195
+#: app.lua:206
+#: app.lua:216
 msgid "This quiz is not active"
-msgstr ""
+msgstr "Этот тест не является активным"
 
 #: app.lua:180
 msgid "This quiz was canceled"
-msgstr ""
+msgstr "Этот тест отменен"
 
 #: views/welcome.lua:14
 msgid "Welcome to Kodomo Quiz!"
-msgstr ""
+msgstr "Добро пожаловать на Тесты Кодомо"
 
 #: views/all-tests.lua:64
 msgid "Your active quizes:"
-msgstr ""
+msgstr "Ваши активные тесты:"
 
 #: views/all-tests.lua:65
 msgid "Your finished quizes:"
-msgstr ""
+msgstr "Ваши завершенные тесты:"
 
 #: views/welcome.lua:33
 msgid "Your username: "
-msgstr ""
+msgstr "Ваше имя: "
 
 #: app.lua:138
 msgid "error: invalid username"
-msgstr ""
+msgstr "ошибка, неверное имя"
 
 #: views/prep-quizs.lua:33
 msgid "finished"
-msgstr ""
+msgstr "завершено"
 
 #: views/prep-quizs.lua:24
 msgid "quiz"
-msgstr ""
+msgstr "тест"
 
 #: views/prep-quizs.lua:39
 msgid "right answers"
-msgstr ""
+msgstr "правильные ответы"
 
 #: views/prep-quizs.lua:30
 msgid "started"
-msgstr ""
+msgstr "начато"
 
 #: views/prep-quizs.lua:36
 msgid "tasks"
-msgstr ""
+msgstr "заданий"
 
 #: views/prep-quizs.lua:27
 msgid "user"
-msgstr ""
+msgstr "пользователь"
 
