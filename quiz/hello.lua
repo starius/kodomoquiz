@@ -126,7 +126,7 @@ function hello.vars(req)
 end
 
 function hello.division_float(req)
-    local result = 0.5 * math.random(2, 5)
+    local result = 0.5 + math.random(2, 5)
     local b = math.random(10, 50)
     local a = result * b
     return
@@ -134,7 +134,7 @@ function hello.division_float(req)
     f('%0.1f', result),
     f('%0.1f', result - 0.5),
     f('%0.1f', result + 0.5),
-    f('%0.1f', result * 2),
+    f('%0.1f', result + math.random(1, 2)),
     task(req)
 end
 
