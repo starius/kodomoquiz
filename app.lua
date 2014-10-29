@@ -227,5 +227,10 @@ check_prep(function(self)
     return {render='prep-quizs'}
 end))
 
+app:get("prep-quiz", "/admin/quiz/:id",
+check_quiz(check_prep(function(self)
+    return {render='quiz-results'}
+end)))
+
 return app
 
