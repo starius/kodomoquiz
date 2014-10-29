@@ -9,11 +9,17 @@ end
 
 local hello = {}
 
-local task = function(req)
+local _ = function(req, text)
     if req then
-        return req:_([[What does Python print
-            if you enter the following commands?]])
+        return req:_(text)
+    else
+        return text
     end
+end
+
+local task = function(req)
+    return _(req, [[What does Python print
+            if you enter the following commands?]])
 end
 
 function hello.print1(req)
