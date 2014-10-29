@@ -11,19 +11,29 @@ class extends html.Widget
         title @title or @_ "Kodomo Quiz"
       body ->
         h1 class: "header", @_("Kodomo Quiz")
-        a href: @url_for('index'), ->
-          text @_ "Main page"
-        text " | "
-        a href: @url_for('russian'), ->
-          text "Русский"
-        text " | "
-        a href: @url_for('english'), ->
-          text "English"
-        if @session.user
-          form method: "POST", action: @url_for("logout"), ->
-            input {type: "hidden", name: "csrf_token",
-                value: @new_csrf}
-            input type: "submit", value: @_('Logout')
+        element 'table', -> element 'tr', ->
+          element 'td', ->
+            a href: @url_for('index'), ->
+              text @_ "Main page"
+          element 'td', ->
+            text "|"
+          element 'td', ->
+            a href: @url_for('russian'), ->
+              text "Русский"
+          element 'td', ->
+            text "|"
+          element 'td', ->
+            a href: @url_for('english'), ->
+              text "English"
+          if @session.user
+            element 'td', ->
+              text "|"
+            element 'td', ->
+              url = @url_for("logout")
+              form method: "POST", action: url, ->
+                input {type: "hidden", name: "csrf_token",
+                    value: @new_csrf}
+                input type: "submit", value: @_('Logout')
         raw '<br/>'
         @content_for "inner"
 
