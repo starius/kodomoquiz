@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-29 05:24+0300\n"
+"POT-Creation-Date: 2014-10-29 05:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,13 +65,15 @@ msgstr "Как выполнить скрипт Python с командной ст
 
 #: quiz/hello.lua:126
 msgid "How to interrupt interactive Python session?"
-msgstr ""
+msgstr "Как прервать интерактивную сессию Python?"
 
 #: quiz/hello.lua:136
 msgid ""
 "How to view Python output if it has been shadowed\n"
 "        by FAR blue window?"
 msgstr ""
+"Как посмотреть результат работы Python, если его не видно под синим окном "
+"FAR?"
 
 #: app.lua:96 app.lua:99
 msgid "It is not your quiz"
@@ -156,7 +158,7 @@ msgstr "Какой официальный сайт Python?"
 
 #: quiz/hello.lua:137 quiz/hello.lua:148
 msgid "Which Python code produces output 123?"
-msgstr ""
+msgstr "Какой код производит выход 123?"
 
 #: views/all-tests.lua:64 views/all-tests.lua:66
 msgid "Your active quizes:"
