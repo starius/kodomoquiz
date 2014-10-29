@@ -186,11 +186,23 @@ function hello.minusminus(req)
     local a = math.random(11, 15)
     local b = math.random(1, 5)
     return
-    f('>>> print(-%i - %i)', a, b),
+    f('>>> print(- %i-%i)', a, b),
     f('%i', -a - b),
     f('%i', a - b),
     f('%i', -a - b + 1),
     f('%i', -a - b + 2),
+    task(req)
+end
+
+function hello.minusplus(req)
+    local a = math.random(11, 15)
+    local b = math.random(1, 5)
+    return
+    f('>>> print(- %i+%i)', a, b),
+    f('%i', -a + b),
+    f('%i', -a - b),
+    f('%i', a - b),
+    f('%i', a + b),
     task(req)
 end
 
@@ -248,6 +260,113 @@ function hello.stringmulnumber(req)
     f('Error'),
     f('%s', s .. i),
     f('%i', i),
+    task(req)
+end
+
+function hello.fakemul(req)
+    local a = math.random(3, 7)
+    local b = math.random(3, 7)
+    local c = math.random(3, 7)
+    local d = math.random(3, 7)
+    return
+    f('>>> print((%i+%i) (%i+%i))', a, b, c, d),
+    f('Error'),
+    f('%i', (a + b) * (c + d)),
+    f('%i', (a + b) * (c + d) + math.random(3, 7)),
+    f('%i', 0),
+    task(req)
+end
+
+function hello.minusmulminus(req)
+    local a = math.random(3, 7)
+    local b = math.random(3, 7)
+    return
+    f('>>> print(-%i *-%i)', a, b),
+    f('%i', (-a * -b)),
+    f('Error'),
+    f('%i', (-a -b)),
+    f('%i', (-a * b)),
+    task(req)
+end
+
+function hello.str_of_mul(req)
+    local a = math.random(3, 7)
+    local b = math.random(3, 7)
+    local c = math.random(3, 7)
+    local d = math.random(3, 7)
+    return
+    f('>>> str(%i+%i)*(%i+%i)', a, b, c, d),
+    f("'%s'", string.rep(tostring(a+b), (c + d))),
+    f("'%i'", (a + b) * (c + d)),
+    f('%s', string.rep(tostring(a+b), (c + d))),
+    f('%i', (a + b) * (c + d)),
+    task(req)
+end
+
+function hello.min(req)
+    local a = math.random(3, 7)
+    local b = math.random(30, 70)
+    return
+    f('>>> min(%i, %i)', a, b),
+    f('%i', a),
+    f('%i', b),
+    f('%i', b - a),
+    f('%i', a * b),
+    task(req)
+end
+
+function hello.type1(req)
+    local a = math.random(300, 700)
+    return
+    f('>>> print(type(%i))', a),
+    f("<type 'int'>"),
+    f("<type 'float'>"),
+    f("int"),
+    f("float"),
+    task(req)
+end
+
+function hello.type2(req)
+    local a = math.random(300, 700)
+    return
+    f('>>> print(type(%i.0))', a),
+    f("<type 'float'>"),
+    f("<type 'int'>"),
+    f("int"),
+    f("float"),
+    task(req)
+end
+
+function hello.type3(req)
+    local a = math.random(300, 700)
+    return
+    f('>>> print(type("%i.0"))', a),
+    f("<type 'str'>"),
+    f("<type 'float'>"),
+    f("<type 'int'>"),
+    f("Error"),
+    task(req)
+end
+
+function hello.type4(req)
+    local a = shortrand()
+    return
+    f('>>> print(type(%s))', a),
+    f("Error"),
+    f("<type 'str'>"),
+    f("<type 'string'>"),
+    f("str"),
+    task(req)
+end
+
+function hello.type5(req)
+    local a = shortrand()
+    return
+    f('>>> print(type("%s"))', a),
+    f("<type 'str'>"),
+    f("Error"),
+    f("<type 'string'>"),
+    f("str"),
     task(req)
 end
 
