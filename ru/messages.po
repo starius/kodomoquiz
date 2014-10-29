@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-29 04:49+0300\n"
+"POT-Creation-Date: 2014-10-29 04:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,7 +61,7 @@ msgstr "Завершенные тесты"
 msgid ""
 "How to execute Python script\n"
 "        from command line?"
-msgstr ""
+msgstr "Как выполнить скрипт Python с командной строки?"
 
 #: app.lua:96 app.lua:99
 msgid "It is not your quiz"
@@ -138,11 +138,11 @@ msgstr "Добро пожаловать на Тесты Кодомо"
 msgid ""
 "What does Python print\n"
 "            if you enter the following commands?"
-msgstr ""
+msgstr "Что напечатает Python, если ввести следующие команды?"
 
 #: quiz/hello.lua:107
 msgid "What is the Python's official site?"
-msgstr ""
+msgstr "Какой официальный сайт Python?"
 
 #: views/all-tests.lua:64 views/all-tests.lua:66
 msgid "Your active quizes:"
