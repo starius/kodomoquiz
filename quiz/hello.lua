@@ -85,5 +85,17 @@ function hello.mod(req)
     task(req)
 end
 
+function hello.start_file(req)
+    local target_file = 'p' .. math.random(10, 50) .. '.py'
+    return
+    f("Filename: %s", target_file),
+    f('python %s', target_file),
+    f('%s', target_file),
+    f('C:\\\\ %s', target_file),
+    f(':) %s :)', target_file),
+    _(req, [[How to execute Python script
+        from command line?]])
+end
+
 return hello
 
