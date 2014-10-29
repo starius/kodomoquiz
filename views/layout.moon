@@ -19,6 +19,11 @@ class extends html.Widget
         text " | "
         a href: @url_for('english'), ->
           text "English"
+        if @session.user
+          form method: "POST", action: @url_for("logout"), ->
+            input {type: "hidden", name: "csrf_token",
+                value: @new_csrf}
+            input type: "submit", value: @_('Logout')
         raw '<br/>'
         @content_for "inner"
 

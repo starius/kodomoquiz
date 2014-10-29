@@ -155,6 +155,11 @@ app:post("login", "/login", check_csrf(function(self)
     return {redirect_to = self:url_for('all-tests')}
 end))
 
+app:post("logout", "/logout", check_user(function(self)
+    self.session.user = nil
+    return {redirect_to = self:url_for('index')}
+end))
+
 app:get("schema", "/schema", function()
     model.create_schema()
 end)
