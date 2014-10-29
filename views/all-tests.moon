@@ -14,12 +14,15 @@ class AllTests extends Widget
         a href: @url_for("prep-quizs-today"), ->
           text @_("(today)")
       p @_("Start new quiz:")
-      for name, _ in pairs quizs
-        form method: "POST", action: @url_for("new-quiz"), ->
-          input {type: "hidden", name: "csrf_token",
-              value: @new_csrf}
-          input {type: "hidden", name: "name", value: name}
-          input type: "submit", value: name
+      element 'table', -> element 'tr', ->
+        for name, _ in pairs quizs
+          element 'td', ->
+            url = @url_for("new-quiz")
+            form method: "POST", action: url, ->
+              input {type: "hidden", name: "csrf_token",
+                  value: @new_csrf}
+              input {type: "hidden", name: "name", value: name}
+              input type: "submit", value: name
       my_quizs = (text, state) ->
         qq = model.my_quizs(@, state)
         if #qq > 0
