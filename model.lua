@@ -151,12 +151,13 @@ end
 function model.today_quizs(state)
     return model.Quiz:select(
         'where (now() at time zone ?) - created_at < ' ..
-        'interval ? and state = ?',
+        'interval ? and state = ? order by id',
         'utc', '1 day', state)
 end
 
 function model.all_quizs(state)
-    return model.Quiz:select("where state = ?", state)
+    return model.Quiz:select("where state = ? order by id",
+        state)
 end
 
 return model
