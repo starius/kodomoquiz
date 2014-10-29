@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-29 04:24+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2014-10-29 04:28+0300\n"
+"Last-Translator: Boris Nagaev <bnagaev@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,43 +18,43 @@ msgstr ""
 
 #: views/welcome.lua:20
 msgid " and write the following text: "
-msgstr ""
+msgstr "и напишите следующий текст:"
 
 #: views/welcome.lua:19
 msgid " in your <b>public_html</b>"
-msgstr ""
+msgstr " в вашем <b>public_html</b>"
 
 #: views/all-tests.lua:26
 msgid "(today)"
-msgstr ""
+msgstr "(сегодня)"
 
 #: app.lua:38
 msgid "Bad csrf token"
-msgstr ""
+msgstr "Плохой csrf"
 
 #: app.lua:93
 msgid "Can't find this quiz"
-msgstr ""
+msgstr "Не могу найти тест"
 
 #: app.lua:106
 msgid "Can't find this task"
-msgstr ""
+msgstr "Не могу найти задание"
 
 #: views/helpers.lua:71
 msgid "Cancel quiz"
-msgstr ""
+msgstr "Отменить тест"
 
 #: views/helpers.lua:59
 msgid "Dangerous zone"
-msgstr ""
+msgstr "Осторожно, не нажмите на эту кнопку по ошибке vv"
 
 #: views/layout.lua:37
 msgid "English"
-msgstr ""
+msgstr "English"
 
 #: views/quiz-final-check.lua:31
 msgid "Finish this quiz"
-msgstr ""
+msgstr "Завершить этот тест"
 
 #: views/all-tests.lua:20
 msgid "Finished quized"
@@ -65,7 +64,9 @@ msgstr ""
 msgid "It is not your quiz"
 msgstr ""
 
-#: app.lua:31 views/layout.lua:16 views/layout.lua:21
+#: app.lua:31
+#: views/layout.lua:16
+#: views/layout.lua:21
 msgid "Kodomo Quiz"
 msgstr ""
 
@@ -85,7 +86,10 @@ msgstr ""
 msgid "Only preps can see this page"
 msgstr ""
 
-#: app.lua:37 app.lua:79 app.lua:137 app.lua:143
+#: app.lua:37
+#: app.lua:79
+#: app.lua:137
+#: app.lua:143
 msgid "Permission denied"
 msgstr ""
 
@@ -93,7 +97,9 @@ msgstr ""
 msgid "Please, create file "
 msgstr ""
 
-#: views/quiz-final-check.lua:12 views/quiz-results.lua:12 views/task.lua:12
+#: views/quiz-final-check.lua:12
+#: views/quiz-results.lua:12
+#: views/task.lua:12
 msgid "Quiz "
 msgstr ""
 
@@ -119,7 +125,10 @@ msgstr ""
 msgid "Task "
 msgstr ""
 
-#: app.lua:187 app.lua:195 app.lua:206 app.lua:216
+#: app.lua:187
+#: app.lua:195
+#: app.lua:206
+#: app.lua:216
 msgid "This quiz is not active"
 msgstr ""
 
@@ -174,3 +183,4 @@ msgstr ""
 #: views/layout.lua:31
 msgid "Русский"
 msgstr ""
+
