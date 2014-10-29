@@ -126,6 +126,17 @@ function hello.python_exit(req)
     _("How to interrupt interactive Python session?", req)
 end
 
+function hello.python_far_ctrl_o(req)
+    return
+    '',
+    'Ctrl+O',
+    'Ctrl+Q',
+    'F' .. math.random(1, 5),
+    'F' .. math.random(6, 10),
+    _([[How to view Python output if it has been shadowed
+        by FAR blue window?]], req)
+end
+
 function hello.raw_input(req)
     local v = 'v' .. math.random(0, 9)
     return
