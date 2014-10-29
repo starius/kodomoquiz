@@ -240,7 +240,7 @@ function hello.pow10_2(req)
 end
 
 function hello.pow10f(req)
-    local val = math.random(5, 15)
+    local val = math.random(3, 7)
     return
     f('>>> print(len(str(10.0 ** %i)))', val),
     f('%i', val + 3),
