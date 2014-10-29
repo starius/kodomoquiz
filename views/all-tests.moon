@@ -8,7 +8,7 @@ class AllTests extends Widget
     div class: "body", ->
       if @prep
         a href: @url_for("prep-quizs"), ->
-          text @_("Finished quized")
+          text @_("Finished quizes")
         text ' '
         a href: @url_for("prep-quizs-today"), ->
           text @_("(today)")
