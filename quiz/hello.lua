@@ -97,5 +97,15 @@ function hello.start_file(req)
         from command line?]])
 end
 
+function hello.python_org(req)
+    return
+    '',
+    'python.org',
+    'python.com',
+    'python.ru',
+    'kodomo.fbb.msu.ru',
+    _(req, "What is the Python's official site?")
+end
+
 return hello
 
