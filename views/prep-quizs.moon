@@ -22,13 +22,15 @@ class PrepQuizs extends Widget
         color = 'red'
         if quiz.right_answers == quiz.tasks
           color = 'green'
-        element 'tr', bgcolor: color, ->
+        element 'tr', ->
           element 'td', ->
             a href: @url_for("prep-quiz", {id: quiz.id}), ->
               text quiz.name
           element 'td', -> text quiz.user
           element 'td', -> text msk_time(quiz.created_at)
           element 'td', -> text msk_time(quiz.updated_at)
-          element 'td', -> text quiz.right_answers
-          element 'td', -> text quiz.tasks
+          element 'td', bgcolor: color, ->
+            text quiz.right_answers
+          element 'td', bgcolor: color, ->
+            text quiz.tasks
 
