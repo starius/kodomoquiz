@@ -6,6 +6,12 @@ model = require('model')
 class AllTests extends Widget
   content: =>
     div class: "body", ->
+      if @prep
+        a href: @url_for("prep-quizs"), ->
+          text @_("Finished quized")
+        text ' '
+        a href: @url_for("prep-quizs-today"), ->
+          text @_("(today)")
       p @_("Start new quiz:")
       for name, _ in pairs quizs
         form method: "POST", action: @url_for("new-quiz"), ->

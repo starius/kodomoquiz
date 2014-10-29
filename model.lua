@@ -148,5 +148,16 @@ function model.my_quizs(app, state)
         user, state)
 end
 
+function model.today_quizs(state)
+    return model.Quiz:select(
+        'where (now() at time zone ?) - created_at < ' ..
+        'interval ? and state = ?',
+        'utc', '1 day', state)
+end
+
+function model.all_quizs(state)
+    return model.Quiz:select("where state = ?", state)
+end
+
 return model
 

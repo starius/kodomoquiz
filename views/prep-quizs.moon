@@ -1,0 +1,32 @@
+import Widget from require "lapis.html"
+
+model = require('model')
+msk_time = require "msk_time"
+
+class PrepQuizs extends Widget
+  content: =>
+    local quizs
+    if @today_only
+      quizs = model.today_quizs(model.FINISHED)
+    else
+      quizs = model.all_quizs(model.FINISHED)
+    element 'table', border: 1, ->
+      element 'tr', ->
+        element 'td', -> text @_("quiz")
+        element 'td', -> text @_("user")
+        element 'td', -> text @_("started")
+        element 'td', -> text @_("finished")
+        element 'td', -> text @_("tasks")
+        element 'td', -> text @_("right answers")
+      for quiz in *quizs
+        color = 'red'
+        if quiz.right_answers == quiz.tasks
+          color = 'green'
+        element 'tr', bgcolor: color, ->
+          element 'td', -> text quiz.name
+          element 'td', -> text quiz.user
+          element 'td', -> text msk_time(quiz.created_at)
+          element 'td', -> text msk_time(quiz.updated_at)
+          element 'td', -> text quiz.tasks
+          element 'td', -> text quiz.right_answers
+

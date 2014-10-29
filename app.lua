@@ -217,5 +217,15 @@ check_quiz(function(self)
     return {redirect_to = url}
 end))
 
+app:get("prep-quizs", "/admin", check_prep(function(self)
+    return {render='prep-quizs'}
+end))
+
+app:get("prep-quizs-today", "/admin/today",
+check_prep(function(self)
+    self.today_only = true
+    return {render='prep-quizs'}
+end))
+
 return app
 
