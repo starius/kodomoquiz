@@ -17,7 +17,7 @@ app.layout = require("views.layout")
 app.__class:before_filter(function(self)
     local lang = self.session.lang
     if not lang then
-        self.req.headers['Accept-Language']:sub(1, 2)
+        lang = self.req.headers['Accept-Language']:sub(1, 2)
     end
     local _
     if lang == 'ru' then
