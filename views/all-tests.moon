@@ -29,6 +29,10 @@ class AllTests extends Widget
             element 'li', ->
               time = msk_time(quiz.created_at)
               raw quiz\anchor(@) .. ', ' .. time
+              if quiz.state == model.FINISHED
+                r = quiz.right_answers
+                a = quiz.tasks
+                b " | #{r} / #{a}"
       my_quizs @_("Your active quizes:"), model.ACTIVE
       my_quizs @_("Your finished quizes:"), model.FINISHED
 
