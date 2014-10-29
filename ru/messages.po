@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-29 13:04+0300\n"
+"POT-Creation-Date: 2014-10-29 18:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr "Все тесты"
 msgid "All quizes of "
 msgstr "Все тесты участника "
 
-#: views/helpers.lua:126
+#: views/helpers.lua:126 views/helpers.lua:130
 msgid "All tasks at one page"
 msgstr "Все задания на одной странице"
 
@@ -121,7 +121,7 @@ msgstr "Главная страница"
 msgid "No such quiz found"
 msgstr "Такого теста нет"
 
-#: views/helpers.lua:145
+#: views/helpers.lua:145 views/helpers.lua:149
 msgid "One task at one page"
 msgstr "Одно задание на одной странице"
 
@@ -154,7 +154,11 @@ msgstr "Тест не будет завершен, пока Вы не нажмё
 
 #: views/helpers.lua:46 views/helpers.lua:43
 msgid "Select"
-msgstr "Выберите"
+msgstr "Выбрать"
+
+#: views/task.lua:18
+msgid "Set aside this task"
+msgstr "Отложить эту задачу"
 
 #: views/all-tests.lua:29 views/all-tests.lua:30
 msgid "Start new quiz:"
