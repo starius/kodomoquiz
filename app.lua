@@ -16,8 +16,9 @@ app.layout = require("views.layout")
 -- FIXME https://github.com/leafo/lapis/issues/188
 app.__class:before_filter(function(self)
     local lang = self.session.lang
-    if not lang then
-        lang = self.req.headers['Accept-Language']:sub(1, 2)
+    local accept = self.req.headers['Accept-Language']
+    if not lang and accept then
+        lang = accept:sub(1, 2)
     end
     local _
     if lang == 'ru' then
