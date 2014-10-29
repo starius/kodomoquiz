@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-29 05:26+0300\n"
+"POT-Creation-Date: 2014-10-29 05:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,17 +57,17 @@ msgstr "Завершить этот тест"
 msgid "Finished quizes"
 msgstr "Завершенные тесты"
 
-#: quiz/hello.lua:96 quiz/hello.lua:105
+#: quiz/hello.lua:96 quiz/hello.lua:105 quiz/hello.lua:106
 msgid ""
 "How to execute Python script\n"
 "        from command line?"
 msgstr "Как выполнить скрипт Python с командной строки?"
 
-#: quiz/hello.lua:126
+#: quiz/hello.lua:126 quiz/hello.lua:127
 msgid "How to interrupt interactive Python session?"
 msgstr "Как прервать интерактивную сессию Python?"
 
-#: quiz/hello.lua:136
+#: quiz/hello.lua:136 quiz/hello.lua:137
 msgid ""
 "How to view Python output if it has been shadowed\n"
 "        by FAR blue window?"
@@ -131,7 +131,7 @@ msgstr "Учащийся "
 
 #: views/task.lua:13
 msgid "Task "
-msgstr "Задание"
+msgstr "Задание "
 
 #: app.lua:187 app.lua:195 app.lua:206 app.lua:216 app.lua:191 app.lua:199
 #: app.lua:210 app.lua:220
@@ -152,11 +152,11 @@ msgid ""
 "            if you enter the following commands?"
 msgstr "Что напечатает Python, если ввести следующие команды?"
 
-#: quiz/hello.lua:107 quiz/hello.lua:116
+#: quiz/hello.lua:107 quiz/hello.lua:116 quiz/hello.lua:117
 msgid "What is the Python's official site?"
 msgstr "Какой официальный сайт Python?"
 
-#: quiz/hello.lua:137 quiz/hello.lua:148
+#: quiz/hello.lua:137 quiz/hello.lua:148 quiz/hello.lua:149
 msgid "Which Python code produces output 123?"
 msgstr "Какой код производит выход 123?"
 
