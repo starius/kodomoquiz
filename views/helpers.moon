@@ -56,3 +56,21 @@ class Helpers
             if form
               @ans_form task, i
 
+  tasks_number_switcher: (quiz) =>
+    element 'table', -> element 'tr', ->
+      element 'td', ->
+        url = @url_for('all-tasks', {id: quiz.id})
+        form method: 'POST', action: url, ->
+          input {type: "hidden", name: "csrf_token",
+              value: @new_csrf}
+          input {type: 'submit',
+            value: @_[[All tasks at one page]]}
+      element 'td', ->
+        url = @url_for('one-task', {id: quiz.id})
+        form method: 'POST', action: url, ->
+          input {type: "hidden", name: "csrf_token",
+              value: @new_csrf}
+          input {type: 'submit',
+            value: @_[[One task at one page]]}
+    raw '<br/>'
+

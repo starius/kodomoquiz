@@ -7,6 +7,7 @@ class QuizFinalCheck extends Widget
 
   content: =>
     h2 @_("Quiz ") .. @quiz.name
+    @tasks_number_switcher @quiz
     url = @url_for("finish", {id: @quiz.id})
     font color: 'red', @_([[Quiz is not finished untill
       you press the button]])

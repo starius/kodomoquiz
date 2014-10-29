@@ -182,12 +182,17 @@ end))
 
 app:get("quiz", "/tests/quiz/:id", check_quiz(function(self)
     if self.quiz.state == model.ACTIVE then
-        local fresh_task = self.quiz:fresh_task()
-        if fresh_task then
-            local url = self:url_for("task", {id=fresh_task.id})
-            return {redirect_to = url}
-        else
+        if self.session.all_tasks then
             return {render='quiz-final-check'}
+        else
+            local fresh_task = self.quiz:fresh_task()
+            if fresh_task then
+                local url = self:url_for("task",
+                    {id=fresh_task.id})
+                return {redirect_to = url}
+            else
+                return {render='quiz-final-check'}
+            end
         end
     elseif self.quiz.state == model.FINISHED then
         return {render='quiz-results'}
@@ -195,6 +200,20 @@ app:get("quiz", "/tests/quiz/:id", check_quiz(function(self)
         return self:_("This quiz was canceled")
     end
     return "???"
+end))
+
+app:post("all-tasks", "/tests/quiz/:id/all-tasks",
+check_quiz(function(self)
+    self.session.all_tasks = true
+    local url = self:url_for('quiz', {id=self.quiz.id})
+    return {redirect_to = url}
+end))
+
+app:post("one-task", "/tests/quiz/:id/one-task",
+check_quiz(function(self)
+    self.session.all_tasks = nil
+    local url = self:url_for('quiz', {id=self.quiz.id})
+    return {redirect_to = url}
 end))
 
 app:get("task", "/tests/task/:id", check_task(function(self)
