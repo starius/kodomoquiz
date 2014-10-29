@@ -10,8 +10,10 @@ end
 local hello = {}
 
 local task = function(req)
-    return req._([[What does Python print after
-        typing following commands?]])
+    if req then
+        return req._([[What does Python print after
+            typing following commands?]])
+    end
 end
 
 function hello.print1(req)
