@@ -28,7 +28,8 @@ local shortrand = function()
     for i = 1, l do
         table.insert(t, math.random(65, 90)) -- A-Z
     end
-    return string.char(t)
+    local unPack = unpack or table.unpack
+    return string.char(unPack(t))
 end
 
 function hello.print1(req)
