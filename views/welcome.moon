@@ -19,3 +19,8 @@ class Welcome extends Widget
             input type: "text", name: "user"
             text ' '
             input type: "submit", value: @_("Login")
+        element 'li', ->
+          text @_[[Then you can remove the file.
+            It is checked only when you press
+            the button above.]]
+
