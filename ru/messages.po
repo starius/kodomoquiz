@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-29 12:13+0300\n"
+"POT-Creation-Date: 2014-10-29 12:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr " и напишите следующий текст: "
 
 #: views/welcome.lua:19
 msgid " in your <b>public_html</b>"
-msgstr " в вашем <b>public_html</b>"
+msgstr " в вашей папке <b>public_html</b>"
 
 #: views/all-tests.lua:26 views/all-tests.lua:27
 msgid "(today)"
