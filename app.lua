@@ -129,6 +129,12 @@ app:get("index", "/", gen_csrf(function(self)
     end
 end))
 
+app:post("guest-login", "/login/guest",
+check_csrf(function(self)
+    self.session.user = 'guest' .. random_token()
+    return {redirect_to = self:url_for('all-tests')}
+end))
+
 app:post("login", "/login", check_csrf(function(self)
     if not self.session.token then
         return 'error: no session token'
