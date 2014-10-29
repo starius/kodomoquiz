@@ -8,6 +8,8 @@ class PrepQuizs extends Widget
     local quizs
     if @today_only
       quizs = model.today_quizs(model.FINISHED)
+    elseif @target_user
+      quizs = model.quizs_of(@target_user, model.FINISHED)
     else
       quizs = model.all_quizs(model.FINISHED)
     element 'table', border: 1, ->
@@ -26,7 +28,10 @@ class PrepQuizs extends Widget
           element 'td', ->
             a href: @url_for("prep-quiz", {id: quiz.id}), ->
               text quiz.name
-          element 'td', -> text quiz.user
+          element 'td', ->
+            url = @url_for("prep-quizs-of", {user: quiz.user})
+            a href: url, ->
+              text quiz.user
           element 'td', -> text msk_time(quiz.created_at)
           element 'td', -> text msk_time(quiz.updated_at)
           element 'td', bgcolor: color, ->

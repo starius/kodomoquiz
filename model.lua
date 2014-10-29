@@ -155,6 +155,12 @@ function model.today_quizs(state)
         'utc', '1 day', state)
 end
 
+function model.quizs_of(user, state)
+    return model.Quiz:select(
+        'where "user" = ? and state = ? order by id',
+        user, state)
+end
+
 function model.all_quizs(state)
     return model.Quiz:select("where state = ? order by id",
         state)
