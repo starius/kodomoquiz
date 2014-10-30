@@ -67,8 +67,8 @@ model.Task = Model:extend("task", {
 model.Quiz = Model:extend("quiz", {
     timestamp = true,
 
-    anchor = function(self, app)
-        local url = app:url_for('quiz', {id=self.id})
+    anchor = function(self, req)
+        local url = req:url_for('quiz', {id=self.id})
         return string.format('<a href="%s">%s</a>',
             url, self.name)
     end,
@@ -124,20 +124,20 @@ local rand_sequence = function()
     return result
 end
 
-function model.new_quiz(app)
-    local user = app.session.user
-    local quiz_name = app.req.params_post.name
+function model.new_quiz(req)
+    local user = req.session.user
+    local quiz_name = req.req.params_post.name
     local q = quizs[quiz_name]
     if not q then
-        error(app:_("No such quiz found"))
+        error(req:_("No such quiz found"))
     end
-    local ip = app.req.headers['X-Forwarded-For'] or '0.0.0.0'
-    local ua = app.req.headers['User-Agent']
+    local ip = req.req.headers['X-Forwarded-For'] or '0.0.0.0'
+    local ua = req.req.headers['User-Agent']
     local quiz = model.Quiz:create({name=quiz_name, user=user,
         tasks=table_size(q), answers=0, right_answers=0,
         state=model.ACTIVE, ip=ip, ua=ua})
     for task_name, func in pairs(q) do
-        local text, a1, a2, a3, a4 = func(app)
+        local text, a1, a2, a3, a4 = func(req)
         model.Task:create({quiz_id=quiz.id, name=task_name,
             text=text, a1=a1, a2=a2, a3=a3, a4=a4,
             sequence=rand_sequence(), selected=0})
@@ -145,8 +145,8 @@ function model.new_quiz(app)
     return quiz
 end
 
-function model.my_quizs(app, state)
-    local user = app.session.user
+function model.my_quizs(req, state)
+    local user = req.session.user
     return model.Quiz:select('where "user" = ? and state = ?',
         user, state)
 end
