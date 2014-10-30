@@ -459,5 +459,16 @@ function hello.type5(req)
     task(req)
 end
 
+function hello.joke(req)
+    return
+    '',
+    '25%',
+    '50%',
+    '75%',
+    '100%',
+    _([[If you choose an answer to this question at random,
+    what is the chance you will be correct?]], req)
+end
+
 return hello
 
