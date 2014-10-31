@@ -143,7 +143,7 @@ function ilfr.split1(req)
         table.insert(ll2, h.f("%i", v))
         table.insert(ll3, h.f("'%i'", v))
         str = str .. v .. ' '
-        if h.rr(0, 1) == 0 then
+        if h.rr(0, 1) == 0 or i == 1 then
             table.insert(ll3, "''")
             str = str .. ' '
         end
@@ -168,7 +168,7 @@ function ilfr.split2(req)
     for i = 1, list_size do
         local v0 = h.rr(1, 4)
         v = v0
-        if h.rr(0, 1) == 0 then
+        if h.rr(0, 1) == 0 or i == list_size then
             v = ' ' .. v
         end
         if h.rr(0, 1) == 0 then
@@ -187,7 +187,7 @@ function ilfr.split2(req)
     h.f('"%s".split(",")', str),
     h.f('[%s]', table.concat(ll1, ', ')),
     h.f('[%s]', table.concat(ll2, ', ')),
-    h.f('[%s]', table.concat(ll3, ',')),
+    h.f('[%s]', table.concat(ll3, ', ')),
     h.f('[%s]', table.concat(ll4, ', ')),
     h.task(req)
 end
