@@ -1,5 +1,5 @@
 local all = require('quiz.all')
-local all_different = require('quiz.all_different')
+local all_different = require('quiz.helpers').all_different
 
 local N = 1000
 

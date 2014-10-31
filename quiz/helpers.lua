@@ -42,5 +42,20 @@ h.zeroless = function()
     return d19() + d19() * 10 + d19() * 100 + d19() * 1000
 end
 
+h.all_different = function(...)
+    local t = {...}
+    for i = 2, #t do
+        for j = 1, i - 1 do
+            if t[i] == t[j] then
+                return false
+            end
+        end
+    end
+    return true
+end
+
+assert(h.all_different(1,2,3,4))
+assert(not h.all_different(1,1,3,4))
+
 return h
 
