@@ -22,14 +22,15 @@ h.task2 = function(req)
     return h._([[Which Python code produces this output?]], req)
 end
 
+h.unpack = unpack or table.unpack
+
 h.shortrand = function()
     local t = {}
     local l = math.random(3, 7)
     for i = 1, l do
         table.insert(t, math.random(65, 90)) -- A-Z
     end
-    local unPack = unpack or table.unpack
-    return string.char(unPack(t))
+    return string.char(h.unpack(t))
 end
 
 h.rr = math.random
