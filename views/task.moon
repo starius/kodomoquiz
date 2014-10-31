@@ -11,6 +11,7 @@ class Task extends Widget
       text @_("Set aside this task")
     raw '<br/><br/>'
     @tasks_number_switcher @quiz
+    @finish_quiz_button!
     @task_table @task
     @cancel_form!
 

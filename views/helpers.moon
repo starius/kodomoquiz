@@ -81,3 +81,12 @@ class Helpers
       input {type: "hidden", name: "name", value: name}
       input type: "submit", value: name
 
+  finish_quiz_button: =>
+    font color: 'red', @_([[Quiz is not finished untill
+      you press the button]])
+    url = @url_for("finish", {id: @quiz.id})
+    form method: "POST", action: url, ->
+      input {type: "hidden", name: "csrf_token",
+          value: @new_csrf}
+      input type: "submit", value: @_('Finish this quiz')
+
