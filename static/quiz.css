@@ -26,15 +26,20 @@
 
 /* Just for more pretty example */
 body {
-	font: 20px/1.5 Arial, sans-serif;
+	font: 20px/1 Arial, sans-serif;
 }
 
 table {
-	margin-top: 2em;
+	margin-top: 0.3em;
 	border-collapse: collapse;
 }
 
 th,td {
 	font-weight: normal;
 	padding: 0.5em;
+}
+
+h1, h2 {
+	margin-top: 5px;
+	margin-bottom: 2px;
 }

@@ -38,6 +38,5 @@ class extends html.Widget
                 input {type: "hidden", name: "csrf_token",
                     value: @new_csrf}
                 input type: "submit", value: @_('Logout')
-        raw '<br/>'
         @content_for "inner"
 

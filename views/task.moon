@@ -9,7 +9,6 @@ class Task extends Widget
     h2 @_("Quiz ") .. @quiz.name
     a href: @url_for("quiz", {id: @quiz.id}), ->
       text @_("Set aside this task")
-    raw '<br/><br/>'
     @tasks_number_switcher @quiz
     @finish_quiz_button!
     @task_table @task

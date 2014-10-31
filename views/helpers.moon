@@ -71,7 +71,6 @@ class Helpers
               value: @new_csrf}
           input {type: 'submit',
             value: @_[[One task at one page]]}
-    raw '<br/>'
 
   new_test_button: (name) =>
     url = @url_for("new-quiz")
