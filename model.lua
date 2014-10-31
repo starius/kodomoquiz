@@ -164,6 +164,12 @@ function model.quizs_of(user, state)
         user, state)
 end
 
+function model.quizs_of_name(name, state)
+    return model.Quiz:select(
+        'where name = ? and state = ? order by id',
+        name, state)
+end
+
 function model.all_quizs(state)
     return model.Quiz:select("where state = ? order by id",
         state)
