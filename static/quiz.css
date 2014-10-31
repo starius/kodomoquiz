@@ -31,9 +31,10 @@ body {
 
 table {
 	margin-top: 2em;
+	border-collapse: collapse;
 }
+
 th,td {
-	border: 1px solid;
 	text-align:center;
 	font-weight: normal;
 	padding: 0.5em;
