@@ -2,6 +2,7 @@ local schema = require("lapis.db.schema")
 local Model = require("lapis.db.model").Model
 
 local quizs = require('quiz.all')
+local shuffle = require('quiz.helpers').shuffle
 
 local model = {}
 
@@ -136,7 +137,13 @@ function model.new_quiz(req)
     local quiz = model.Quiz:create({name=quiz_name, user=user,
         tasks=table_size(q), answers=0, right_answers=0,
         state=model.ACTIVE, ip=ip, ua=ua})
+    local task_names = {}
     for task_name, func in pairs(q) do
+        table.insert(task_names, task_name)
+    end
+    task_names = shuffle(task_names)
+    for _, task_name in ipairs(task_names) do
+        local func = q[task_name]
         local text, a1, a2, a3, a4 = func(req)
         model.Task:create({quiz_id=quiz.id, name=task_name,
             text=text, a1=a1, a2=a2, a3=a3, a4=a4,
