@@ -4,7 +4,11 @@ quizs = require('quiz.all')
 model = require('model')
 msk_time = require "msk_time"
 
+Helpers = require('views.helpers')
+
 class AllTests extends Widget
+  @include Helpers
+
   content: =>
     div class: "body", ->
       if @prep
@@ -17,12 +21,7 @@ class AllTests extends Widget
       element 'table', -> element 'tr', ->
         for name, _ in pairs quizs
           element 'td', ->
-            url = @url_for("new-quiz")
-            form method: "POST", action: url, ->
-              input {type: "hidden", name: "csrf_token",
-                  value: @new_csrf}
-              input {type: "hidden", name: "name", value: name}
-              input type: "submit", value: name
+            @new_test_button name
       my_quizs = (text, state) ->
         qq = model.my_quizs(@, state)
         if #qq > 0

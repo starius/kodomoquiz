@@ -73,3 +73,11 @@ class Helpers
             value: @_[[One task at one page]]}
     raw '<br/>'
 
+  new_test_button: (name) =>
+    url = @url_for("new-quiz")
+    form method: "POST", action: url, ->
+      input {type: "hidden", name: "csrf_token",
+          value: @new_csrf}
+      input {type: "hidden", name: "name", value: name}
+      input type: "submit", value: name
+
