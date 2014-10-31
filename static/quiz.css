@@ -1,0 +1,40 @@
+/*
+   Vertical text
+   by @kizmarh
+*/
+.vertical-text {
+	display: inline-block;
+	overflow: hidden;
+	width: 1.5em;
+}
+.vertical-text__inner {
+	display: inline-block;
+	white-space: nowrap;
+	line-height: 1.5;
+	transform: translate(0,100%) rotate(-90deg);
+	transform-origin: 0 0;
+}
+/* This element stretches the parent to be square
+   by using the mechanics of vertical margins  */
+.vertical-text__inner:after {
+	content: "";
+	display: block;
+	margin: -1.5em 0 100%;
+}
+
+
+
+/* Just for more pretty example */
+body {
+	font: 20px/1.5 Arial, sans-serif;
+}
+
+table {
+	margin-top: 2em;
+}
+th,td {
+	border: 1px solid;
+	text-align:center;
+	font-weight: normal;
+	padding: 0.5em;
+}

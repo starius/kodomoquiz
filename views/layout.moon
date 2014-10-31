@@ -8,6 +8,9 @@ class extends html.Widget
         link
           rel: "icon", type: "image/x-icon",
           href: "/favicon.ico"
+        link
+          rel: "stylesheet", type: "text/css",
+          href: "/static/quiz.css"
         title @title or @_ "Kodomo Quiz"
       body ->
         h1 class: "header", @_("Kodomo Quiz")

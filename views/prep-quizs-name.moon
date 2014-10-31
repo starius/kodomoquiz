@@ -18,7 +18,9 @@ class PrepQuizsName extends Widget
         element 'td', -> text @_("right answers")
         element 'td', -> text @_("tasks")
         for task_name, func in pairs(q) do
-          element 'td', -> text task_name
+          element 'td', ->
+            div class: 'vertical-text', ->
+              div class: 'vertical-text__inner', task_name
     element 'table', border: 1, ->
       print_header!
       name2score = {}
