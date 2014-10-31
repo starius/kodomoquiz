@@ -218,5 +218,20 @@ function ilfr.len(req)
     h.task(req)
 end
 
+local int2bool = {[0] = false, [1] = true}
+local lua2py = {[true] = 'True', [false] = 'False'}
+
+function ilfr.test_or(req)
+    local a = int2bool[h.rr(0, 1)]
+    local b = int2bool[h.rr(0, 1)]
+    local result = a or b
+    local ans = {'True', 'False', 'or', 'Error'}
+    local a1,a2,a3,a4 = h.unpack(h.with_fakes(lua2py[result], ans))
+    return
+    h.f('>>> %s or %s', lua2py[a], lua2py[b]),
+    a1,a2,a3,a4,
+    h.task(req)
+end
+
 return ilfr
 
