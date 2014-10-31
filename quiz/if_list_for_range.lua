@@ -90,5 +90,32 @@ function ilfr.in_list(req)
     h.task(req)
 end
 
+function ilfr.elif(req)
+    local val = h.rr(0, 10)
+    local result
+    if val % 2 == 0 then
+        result = 'even'
+    elseif val % 3 == 0 then
+        result = 'divisible by three'
+    else
+        result = 'odd and indivisible by three'
+    end
+    local a1, a2, a3, a4 = h.unpack(h.with_fakes(result, {
+        'even', 'divisible by three',
+        'odd and indivisible by three', tostring(val)
+    }))
+    return
+    h.f([[
+if %i %% 2 == 0:
+    print('even')
+elif %i %% 3 == 0:
+    print('divisible by three')
+else:
+    print('odd and indivisible by three')
+]], val, val),
+    a1, a2, a3, a4,
+    h.task(req)
+end
+
 return ilfr
 
