@@ -2,7 +2,8 @@ local h = {}
 
 h.f = function(...)
     local t = string.format(...)
-    return t:gsub(' *>>>', '>>>')
+    t = t:gsub(' *>>>', '>>>')
+    return t
 end
 
 h._ = function(text, req)
@@ -93,6 +94,11 @@ h.shuffle = function(t)
         table.insert(t2, table.remove(t, h.rr(1, #t)))
     end
     return t2
+end
+
+h.one_of = function(...)
+    local t = {...}
+    return t[h.rr(1, #t)]
 end
 
 return h
