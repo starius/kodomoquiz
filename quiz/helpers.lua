@@ -57,5 +57,18 @@ end
 assert(h.all_different(1,2,3,4))
 assert(not h.all_different(1,1,3,4))
 
+h.has_nil = function(n, ...)
+    local t = {...}
+    for i = 1, n do
+        if t[i] == nil then
+            return true
+        end
+    end
+    return false
+end
+
+assert(h.has_nil(4, 1,nil,3,4))
+assert(not h.has_nil(4, 1,1,3,4))
+
 return h
 
