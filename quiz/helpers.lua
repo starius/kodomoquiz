@@ -87,5 +87,13 @@ assert(h.all_different(h.with_fakes('1', {'1', '2', '3', '4'})))
 assert(not h.has_nil(4,
     h.unpack(h.with_fakes('1', {'1', '2', '3', '4'}))))
 
+h.shuffle = function(t)
+    local t2 = {}
+    while #t > 0 do
+        table.insert(t2, table.remove(t, h.rr(1, #t)))
+    end
+    return t2
+end
+
 return h
 
