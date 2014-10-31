@@ -72,5 +72,20 @@ end
 assert(h.has_nil(4, 1,nil,3,4))
 assert(not h.has_nil(4, 1,1,3,4))
 
+h.with_fakes = function(result, answers)
+    local answers1 = {}
+    for _, a in ipairs(answers) do
+        if a ~= result then
+            table.insert(answers1, a)
+        end
+    end
+    return {result, h.unpack(answers1)}
+end
+
+assert(#h.with_fakes('1', {'1', '2', '3', '4'}) == 4)
+assert(h.all_different(h.with_fakes('1', {'1', '2', '3', '4'})))
+assert(not h.has_nil(4,
+    h.unpack(h.with_fakes('1', {'1', '2', '3', '4'}))))
+
 return h
 
