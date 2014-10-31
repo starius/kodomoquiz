@@ -2,39 +2,16 @@ local math = require("math")
 
 math.randomseed(os.time())
 
-local f = function(...)
-    local t = string.format(...)
-    return t:gsub(' *>>>', '>>>')
-end
+local h = require('quiz.helpers')
+local f = h.f
+local _ = h._
+local task = h.task
+local task2 = h.task2
+local shortrand = h.shortrand
+local d19 = h.d19
+local zeroless = h.zeroless
 
 local hello = {}
-
-local _ = function(text, req)
-    if req then
-        return req:_(text)
-    else
-        return text
-    end
-end
-
-local task = function(req)
-    return _([[What does Python print
-            if you enter the following commands?]], req)
-end
-
-local task2 = function(req)
-    return _([[Which Python code produces this output?]], req)
-end
-
-local shortrand = function()
-    local t = {}
-    local l = math.random(3, 7)
-    for i = 1, l do
-        table.insert(t, math.random(65, 90)) -- A-Z
-    end
-    local unPack = unpack or table.unpack
-    return string.char(unPack(t))
-end
 
 function hello.print1(req)
     local val = math.random(0, 100)
@@ -272,14 +249,6 @@ function hello.minusplus(req)
     f('%i', a - b),
     f('%i', a + b),
     task(req)
-end
-
-local d19 = function()
-    return math.random(1, 9)
-end
-
-local zeroless = function()
-    return d19() + d19() * 10 + d19() * 100 + d19() * 1000
 end
 
 function hello.lastdigit(req)
