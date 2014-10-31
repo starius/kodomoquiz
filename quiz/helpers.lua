@@ -32,6 +32,7 @@ h.shortrand = function()
     return string.char(unPack(t))
 end
 
+h.rr = math.random
 
 h.d19 = function()
     return math.random(1, 9)
