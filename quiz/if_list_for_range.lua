@@ -192,5 +192,31 @@ function ilfr.split2(req)
     h.task(req)
 end
 
+function ilfr.len(req)
+    local list_size = h.rr(2, 4)
+    local ll1 = {}
+    for i = 1, list_size do
+        local v = h.rr(1, 4)
+        table.insert(ll1, h.f("%i", v))
+    end
+    local list = h.f('[%s]', table.concat(ll1, ', '))
+    local str = h.f('"%s"', list)
+    local ans = {tostring(list_size), tostring(#str - 2),
+        table.concat(ll1, ' '), list}
+    local input, output
+    if h.rr(0, 1) == 1 then
+        input = h.f('len(%s)', list)
+        output = tostring(list_size)
+    else
+        input = h.f('len(%s)', str)
+        output = tostring(#str - 2)
+    end
+    local a,b,c,d = h.unpack(h.with_fakes(output, ans))
+    return
+    input,
+    a,b,c,d,
+    h.task(req)
+end
+
 return ilfr
 
