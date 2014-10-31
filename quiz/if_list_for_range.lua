@@ -158,5 +158,39 @@ function ilfr.split1(req)
     h.task(req)
 end
 
+function ilfr.split2(req)
+    local list_size = h.rr(2, 4)
+    local ll1 = {}
+    local ll2 = {}
+    local ll3 = {}
+    local ll4 = {}
+    local str = ''
+    for i = 1, list_size do
+        local v0 = h.rr(1, 4)
+        v = v0
+        if h.rr(0, 1) == 0 then
+            v = ' ' .. v
+        end
+        if h.rr(0, 1) == 0 then
+            v = v .. ' '
+        end
+        table.insert(ll1, h.f("'%s'", v))
+        table.insert(ll2, h.f("%i", v0))
+        table.insert(ll3, h.f("%s", v))
+        table.insert(ll4, h.f("'%i'", v0))
+        str = str .. v
+        if i ~= list_size then
+            str = str .. ','
+        end
+    end
+    return
+    h.f('"%s".split(",")', str),
+    h.f('[%s]', table.concat(ll1, ', ')),
+    h.f('[%s]', table.concat(ll2, ', ')),
+    h.f('[%s]', table.concat(ll3, ',')),
+    h.f('[%s]', table.concat(ll4, ', ')),
+    h.task(req)
+end
+
 return ilfr
 
