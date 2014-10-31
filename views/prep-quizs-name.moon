@@ -11,7 +11,7 @@ class PrepQuizsName extends Widget
       error(@_("No such quiz found"))
     quizs = model.quizs_of_name(@quiz_name, model.FINISHED)
     h1 @_[[All quizes]] .. ' ' .. @quiz_name
-    element 'table', border: 1, ->
+    print_header = ->
       element 'tr', ->
         element 'td' -- id
         element 'td', -> text @_("user")
@@ -19,6 +19,8 @@ class PrepQuizsName extends Widget
         element 'td', -> text @_("tasks")
         for task_name, func in pairs(q) do
           element 'td', -> text task_name
+    element 'table', border: 1, ->
+      print_header!
       name2score = {}
       for quiz in *quizs
         color = 'red'
@@ -66,4 +68,5 @@ class PrepQuizsName extends Widget
               text name2score[task_name]
             else
               text 0
+      print_header!
 
