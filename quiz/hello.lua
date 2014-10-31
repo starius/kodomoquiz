@@ -49,8 +49,8 @@ function hello.print_sum(req)
 end
 
 function hello.division_int(req)
-    local a = math.random(60, 100)
-    local b = math.random(10, 50)
+    local a = math.random(6, 20)
+    local b = math.random(2, 5)
     local result = math.floor(a / b)
     return
     f(">>> print(%i // %i)", a, b),
@@ -62,8 +62,8 @@ function hello.division_int(req)
 end
 
 function hello.division_int2(req)
-    local a = math.random(60, 100)
-    local b = math.random(10, 50)
+    local a = math.random(6, 20)
+    local b = math.random(2, 5)
     local result = math.floor(a / b)
     return
     f('%i', result),
@@ -75,8 +75,8 @@ function hello.division_int2(req)
 end
 
 function hello.vars(req)
-    local a = math.random(6, 10)
-    local b = math.random(1, 5)
+    local a = math.random(3, 4)
+    local b = math.random(1, 2)
     local result = (a + b) ^ 2
     return
     f('%i', result),
@@ -103,8 +103,8 @@ function hello.vars(req)
 end
 
 function hello.division_float(req)
-    local result = 0.5 + math.random(2, 5)
-    local b = math.random(10, 50)
+    local result = 0.5 + math.random(2, 4)
+    local b = math.random(2, 5)
     local a = result * b
     return
     f(">>> print(%0.1f / %0.1f)", a, b),
@@ -116,8 +116,8 @@ function hello.division_float(req)
 end
 
 function hello.mod(req)
-    local a = math.random(60, 100)
-    local b = math.random(10, 50)
+    local a = math.random(10, 15)
+    local b = math.random(2, 5)
     local result = a % b
     return
     f(">>> print(%i %% %i)", a, b),
