@@ -17,6 +17,7 @@ class PrepQuizs extends Widget
       h1 @_[[All quizes]]
     element 'table', border: 1, ->
       element 'tr', ->
+        element 'td' -- #
         element 'td', -> text @_("quiz")
         element 'td', -> text @_("user")
         element 'td', -> text @_("started")
@@ -30,6 +31,9 @@ class PrepQuizs extends Widget
         element 'tr', ->
           element 'td', ->
             a href: @url_for("prep-quiz", {id: quiz.id}), ->
+              text '#'
+          element 'td', ->
+            a href: @url_for("prep-quizs-name", {name: quiz.name}), ->
               text quiz.name
           element 'td', ->
             url = @url_for("prep-quizs-of", {user: quiz.user})
