@@ -21,11 +21,10 @@ class extends html.Widget
           element 'td', ->
             text "|"
           element 'td', ->
+            text @_('Language: ')
             a href: @url_for('russian'), ->
               text "Русский"
-          element 'td', ->
-            text "|"
-          element 'td', ->
+            text ", "
             a href: @url_for('english'), ->
               text "English"
           if @session.user
