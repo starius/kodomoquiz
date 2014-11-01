@@ -58,6 +58,12 @@ local trim = function(t)
     return t
 end
 
+local out_noneq = function(o1, o2)
+    local o1 = trim(o1)
+    local o2 = trim(o2)
+    return o1 ~= o2
+end
+
 for i = 1, N do
     print('iteration ' .. i)
     for quiz_name, quiz in pairs(all) do
@@ -73,7 +79,7 @@ for i = 1, N do
             end
             if m:find('What does Python print') then
                 local out = get_py_output(t)
-                if trim(out) ~= trim(a1) then
+                if out_noneq(out, a1) then
                     print(t, a1, a2, a3, a4, m)
                     print('Actual output: ' .. out)
                     print('Expected output: ' .. a1)
