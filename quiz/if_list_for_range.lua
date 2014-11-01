@@ -474,5 +474,35 @@ function ilfr.negative_index(req)
     h.task(req)
 end
 
+function ilfr.range(req)
+    local start = h.rr(1, 2)
+    local stop = h.rr(5, 6)
+    local range = {}
+    for i = start, stop - 1 do
+        table.insert(range, i)
+    end
+    --
+    local fake = {}
+    for i = start, stop do
+        table.insert(fake, i)
+    end
+    --
+    local fake2 = {}
+    table.insert(fake2, start)
+    table.insert(fake2, stop - 1)
+    --
+    local fake3 = {}
+    table.insert(fake3, start)
+    table.insert(fake3, stop)
+    local task = h.f('>>> range(%i, %i)', start, stop)
+    return
+    task,
+    h.list2py(range),
+    h.list2py(fake),
+    h.list2py(fake2),
+    h.list2py(fake3),
+    h.task(req)
+end
+
 return ilfr
 
