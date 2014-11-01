@@ -70,6 +70,7 @@ for i = 1, N do
         for task_name, task in pairs(quiz) do
             local t, a1, a2, a3, a4, m = task()
             if has_nil(5, t, a1, a2, a3, a4) then
+                print('Task or one of answers is nil')
                 error(quiz_name .. '.' .. task_name)
             end
             if not all_different(a1, a2, a3, a4) then
