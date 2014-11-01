@@ -320,5 +320,13 @@ end
 ilfr.bool_expression_2 = ilfr.bool_expression
 ilfr.bool_expression_3 = ilfr.bool_expression
 
+function ilfr.indentation_error(req)
+    local t, a1, a2, a3, a4, m = ilfr.odd_even(req)
+    t = t:gsub('else', '  else') -- half indent else
+    a1, a2, a3, a4 = h.unpack(h.with_fakes('Error',
+        {a1, a2, a3, a4}))
+    return t, a1, a2, a3, a4, m
+end
+
 return ilfr
 
