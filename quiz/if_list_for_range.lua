@@ -523,5 +523,23 @@ print(cc)]]
     h.task(req)
 end
 
+function ilfr.test_while(req)
+    local s = h.rr(20, 30)
+    local task_t = [[
+i = %i
+cc = 1
+while i > 0:
+    cc = cc + 1
+    i = i - 1
+print(cc)]]
+    return
+    h.f(task_t, s),
+    h.f('%i', s + 1),
+    h.f('%i', s),
+    h.f('%i', s - 1),
+    h.f('%i', s + 2 * (-1 + 2 * h.rr(0, 1))),
+    h.task(req)
+end
+
 return ilfr
 
