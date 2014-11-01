@@ -23,8 +23,8 @@ group('split1', 'split2')
 group('len')
 group('test_or', 'test_and')
 group('bool_expression')
-group('list_index', 'index_error', 'append', 'fake_append',
-    'negative_index')
+group('list_index', 'index_error', 'negative_index')
+group('append', 'fake_append')
 group('range')
 group('for2', 'test_while')
 
