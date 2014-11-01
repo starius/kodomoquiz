@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-01 17:38+0300\n"
+"POT-Creation-Date: 2014-11-01 17:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr "Все тесты"
 
 #: views/prep-quizs-name.lua:19
 msgid "All quizes "
-msgstr ""
+msgstr "Все тесты"
 
 #: views/prep-quizs.lua:19
 msgid "All quizes of "
@@ -80,7 +80,7 @@ msgstr "Завершенные тесты"
 
 #: views/quiz-results.lua:28
 msgid "Go through this test again:"
-msgstr ""
+msgstr "Пройдите этот тест ещё раз:"
 
 #: quiz/hello.lua:96 quiz/hello.lua:105 quiz/hello.lua:106 quiz/hello.lua:162
 #: quiz/hello.lua:139
@@ -120,7 +120,7 @@ msgstr "Тесты Кодомо"
 
 #: views/layout.lua:40
 msgid "Language: "
-msgstr ""
+msgstr "Язык:"
 
 #: views/welcome.lua:78
 msgid ""
@@ -173,7 +173,7 @@ msgstr "Тест "
 msgid ""
 "Quiz is not finished untill\n"
 "          you press the button"
-msgstr ""
+msgstr "Тест не завершится, пока вы не нажмёте на эту кнопку"
 
 #: views/quiz-final-check.lua:18 views/quiz-final-check.lua:19
 msgid ""
