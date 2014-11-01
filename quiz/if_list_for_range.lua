@@ -504,5 +504,24 @@ function ilfr.range(req)
     h.task(req)
 end
 
+function ilfr.for2(req)
+    local s1 = h.rr(5, 7)
+    local s2 = h.rr(5, 7)
+    -- (5-1)*(5-1) > 7 + 7
+    local task_t = [[
+cc = 0
+for x in range(%i):
+    for y in range(%i):
+        cc = cc + 1
+print(cc)]]
+    return
+    h.f(task_t, s1, s2),
+    h.f('%i', s1 * s2),
+    h.f('%i', (s1 - 1) * (s2 - 1)),
+    h.f('%i', s1 + s2),
+    h.f('%i', (s1 - 1) + (s2 - 1)),
+    h.task(req)
+end
+
 return ilfr
 
