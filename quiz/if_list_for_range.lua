@@ -369,5 +369,30 @@ function ilfr.list_index(req)
     h.task(req)
 end
 
+function ilfr.index_error(req)
+    local list_size = h.rr(3, 6)
+    local ll = {}
+    for i = 1, list_size do
+        local v = h.rr(1, 5)
+        table.insert(ll, v)
+    end
+    local ll1 = h.copy_list(ll)
+    local i = list_size
+    local v = h.shortrand()
+    ll1[i] = v
+    local ll2 = h.copy_list(ll) -- wrong index (+1)
+    table.insert(ll2, v)
+    local t = h.f('>>> arr = %s', h.list2py(ll))
+    t = t .. h.f('\n>>> arr[%i] = %s', i, h.value2py(v))
+    t = t .. h.f('\n>>> print(arr)')
+    return
+    t,
+    'Error',
+    h.list2py(ll1),
+    h.list2py(ll),
+    h.list2py(ll2),
+    h.task(req)
+end
+
 return ilfr
 
