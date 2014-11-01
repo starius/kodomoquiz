@@ -328,6 +328,12 @@ function ilfr.indentation_error(req)
     return t, a1, a2, a3, a4, m
 end
 
+function ilfr.no_indentation_error(req)
+    local t, a1, a2, a3, a4, m = ilfr.odd_even(req)
+    t = t:gsub("print%('odd'%)", "    print('odd')")
+    return t, a1, a2, a3, a4, m
+end
+
 function ilfr.nocolon_error(req)
     local t, a1, a2, a3, a4, m = ilfr.elif(req)
     t = t:gsub('else:', 'else')
