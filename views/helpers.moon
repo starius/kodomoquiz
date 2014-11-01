@@ -21,16 +21,17 @@ class Helpers
       input type: "submit", value: @_('Select')
 
   cancel_form: =>
-    url = @url_for("cancel", {id: @quiz.id})
-    raw '<br/><br/>'
     element 'hr'
-    raw '<br/><br/>'
-    font color: 'red', @_("Dangerous zone")
-    form method: "POST", action: url, ->
-      input {type: "hidden", name: "csrf_token",
-          value: @new_csrf}
-      input {type: "submit", value: @_('Cancel quiz'),
-        style: 'background-color: pink'}
+    element 'table', -> element 'tr', ->
+      element 'td', ->
+        url = @url_for("cancel", {id: @quiz.id})
+        form method: "POST", action: url, ->
+          input {type: "hidden", name: "csrf_token",
+              value: @new_csrf}
+          input {type: "submit", value: @_('Cancel quiz'),
+            style: 'background-color: pink'}
+      element 'td', ->
+        font color: 'red', @_("Dangerous zone")
 
   help_for: (task) =>
     quiz_name = task\quiz().name
