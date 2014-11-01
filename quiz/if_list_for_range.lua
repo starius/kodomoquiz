@@ -328,5 +328,13 @@ function ilfr.indentation_error(req)
     return t, a1, a2, a3, a4, m
 end
 
+function ilfr.nocolon_error(req)
+    local t, a1, a2, a3, a4, m = ilfr.elif(req)
+    t = t:gsub('else:', 'else')
+    a1, a2, a3, a4 = h.unpack(h.with_fakes('Error',
+        {a1, a2, a3, a4}))
+    return t, a1, a2, a3, a4, m
+end
+
 return ilfr
 
