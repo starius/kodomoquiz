@@ -394,5 +394,29 @@ function ilfr.index_error(req)
     h.task(req)
 end
 
+function ilfr.append(req)
+    local list_size = h.rr(3, 6)
+    local ll = {}
+    for i = 1, list_size do
+        local v = h.rr(1, 5)
+        table.insert(ll, v)
+    end
+    local ll1 = h.copy_list(ll)
+    local v = h.shortrand()
+    table.insert(ll1, v)
+    local task = h.list2py(ll1)
+    local template = h.f(
+        '>>> arr = %s\n>>> %%s\n>>> print(arr)',
+        h.list2py(ll))
+    return
+    task,
+    h.f(template, h.f('arr.append(%s)', h.value2py(v))),
+    h.f(template, h.f('arr.add(%s)', h.value2py(v))),
+    h.f(template, h.f('arr[%i] = %s',
+        list_size, h.value2py(v))),
+    h.f(template, h.f('arr[%i] = %s',
+        list_size + 1, h.value2py(v))),
+    h.task2(req)
+end
 return ilfr
 
