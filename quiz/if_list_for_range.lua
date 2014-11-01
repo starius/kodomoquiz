@@ -124,7 +124,7 @@ function ilfr.strip(req)
     local w0 = sp1 .. w .. sp2
     return
     w,
-    h.f('"%s".strip()', w0),
+    h.f('>>> "%s".strip()', w0),
     h.f('"%s".split()', w0),
     h.f('len("%s")', w0),
     h.f('range("%s")', w0),
@@ -150,7 +150,7 @@ function ilfr.split1(req)
     end
     local ll4 = h.one_of(ll1, ll2, ll3)
     return
-    h.f('"%s".split()', str),
+    h.f('>>> "%s".split()', str),
     h.f('[%s]', table.concat(ll1, ', ')),
     h.f('[%s]', table.concat(ll2, ', ')),
     h.f('[%s]', table.concat(ll3, ', ')),
@@ -184,7 +184,7 @@ function ilfr.split2(req)
         end
     end
     return
-    h.f('"%s".split(",")', str),
+    h.f('>>> "%s".split(",")', str),
     h.f('[%s]', table.concat(ll1, ', ')),
     h.f('[%s]', table.concat(ll2, ', ')),
     h.f('[%s]', table.concat(ll3, ', ')),
@@ -205,10 +205,10 @@ function ilfr.len(req)
         table.concat(ll1, ' '), list}
     local input, output
     if h.rr(0, 1) == 1 then
-        input = h.f('len(%s)', list)
+        input = h.f('>>> len(%s)', list)
         output = tostring(list_size)
     else
-        input = h.f('len(%s)', str)
+        input = h.f('>>> len(%s)', str)
         output = tostring(#str - 2)
     end
     local a,b,c,d = h.unpack(h.with_fakes(output, ans))
