@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 19:22+0300\n"
+"POT-Creation-Date: 2014-11-01 17:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,13 +25,17 @@ msgstr " и напишите следующий текст: "
 msgid " in your <b>public_html</b>"
 msgstr " в вашей папке <b>public_html</b>"
 
-#: views/all-tests.lua:26 views/all-tests.lua:27
+#: views/all-tests.lua:26 views/all-tests.lua:27 views/all-tests.lua:28
 msgid "(today)"
 msgstr "(сегодня)"
 
 #: views/prep-quizs.lua:22
 msgid "All quizes"
 msgstr "Все тесты"
+
+#: views/prep-quizs-name.lua:19
+msgid "All quizes "
+msgstr ""
 
 #: views/prep-quizs.lua:19
 msgid "All quizes of "
@@ -66,24 +70,30 @@ msgid "Dangerous zone"
 msgstr "Осторожно, не нажмите на эту кнопку по ошибке vv"
 
 #: views/quiz-final-check.lua:31 views/quiz-final-check.lua:32
+#: views/helpers.lua:196
 msgid "Finish this quiz"
 msgstr "Завершить этот тест"
 
-#: views/all-tests.lua:20 views/all-tests.lua:21
+#: views/all-tests.lua:20 views/all-tests.lua:21 views/all-tests.lua:22
 msgid "Finished quizes"
 msgstr "Завершенные тесты"
 
+#: views/quiz-results.lua:28
+msgid "Go through this test again:"
+msgstr ""
+
 #: quiz/hello.lua:96 quiz/hello.lua:105 quiz/hello.lua:106 quiz/hello.lua:162
+#: quiz/hello.lua:139
 msgid ""
 "How to execute Python script\n"
 "        from command line?"
 msgstr "Как выполнить скрипт Python с командной строки?"
 
-#: quiz/hello.lua:126 quiz/hello.lua:127 quiz/hello.lua:183
+#: quiz/hello.lua:126 quiz/hello.lua:127 quiz/hello.lua:183 quiz/hello.lua:160
 msgid "How to interrupt interactive Python session?"
 msgstr "Как прервать интерактивную сессию Python?"
 
-#: quiz/hello.lua:136 quiz/hello.lua:137 quiz/hello.lua:193
+#: quiz/hello.lua:136 quiz/hello.lua:137 quiz/hello.lua:193 quiz/hello.lua:170
 msgid ""
 "How to view Python output if it has been shadowed\n"
 "        by FAR blue window?"
@@ -91,7 +101,7 @@ msgstr ""
 "Как посмотреть результат работы Python, если его не видно под синим окном "
 "FAR?"
 
-#: quiz/hello.lua:469
+#: quiz/hello.lua:469 quiz/hello.lua:438
 msgid ""
 "If you choose an answer to this question at random,\n"
 "    what is the chance you will be correct?"
@@ -104,8 +114,13 @@ msgid "It is not your quiz"
 msgstr "Это чужой тест"
 
 #: app.lua:31 views/layout.lua:16 views/layout.lua:21 app.lua:32
+#: views/layout.lua:26
 msgid "Kodomo Quiz"
 msgstr "Тесты Кодомо"
+
+#: views/layout.lua:40
+msgid "Language: "
+msgstr ""
 
 #: views/welcome.lua:78
 msgid ""
@@ -117,15 +132,15 @@ msgstr "Сообщите нам временное гостевое имя, ин
 msgid "Login"
 msgstr "Войти"
 
-#: views/layout.lua:51 views/layout.lua:71
+#: views/layout.lua:51 views/layout.lua:71 views/layout.lua:73
 msgid "Logout"
 msgstr "Выйти"
 
-#: views/layout.lua:25 views/layout.lua:28
+#: views/layout.lua:25 views/layout.lua:28 views/layout.lua:33
 msgid "Main page"
 msgstr "Главная страница"
 
-#: model.lua:129 model.lua:132
+#: model.lua:129 model.lua:132 model.lua:133 views/prep-quizs-name.lua:16
 msgid "No such quiz found"
 msgstr "Такого теста нет"
 
@@ -154,6 +169,12 @@ msgstr "Пожалуйста, создайте файл "
 msgid "Quiz "
 msgstr "Тест "
 
+#: views/helpers.lua:203
+msgid ""
+"Quiz is not finished untill\n"
+"          you press the button"
+msgstr ""
+
 #: views/quiz-final-check.lua:18 views/quiz-final-check.lua:19
 msgid ""
 "Quiz is not finished untill\n"
@@ -168,7 +189,7 @@ msgstr "Выбрать"
 msgid "Set aside this task"
 msgstr "Отложить эту задачу"
 
-#: views/all-tests.lua:29 views/all-tests.lua:30
+#: views/all-tests.lua:29 views/all-tests.lua:30 views/all-tests.lua:31
 msgid "Start new quiz:"
 msgstr "Начать новый тест:"
 
@@ -214,6 +235,7 @@ msgid ""
 msgstr "Что напечатает Python, если ввести следующие команды?"
 
 #: quiz/hello.lua:107 quiz/hello.lua:116 quiz/hello.lua:117 quiz/hello.lua:173
+#: quiz/hello.lua:150
 msgid "What is the Python's official site?"
 msgstr "Какой официальный сайт Python?"
 
@@ -226,12 +248,12 @@ msgid "Which Python code produces this output?"
 msgstr "Какой код на Python приведёт к такому результату?"
 
 #: views/all-tests.lua:64 views/all-tests.lua:66 views/all-tests.lua:73
-#: views/all-tests.lua:80
+#: views/all-tests.lua:80 views/all-tests.lua:62
 msgid "Your active quizes:"
 msgstr "Ваши активные тесты:"
 
 #: views/all-tests.lua:65 views/all-tests.lua:67 views/all-tests.lua:74
-#: views/all-tests.lua:81
+#: views/all-tests.lua:81 views/all-tests.lua:63
 msgid "Your finished quizes:"
 msgstr "Ваши завершенные тесты:"
 
@@ -243,7 +265,7 @@ msgstr "Ваше имя: "
 msgid "error: invalid username"
 msgstr "ошибка, неверное имя"
 
-#: views/prep-quizs.lua:33 views/prep-quizs.lua:38
+#: views/prep-quizs.lua:33 views/prep-quizs.lua:38 views/prep-quizs.lua:39
 msgid "finished"
 msgstr "завершено"
 
@@ -251,22 +273,25 @@ msgstr "завершено"
 msgid "guest login"
 msgstr "гостевой вход"
 
-#: views/prep-quizs.lua:24 views/prep-quizs.lua:29
+#: views/prep-quizs.lua:24 views/prep-quizs.lua:29 views/prep-quizs.lua:30
 msgid "quiz"
 msgstr "тест"
 
-#: views/prep-quizs.lua:39 views/prep-quizs.lua:41
+#: views/prep-quizs.lua:39 views/prep-quizs.lua:41 views/prep-quizs.lua:42
+#: views/prep-quizs-name.lua:28
 msgid "right answers"
 msgstr "правильные ответы"
 
-#: views/prep-quizs.lua:30 views/prep-quizs.lua:35
+#: views/prep-quizs.lua:30 views/prep-quizs.lua:35 views/prep-quizs.lua:36
 msgid "started"
 msgstr "начато"
 
-#: views/prep-quizs.lua:36 views/prep-quizs.lua:44
+#: views/prep-quizs.lua:36 views/prep-quizs.lua:44 views/prep-quizs.lua:45
+#: views/prep-quizs-name.lua:31
 msgid "tasks"
 msgstr "заданий"
 
-#: views/prep-quizs.lua:27 views/prep-quizs.lua:32
+#: views/prep-quizs.lua:27 views/prep-quizs.lua:32 views/prep-quizs.lua:33
+#: views/prep-quizs-name.lua:25
 msgid "user"
 msgstr "пользователь"
