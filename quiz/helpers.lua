@@ -101,6 +101,13 @@ h.one_of = function(...)
     return t[h.rr(1, #t)]
 end
 
+h.one_of_getter = function(...)
+    local funcs = {...}
+    return function(...)
+        return h.one_of(h.unpack(funcs))(...)
+    end
+end
+
 h.value2py = function(e)
     if type(e) == 'number' then
         return tostring(e)
