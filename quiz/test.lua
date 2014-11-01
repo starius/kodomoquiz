@@ -73,9 +73,7 @@ for i = 1, N do
             end
             if m:find('What does Python print') then
                 local out = get_py_output(t)
-                local ee = a1:find('Error') -- error expected
-                if (ee and not out:find('Error')) or
-                        (not ee and trim(out) ~= trim(a1)) then
+                if trim(out) ~= trim(a1) then
                     print(t, a1, a2, a3, a4, m)
                     print('Actual output: ' .. out)
                     print('Expected output: ' .. a1)
