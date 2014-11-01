@@ -297,7 +297,8 @@ function ilfr.bool_expression(req)
     local result = lua2py[v_notabcd]
     local not2py = {[true] = 'not ', [false] = ''}
     local op2py = {[true] = 'and', [false] = 'or'}
-    local expr = h.f(">>> %s((%s(%s%s %s %s%s)) %s (%s(%s%s %s %s%s)))",
+    local expr = h.f(
+        ">>> %s((%s(%s%s %s %s%s)) %s (%s(%s%s %s %s%s)))",
         not2py[notabcd],
                 not2py[notab],
                     not2py[nota], lua2py[a],
