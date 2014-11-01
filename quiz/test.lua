@@ -86,6 +86,26 @@ for i = 1, N do
                     error()
                 end
             end
+            local aa = {a1, a2, a3, a4}
+            local aa_out = {a1, a2, a3, a4}
+            if m:find('Which Python code produces') then
+                for j = 1, 4 do
+                    aa_out[j] = get_py_output(aa[j])
+                end
+                if out_noneq(aa_out[1], t) then
+                    print(t, a1, a2, a3, a4, m)
+                    print('Actual output: ' .. aa_out[1])
+                    print('Expected output: ' .. t)
+                    error()
+                end
+                for j = 2, 4 do
+                    if not out_noneq(aa_out[j], t) then
+                        print(t, a1, a2, a3, a4, m)
+                        print('Result ' .. j .. ' also matches')
+                        error()
+                    end
+                end
+            end
         end
     end
 end
