@@ -101,5 +101,35 @@ h.one_of = function(...)
     return t[h.rr(1, #t)]
 end
 
+h.value2py = function(e)
+    if type(e) == 'number' then
+        return tostring(e)
+    elseif type(e) == 'string' then
+        return string.format("'%s'", e)
+    elseif e == true then
+        return 'True'
+    elseif e == false then
+        return 'False'
+    else
+        error('Unknown type ' .. type(e))
+    end
+end
+
+h.list2py = function(ll)
+    local ll2 = {}
+    for _, e in ipairs(ll) do
+        table.insert(ll2, h.value2py(e))
+    end
+    return string.format('[%s]', table.concat(ll2, ', '))
+end
+
+h.copy_list = function(ll)
+    local ll2 = {}
+    for _, e in ipairs(ll) do
+        table.insert(ll2, e)
+    end
+    return ll2
+end
+
 return h
 
