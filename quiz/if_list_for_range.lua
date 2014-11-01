@@ -343,5 +343,31 @@ function ilfr.nocolon_error(req)
     return t, a1, a2, a3, a4, m
 end
 
+function ilfr.list_index(req)
+    local list_size = h.rr(3, 6)
+    local ll = {}
+    for i = 1, list_size do
+        local v = h.rr(1, 5)
+        table.insert(ll, v)
+    end
+    local ll1 = h.copy_list(ll)
+    local i = h.rr(2, list_size)
+    local v = h.shortrand()
+    ll1[i] = v
+    local ll2 = h.copy_list(ll) -- wrong index (+1)
+    local i2 = i - 1
+    ll2[i2] = v
+    local t = h.f('>>> arr = %s', h.list2py(ll))
+    t = t .. h.f('\n>>> arr[%i] = %s', i-1, h.value2py(v))
+    t = t .. h.f('\n>>> print(arr)')
+    return
+    t,
+    h.list2py(ll1),
+    h.list2py(ll),
+    h.list2py(ll2),
+    'Error',
+    h.task(req)
+end
+
 return ilfr
 
