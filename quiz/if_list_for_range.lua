@@ -245,5 +245,80 @@ function ilfr.test_and(req)
     h.task(req)
 end
 
+function ilfr.bool_expression(req)
+    -- (a b) (c d)
+    local a = int2bool[h.rr(0, 1)]
+    local b = int2bool[h.rr(0, 1)]
+    local c = int2bool[h.rr(0, 1)]
+    local d = int2bool[h.rr(0, 1)]
+    local nota = int2bool[h.rr(0, 1)]
+    local notb = int2bool[h.rr(0, 1)]
+    local notc = int2bool[h.rr(0, 1)]
+    local notd = int2bool[h.rr(0, 1)]
+    local aOPb = int2bool[h.rr(0, 1)] -- true=and, false=or
+    local cOPd = int2bool[h.rr(0, 1)] -- true=and, false=or
+    local notab = int2bool[h.rr(0, 1)]
+    local notcd = int2bool[h.rr(0, 1)]
+    local abOPcd = int2bool[h.rr(0, 1)] -- true=and, false=or
+    local notabcd = int2bool[h.rr(0, 1)]
+    local fop = function(b)
+        if b == true then
+            return function(x, y)
+                return x and y
+            end
+        else
+            return function(x, y)
+                return x or y
+            end
+        end
+    end
+    local fnot = function(b)
+        if b == true then
+            return function(x)
+                return not x
+            end
+        else
+            return function(x)
+                return x
+            end
+        end
+    end
+    local v_nota = fnot(nota)(a)
+    local v_notb = fnot(notb)(b)
+    local v_notc = fnot(notc)(c)
+    local v_notd = fnot(notd)(d)
+    local v_ab = fop(aOPb)(v_nota, v_notb)
+    local v_cd = fop(cOPd)(v_notc, v_notd)
+    local v_notab = fnot(notab)(v_ab)
+    local v_notcd = fnot(notcd)(v_cd)
+    local v_abcd = fop(abOPcd)(v_notab, v_notcd)
+    local v_notabcd = fnot(notabcd)(v_abcd)
+    --
+    local result = lua2py[v_notabcd]
+    local not2py = {[true] = 'not ', [false] = ''}
+    local op2py = {[true] = 'and', [false] = 'or'}
+    local expr = h.f(">>> %s((%s(%s%s %s %s%s)) %s (%s(%s%s %s %s%s)))",
+        not2py[notabcd],
+                not2py[notab],
+                    not2py[nota], lua2py[a],
+                    op2py[aOPb],
+                    not2py[notb], lua2py[b],
+            op2py[abOPcd],
+                not2py[notcd],
+                    not2py[notc], lua2py[c],
+                    op2py[cOPd],
+                    not2py[notd], lua2py[d]
+    )
+    local ans = {'True', 'False', h.rr(0, 1), 'Error'}
+    local a1,a2,a3,a4 = h.unpack(h.with_fakes(result, ans))
+    return
+    expr,
+    a1,a2,a3,a4,
+    h.task(req)
+end
+
+ilfr.bool_expression_2 = ilfr.bool_expression
+ilfr.bool_expression_3 = ilfr.bool_expression
+
 return ilfr
 
