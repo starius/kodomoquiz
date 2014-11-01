@@ -123,11 +123,11 @@ function ilfr.strip(req)
     local w = h.shortrand()
     local w0 = sp1 .. w .. sp2
     return
-    w,
+    h.f("'%s'", w),
     h.f('>>> "%s".strip()', w0),
-    h.f('"%s".split()', w0),
-    h.f('len("%s")', w0),
-    h.f('range("%s")', w0),
+    h.f('>>> "%s".split()', w0),
+    h.f('>>> len("%s")', w0),
+    h.f('>>> range("%s")', w0),
     h.task2(req)
 end
 
