@@ -272,6 +272,12 @@ check_prep(function(self)
     return {render='prep-quizs-name'}
 end))
 
+app:get("prep-kr", "/admin/kr/:name",
+check_prep(function(self)
+    self.quiz_name = self.params.name
+    return {render='prep-kr'}
+end))
+
 app:get("prep-quizs-of", "/admin/user/:user",
 check_prep(function(self)
     self.target_user = self.params.user

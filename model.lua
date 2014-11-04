@@ -182,5 +182,28 @@ function model.all_quizs(state)
         state)
 end
 
+function model.kr(name)
+    local start1, stop1, start2, stop2
+    if name == 'hello' then
+      start1 = '2014-10-31 06:00:00'
+      stop1 = '2014-10-31 06:30:00'
+      start2 = '2014-10-31 07:55:00'
+      stop2 = '2014-10-31 08:25:00'
+    end
+    if name == 'if_list_for_range_short' then
+      start1 = '2014-11-07 06:00:00'
+      stop1 = '2014-11-07 06:30:00'
+      start2 = '2014-11-07 07:55:00'
+      stop2 = '2014-11-07 08:25:00'
+    end
+    return model.Quiz:select(
+        [[where name = ? and state = ? and
+        (created_at >= ? and updated_at <= ?) or
+        (created_at >= ? and updated_at <= ?)
+        order by id]],
+        name, model.FINISHED, start1, stop1,
+        start2, stop2)
+end
+
 return model
 
