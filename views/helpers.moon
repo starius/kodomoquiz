@@ -109,9 +109,11 @@ class Helpers
       print_header!
       name2score = {}
       for quiz in *quizs
-        color = 'red'
-        if quiz.right_answers == quiz.tasks
+        color = 'white'
+        if quiz.tasks and quiz.right_answers == quiz.tasks
           color = 'green'
+        if quiz.tasks and quiz.right_answers < quiz.tasks
+          color = 'red'
         element 'tr', ->
           element 'td', ->
             a href: @url_for("prep-quiz", {id: quiz.id}), ->
