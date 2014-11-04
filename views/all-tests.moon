@@ -17,6 +17,14 @@ class AllTests extends Widget
         text ' '
         a href: @url_for("prep-quizs-today"), ->
           text @_("(today)")
+        text ' '
+        a href: @url_for("prep-kr", {name: 'hello'}), ->
+          text @_("kr1")
+        text ' '
+        url = @url_for("prep-kr", {
+          name: 'if_list_for_range_short'})
+        a href: url, ->
+          text @_("kr2")
       p @_("Start new quiz:")
       element 'table', -> element 'tr', ->
         for name, _ in pairs quizs
