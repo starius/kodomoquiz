@@ -25,9 +25,11 @@ end
 
 h.unpack = unpack or table.unpack
 
-h.shortrand = function()
+h.shortrand = function(l)
     local t = {}
-    local l = math.random(3, 7)
+    if not l then
+        l = math.random(3, 7)
+    end
     local used = {}
     for i = 1, l do
         local v
