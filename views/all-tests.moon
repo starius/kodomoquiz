@@ -1,6 +1,6 @@
 import Widget from require "lapis.html"
 
-quizs = {'if_list_for_range', 'hello'}
+quizs = {'dict_file', 'if_list_for_range', 'hello'}
 model = require('model')
 msk_time = require "msk_time"
 
