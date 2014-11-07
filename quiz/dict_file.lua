@@ -124,5 +124,177 @@ function dict_file.dict_set_fake2(req)
     h.task(req)
 end
 
+function dict_file.list_as_keys(req)
+    local ll = {}
+    local dd = {}
+    local n = rr(5, 8)
+    local cc_fake3 = 0
+    local cc_fake2 = 0
+    for i = 1, n do
+        local v = rr(2, n)
+        table.insert(ll, v)
+        dd[v] = true
+        cc_fake3 = cc_fake3 + v
+        cc_fake2 = cc_fake2 + 1
+    end
+    local cc = 0
+    local cc_fake = 0
+    for v, _ in pairs(dd) do
+        cc = cc + v
+        cc_fake = cc_fake + 1
+    end
+    local lname = 'l' .. rr(1, 3)
+    local dname = 'd' .. rr(2, 4)
+    local dvalue = 100
+    local task0 = [[
+%s = %s
+%s = {}
+for a in %s:
+    %s[a] = %i
+cc = 0
+for k in %s.keys():
+    cc = cc + k
+print(cc)
+]]
+    local task = h.f(task0, lname, h.list2py(ll),
+        dname, lname, dname, dvalue, dname)
+    return
+    task,
+    h.f("%i", cc),
+    h.f("%i", cc_fake),
+    h.f("%i", cc_fake2),
+    h.f("%i", cc_fake3),
+    h.task(req)
+end
+
+function dict_file.list_as_keys2(req)
+    local ll = {}
+    local dd = {}
+    local n = rr(5, 8)
+    local cc_fake3 = 0
+    local cc_fake2 = 0
+    for i = 1, n do
+        local v = rr(2, n)
+        table.insert(ll, v)
+        dd[v] = true
+        cc_fake3 = cc_fake3 + v
+        cc_fake2 = cc_fake2 + 1
+    end
+    local cc = 0
+    local cc_fake = 0
+    for v, _ in pairs(dd) do
+        cc = cc + 1
+        cc_fake = cc_fake + v
+    end
+    local lname = 'l' .. rr(1, 3)
+    local dname = 'd' .. rr(2, 4)
+    local dvalue = 100
+    local task0 = [[
+%s = %s
+%s = {}
+for a in %s:
+    %s[a] = %i
+cc = 0
+for k in %s.keys():
+    cc = cc + 1
+print(cc)
+]]
+    local task = h.f(task0, lname, h.list2py(ll),
+        dname, lname, dname, dvalue, dname)
+    return
+    task,
+    h.f("%i", cc),
+    h.f("%i", cc_fake),
+    h.f("%i", cc_fake2),
+    h.f("%i", cc_fake3),
+    h.task(req)
+end
+
+function dict_file.list_as_keys3(req)
+    local ll = {}
+    local dd = {}
+    local n = rr(5, 8)
+    local cc_fake3 = 0
+    local cc = 0
+    for i = 1, n do
+        local v = rr(2, n)
+        table.insert(ll, v)
+        dd[v] = true
+        cc_fake3 = cc_fake3 + v
+        cc = cc + 1
+    end
+    local cc_fake = 0
+    local cc_fake2 = 0
+    for v, _ in pairs(dd) do
+        cc_fake = cc_fake + 1
+        cc_fake2 = cc_fake2 + v
+    end
+    local lname = 'l' .. rr(1, 3)
+    local dname = 'd' .. rr(2, 4)
+    local dvalue = 100
+    local task0 = [[
+%s = %s
+%s = {}
+for a in %s:
+    %s[a] = %i
+cc = 0
+for k in %s:
+    cc = cc + 1
+print(cc)
+]]
+    local task = h.f(task0, lname, h.list2py(ll),
+        dname, lname, dname, dvalue, lname)
+    return
+    task,
+    h.f("%i", cc),
+    h.f("%i", cc_fake),
+    h.f("%i", cc_fake2),
+    h.f("%i", cc_fake3),
+    h.task(req)
+end
+
+function dict_file.list_as_keys4(req)
+    local ll = {}
+    local dd = {}
+    local n = rr(5, 8)
+    local cc_fake3 = 0
+    local cc = 0
+    for i = 1, n do
+        local v = rr(2, n)
+        table.insert(ll, v)
+        dd[v] = true
+        cc_fake3 = cc_fake3 + 1
+        cc = cc + v
+    end
+    local cc_fake = 0
+    local cc_fake2 = 0
+    for v, _ in pairs(dd) do
+        cc_fake = cc_fake + 1
+        cc_fake2 = cc_fake2 + v
+    end
+    local lname = 'l' .. rr(1, 3)
+    local dname = 'd' .. rr(2, 4)
+    local dvalue = 100
+    local task0 = [[
+%s = %s
+%s = {}
+for a in %s:
+    %s[a] = %i
+cc = 0
+for k in %s:
+    cc = cc + k
+print(cc)
+]]
+    local task = h.f(task0, lname, h.list2py(ll),
+        dname, lname, dname, dvalue, lname)
+    return
+    task,
+    h.f("%i", cc),
+    h.f("%i", cc_fake),
+    h.f("%i", cc_fake2),
+    h.f("%i", cc_fake3),
+    h.task(req)
+end
+
 return dict_file
 
