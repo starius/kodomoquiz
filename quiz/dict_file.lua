@@ -315,8 +315,24 @@ function dict_file.slice1(req)
     h.f("'%s'", text:sub(start, stop)),
     h.f("'%s'", text:sub(start, stop + 1)),
     h.f("'%s'", text:sub(start - 1, stop - 1)),
-    h.f("'%s'", text:sub(start - 1, stop)),
+    h.f("'%s'", text:sub(start - 1, stop - 1 + 1)),
     h.task(req)
+end
+
+function dict_file.slice_rev(req)
+    local n = rr(8, 12)
+    local text = h.shortrand(n)
+    local start = rr(2, 4)
+    local stop = rr(n - 5, n - 3)
+    local pystart = start - 1
+    local pystop = stop - 1 + 1
+    return
+    h.f("'%s'", text:sub(start, stop)),
+    index_task(text, pystart .. ':' .. pystop),
+    index_task(text, pystart .. ':' .. pystop - 1),
+    index_task(text, pystart + 1 .. ':' .. pystop + 1),
+    index_task(text, pystart + 1 .. ':' .. pystop + 1 - 1),
+    h.task2(req)
 end
 
 return dict_file
