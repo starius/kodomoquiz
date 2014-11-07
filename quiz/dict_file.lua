@@ -102,5 +102,27 @@ function dict_file.dict_set_fake(req)
     h.task(req)
 end
 
+function dict_file.dict_set_fake2(req)
+    local task = [[>>> d = {1: 2, 2: 3, 3: 4, 4: 5}
+    >>> d['%i'] = d[%i] * 100
+    >>> a = d[%i]
+    >>> print(a)
+    ]]
+    local i0 = rr(1, 3)
+    local v0 = i0 + 1
+    local i1 = rr(1, 3)
+    local v1 = i1 + 1
+    local fake = v0 * 100
+    local result = v1
+    local fake2 = 0
+    return
+    h.f(task, i1, i0, i1),
+    h.f("%i", result),
+    h.f("%i", fake),
+    h.f("%i", fake2),
+    'Error',
+    h.task(req)
+end
+
 return dict_file
 
