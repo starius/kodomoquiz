@@ -28,8 +28,13 @@ h.unpack = unpack or table.unpack
 h.shortrand = function()
     local t = {}
     local l = math.random(3, 7)
+    local used = {}
     for i = 1, l do
-        table.insert(t, math.random(65, 90)) -- A-Z
+        local v
+        while not v or used[v] do
+            v = math.random(65, 90) -- A-Z
+        end
+        table.insert(t, v)
     end
     return string.char(h.unpack(t))
 end
