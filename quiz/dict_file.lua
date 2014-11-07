@@ -296,5 +296,28 @@ print(cc)
     h.task(req)
 end
 
+local index_task = function(text, index)
+    local sname = 's' .. rr(1, 9)
+    return h.f([[>>> %s = "%s"
+            >>> %s[%s] ]],
+            sname, text, sname, index)
+end
+
+function dict_file.slice1(req)
+    local n = rr(8, 12)
+    local text = h.shortrand(n)
+    local start = rr(2, 4)
+    local stop = rr(n - 5, n - 3)
+    local pystart = start - 1
+    local pystop = stop - 1 + 1
+    return
+    index_task(text, pystart .. ':' .. pystop),
+    h.f("'%s'", text:sub(start, stop)),
+    h.f("'%s'", text:sub(start, stop + 1)),
+    h.f("'%s'", text:sub(start - 1, stop - 1)),
+    h.f("'%s'", text:sub(start - 1, stop)),
+    h.task(req)
+end
+
 return dict_file
 
