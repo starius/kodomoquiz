@@ -23,7 +23,11 @@ class PrepKr extends Widget
     for stud in *kurs1.excel_list
       quiz = name2quiz[stud]
       if not quiz
-        quiz = {user: stud, all_tasks: -> {}}
+        quiz = {user: stud,
+          all_tasks: ->
+            {},
+          color: ->
+            'white'}
       table.insert(quizs, quiz)
     @detailed_results(q, quizs)
 
