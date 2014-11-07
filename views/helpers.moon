@@ -128,18 +128,16 @@ class Helpers
           for task_name, func in pairs(q) do
             task = name2task[task_name]
             color = 'white'
-            t = ''
-            if task and task.selected == 1
-              color = 'green'
-              t = '1'
-              if not name2score[task_name]
-                name2score[task_name] = 0
-              name2score[task_name] = name2score[task_name] + 1
-            if task and task.selected > 1
-              color = 'red'
-              t = '0'
+            score = ''
+            if task
+              color = task\color!
+              score = task\score!
+              if task.selected == 1
+                if not name2score[task_name]
+                  name2score[task_name] = 0
+                name2score[task_name] = name2score[task_name] + 1
             element 'td', bgcolor: color, ->
-              text t
+              text score
       element 'tr', ->
         element 'td' -- id
         element 'td' --, -> text @_("user")

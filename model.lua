@@ -62,7 +62,27 @@ model.Task = Model:extend("task", {
 
     ans = function(self, i)
         return self['a' .. self:ans_i(i)]
-    end
+    end,
+
+    score = function(self)
+        local t = ''
+        if self.selected == 1 then
+            t = '1'
+        elseif self.selected > 1 then
+            t = '0'
+        end
+        return t
+    end,
+
+    color = function(self)
+        local t = 'white'
+        if self.selected == 1 then
+            t = 'green'
+        elseif self.selected > 1 then
+            t = 'red'
+        end
+        return t
+    end,
 })
 
 model.Quiz = Model:extend("quiz", {
