@@ -110,9 +110,9 @@ class Helpers
       name2score = {}
       for quiz in *quizs
         color = 'white'
-        if quiz.tasks and quiz.right_answers == quiz.tasks
+        if quiz.tasks and quiz.right_answers >= quiz.tasks * 0.9
           color = 'green'
-        if quiz.tasks and quiz.right_answers < quiz.tasks
+        if quiz.tasks and quiz.right_answers < quiz.tasks * 0.9
           color = 'red'
         element 'tr', ->
           element 'td', ->
