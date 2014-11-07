@@ -138,5 +138,16 @@ h.copy_list = function(ll)
     return ll2
 end
 
+h.dict2py = function(ll)
+    local ll2 = {}
+    for k, v in pairs(ll) do
+        local k1 = h.value2py(k)
+        local v1 = h.value2py(v)
+        local kv1 = string.format('%s: %s', k1, v1)
+        table.insert(ll2, kv1)
+    end
+    return string.format('{%s}', table.concat(ll2, ', '))
+end
+
 return h
 
