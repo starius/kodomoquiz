@@ -109,11 +109,6 @@ class Helpers
       print_header!
       name2score = {}
       for quiz in *quizs
-        color = 'white'
-        if quiz.tasks and quiz.right_answers >= quiz.tasks * 0.9
-          color = 'green'
-        if quiz.tasks and quiz.right_answers < quiz.tasks * 0.9
-          color = 'red'
         element 'tr', ->
           element 'td', ->
             a href: @url_for("prep-quiz", {id: quiz.id}), ->
@@ -122,9 +117,9 @@ class Helpers
             url = @url_for("prep-quizs-of", {user: quiz.user})
             a href: url, ->
               text quiz.user
-          element 'td', bgcolor: color, ->
+          element 'td', bgcolor: quiz\color!, ->
             text quiz.right_answers
-          element 'td', bgcolor: color, ->
+          element 'td', bgcolor: quiz\color!, ->
             text quiz.tasks
           tasks = quiz\all_tasks!
           name2task = {}

@@ -104,7 +104,19 @@ model.Quiz = Model:extend("quiz", {
     all_tasks = function(self)
         return model.Task:select(
             "where quiz_id = ? order by id", self.id)
-    end
+    end,
+
+    color = function(self)
+        local c = 'white'
+        if self.tasks then
+            if self.right_answers >= self.tasks * 0.9 then
+                c = 'green'
+            else
+                c = 'red'
+            end
+        end
+        return c
+    end,
 })
 
 local table_size = function(t)
