@@ -119,7 +119,7 @@ class Helpers
               text quiz.user
           element 'td', bgcolor: quiz\color!, ->
             text quiz.right_answers
-          element 'td', bgcolor: quiz\color!, ->
+          element 'td', ->
             text quiz.tasks
           tasks = quiz\all_tasks!
           name2task = {}

@@ -40,6 +40,6 @@ class PrepQuizs extends Widget
           element 'td', -> text msk_time(quiz.updated_at)
           element 'td', bgcolor: quiz\color!, ->
             text quiz.right_answers
-          element 'td', bgcolor: quiz\color!, ->
+          element 'td', ->
             text quiz.tasks
 
