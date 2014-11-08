@@ -373,5 +373,72 @@ function dict_file.slice_list(req)
     h.task(req)
 end
 
+function dict_file.open_file_r(req)
+    return
+    '',
+    "aaa = open('my.txt', 'r')",
+    "aaa = open('my.txt', 'w')",
+    "aaa = open(my.txt, r)",
+    "aaa = open(my.txt, w)",
+    _([[How to open file aaa.txt for reading?]], req)
+end
+
+function dict_file.open_file_w(req)
+    return
+    '',
+    "aaa = open('my.txt', 'w')",
+    "aaa = open('my.txt', 'r')",
+    "aaa = open(my.txt, r)",
+    "aaa = open(my.txt, w)",
+    _([[How to open file aaa.txt for writing?]], req)
+end
+
+function dict_file.file_to_list(req)
+    return
+    '',
+    "lines = list(file)",
+    "lines = file(file)",
+    "lines = read(file)",
+    "lines = file.read()",
+    _([[How to get list of all lines of file
+        (variable aaa)?]], req)
+end
+
+function dict_file.write_int(req)
+    return
+    h.f([[>>> age = raw_input('Enter your age: ')
+    >>> age5 = age + 5
+    >>> f = open('out.txt')
+    >>> f.write('Your age in 5 years is ')
+    ]]),
+    h.f([[
+    >>> f.write(str(age5))
+    >>> f.close()
+    ]]),
+    h.f([[
+    >>> f.write([age5])
+    >>> f.close()
+    ]]),
+    h.f([[
+    >>> f.write(age5)
+    >>> f.close()
+    ]]),
+    h.f([[
+    >>> f.write([str(age5)])
+    >>> f.close()
+    ]]),
+    _([[Complete the script (write result to the file)]], req)
+end
+
+function dict_file.close_file(req)
+    return
+    '',
+    '>>> myfile.close()',
+    '>>> myfile.close',
+    '>>> close(myfile)',
+    '>>> close myfile',
+    _([[How to close file (variable myfile)?]], req)
+end
+
 return dict_file
 
