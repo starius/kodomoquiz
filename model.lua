@@ -161,8 +161,8 @@ function model.new_quiz(req)
     local user = req.session.user
     local quiz_name = req.req.params_post.name
     local q = quizs[quiz_name]
-    if not q then
-        error(req:_("No such quiz found"))
+    if not q or type(q) ~= 'table' then
+        error("No such quiz found")
     end
     local ip = req.req.headers['X-Forwarded-For'] or '0.0.0.0'
     local ua = req.req.headers['User-Agent']
