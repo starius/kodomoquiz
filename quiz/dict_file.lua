@@ -298,7 +298,7 @@ end
 
 local index_task = function(text, index)
     local sname = 's' .. rr(1, 9)
-    return h.f([[>>> %s = "%s"
+    return h.f([[>>> %s = %s
             >>> %s[%s] ]],
             sname, text, sname, index)
 end
@@ -311,7 +311,7 @@ function dict_file.slice1(req)
     local pystart = start - 1
     local pystop = stop - 1 + 1
     return
-    index_task(text, pystart .. ':' .. pystop),
+    index_task(h.f('"%s"', text), pystart .. ':' .. pystop),
     h.f("'%s'", text:sub(start, stop)),
     h.f("'%s'", text:sub(start, stop + 1)),
     h.f("'%s'", text:sub(start - 1, stop - 1)),
@@ -326,12 +326,13 @@ function dict_file.slice_rev(req)
     local stop = rr(n - 5, n - 3)
     local pystart = start - 1
     local pystop = stop - 1 + 1
+    local textq = h.f("'%s'", text)
     return
     h.f("'%s'", text:sub(start, stop)),
-    index_task(text, pystart .. ':' .. pystop),
-    index_task(text, pystart .. ':' .. pystop - 1),
-    index_task(text, pystart + 1 .. ':' .. pystop + 1),
-    index_task(text, pystart + 1 .. ':' .. pystop + 1 - 1),
+    index_task(textq, pystart .. ':' .. pystop),
+    index_task(textq, pystart .. ':' .. pystop - 1),
+    index_task(textq, pystart + 1 .. ':' .. pystop + 1),
+    index_task(textq, pystart + 1 .. ':' .. pystop + 1 - 1),
     h.task2(req)
 end
 
