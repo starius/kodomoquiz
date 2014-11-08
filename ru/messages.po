@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-01 17:42+0300\n"
+"POT-Creation-Date: 2014-11-08 23:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +26,7 @@ msgid " in your <b>public_html</b>"
 msgstr " в вашей папке <b>public_html</b>"
 
 #: views/all-tests.lua:26 views/all-tests.lua:27 views/all-tests.lua:28
+#: views/all-tests.lua:32
 msgid "(today)"
 msgstr "(сегодня)"
 
@@ -33,7 +34,7 @@ msgstr "(сегодня)"
 msgid "All quizes"
 msgstr "Все тесты"
 
-#: views/prep-quizs-name.lua:19
+#: views/prep-quizs-name.lua:19 views/prep-quizs-name.lua:20
 msgid "All quizes "
 msgstr "Все тесты"
 
@@ -41,7 +42,7 @@ msgstr "Все тесты"
 msgid "All quizes of "
 msgstr "Все тесты участника "
 
-#: views/helpers.lua:126 views/helpers.lua:130
+#: views/helpers.lua:126 views/helpers.lua:130 views/helpers.lua:136
 msgid "All tasks at one page"
 msgstr "Все задания на одной странице"
 
@@ -61,26 +62,35 @@ msgstr "Не могу найти тест"
 msgid "Can't find this task"
 msgstr "Не могу найти задание"
 
-#: views/helpers.lua:71 views/helpers.lua:68
+#: views/helpers.lua:71 views/helpers.lua:68 views/helpers.lua:66
 msgid "Cancel quiz"
 msgstr "Отменить тест"
 
-#: views/helpers.lua:59 views/helpers.lua:56
+#: quiz/dict_file.lua:430
+msgid "Complete the script (write result to the file)"
+msgstr ""
+
+#: views/helpers.lua:59 views/helpers.lua:56 views/helpers.lua:74
 msgid "Dangerous zone"
 msgstr "Осторожно, не нажмите на эту кнопку по ошибке vv"
 
 #: views/quiz-final-check.lua:31 views/quiz-final-check.lua:32
-#: views/helpers.lua:196
+#: views/helpers.lua:196 views/helpers.lua:202
 msgid "Finish this quiz"
 msgstr "Завершить этот тест"
 
 #: views/all-tests.lua:20 views/all-tests.lua:21 views/all-tests.lua:22
+#: views/all-tests.lua:26
 msgid "Finished quizes"
 msgstr "Завершенные тесты"
 
-#: views/quiz-results.lua:28
+#: views/quiz-results.lua:28 views/kr-results.lua:28
 msgid "Go through this test again:"
 msgstr "Пройдите этот тест ещё раз:"
+
+#: quiz/dict_file.lua:440
+msgid "How to close file (variable myfile)?"
+msgstr ""
 
 #: quiz/hello.lua:96 quiz/hello.lua:105 quiz/hello.lua:106 quiz/hello.lua:162
 #: quiz/hello.lua:139
@@ -89,9 +99,23 @@ msgid ""
 "        from command line?"
 msgstr "Как выполнить скрипт Python с командной строки?"
 
+#: quiz/dict_file.lua:403
+msgid ""
+"How to get list of all lines of file\n"
+"        (variable aaa)?"
+msgstr ""
+
 #: quiz/hello.lua:126 quiz/hello.lua:127 quiz/hello.lua:183 quiz/hello.lua:160
 msgid "How to interrupt interactive Python session?"
 msgstr "Как прервать интерактивную сессию Python?"
+
+#: quiz/dict_file.lua:383
+msgid "How to open file aaa.txt for reading?"
+msgstr ""
+
+#: quiz/dict_file.lua:393
+msgid "How to open file aaa.txt for writing?"
+msgstr ""
 
 #: quiz/hello.lua:136 quiz/hello.lua:137 quiz/hello.lua:193 quiz/hello.lua:170
 msgid ""
@@ -141,10 +165,11 @@ msgid "Main page"
 msgstr "Главная страница"
 
 #: model.lua:129 model.lua:132 model.lua:133 views/prep-quizs-name.lua:16
+#: model.lua:165 views/prep-kr.lua:18 views/prep-quizs-name.lua:17
 msgid "No such quiz found"
 msgstr "Такого теста нет"
 
-#: views/helpers.lua:145 views/helpers.lua:149
+#: views/helpers.lua:145 views/helpers.lua:149 views/helpers.lua:155
 msgid "One task at one page"
 msgstr "Одно задание на одной странице"
 
@@ -152,7 +177,7 @@ msgstr "Одно задание на одной странице"
 msgid "Only preps can see this page"
 msgstr "Эта страница только для преподавателей"
 
-#: views/quiz-results.lua:21
+#: views/quiz-results.lua:21 views/kr-results.lua:21
 msgid "Other quizes by "
 msgstr "Остальные тесты участника "
 
@@ -166,10 +191,11 @@ msgid "Please, create file "
 msgstr "Пожалуйста, создайте файл "
 
 #: views/quiz-final-check.lua:12 views/quiz-results.lua:12 views/task.lua:12
+#: views/kr-results.lua:12
 msgid "Quiz "
 msgstr "Тест "
 
-#: views/helpers.lua:203
+#: views/helpers.lua:203 views/helpers.lua:209
 msgid ""
 "Quiz is not finished untill\n"
 "          you press the button"
@@ -190,10 +216,11 @@ msgid "Set aside this task"
 msgstr "Отложить эту задачу"
 
 #: views/all-tests.lua:29 views/all-tests.lua:30 views/all-tests.lua:31
+#: views/all-tests.lua:52
 msgid "Start new quiz:"
 msgstr "Начать новый тест:"
 
-#: views/quiz-results.lua:13
+#: views/quiz-results.lua:13 views/kr-results.lua:13
 msgid "Student "
 msgstr "Учащийся "
 
@@ -248,12 +275,12 @@ msgid "Which Python code produces this output?"
 msgstr "Какой код на Python приведёт к такому результату?"
 
 #: views/all-tests.lua:64 views/all-tests.lua:66 views/all-tests.lua:73
-#: views/all-tests.lua:80 views/all-tests.lua:62
+#: views/all-tests.lua:80 views/all-tests.lua:62 views/all-tests.lua:84
 msgid "Your active quizes:"
 msgstr "Ваши активные тесты:"
 
 #: views/all-tests.lua:65 views/all-tests.lua:67 views/all-tests.lua:74
-#: views/all-tests.lua:81 views/all-tests.lua:63
+#: views/all-tests.lua:81 views/all-tests.lua:63 views/all-tests.lua:85
 msgid "Your finished quizes:"
 msgstr "Ваши завершенные тесты:"
 
@@ -273,12 +300,20 @@ msgstr "завершено"
 msgid "guest login"
 msgstr "гостевой вход"
 
+#: views/all-tests.lua:40
+msgid "kr1"
+msgstr ""
+
+#: views/all-tests.lua:49
+msgid "kr2"
+msgstr ""
+
 #: views/prep-quizs.lua:24 views/prep-quizs.lua:29 views/prep-quizs.lua:30
 msgid "quiz"
 msgstr "тест"
 
 #: views/prep-quizs.lua:39 views/prep-quizs.lua:41 views/prep-quizs.lua:42
-#: views/prep-quizs-name.lua:28
+#: views/prep-quizs-name.lua:28 views/helpers.lua:225
 msgid "right answers"
 msgstr "правильные ответы"
 
@@ -287,11 +322,11 @@ msgid "started"
 msgstr "начато"
 
 #: views/prep-quizs.lua:36 views/prep-quizs.lua:44 views/prep-quizs.lua:45
-#: views/prep-quizs-name.lua:31
+#: views/prep-quizs-name.lua:31 views/helpers.lua:228
 msgid "tasks"
 msgstr "заданий"
 
 #: views/prep-quizs.lua:27 views/prep-quizs.lua:32 views/prep-quizs.lua:33
-#: views/prep-quizs-name.lua:25
+#: views/prep-quizs-name.lua:25 views/helpers.lua:222
 msgid "user"
 msgstr "пользователь"
