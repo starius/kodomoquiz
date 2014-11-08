@@ -472,5 +472,21 @@ function dict_file.close_file(req)
     _([[How to close file (variable myfile)?]], req)
 end
 
+function dict_file.list_len(req)
+    local n = rr(2, 4)
+    local ll = {}
+    for i = 0, n do
+        table.insert(ll, i)
+    end
+    local fake = (rr(1, 2) == 1) and (n - 1) or (n + 2)
+    return
+    h.f('>>> len(%s)', h.list2py(ll)),
+    h.f('%i', n + 1),
+    h.f('%i', n),
+    h.f('%i', fake),
+    'Error',
+    h.task(req)
+end
+
 return dict_file
 
