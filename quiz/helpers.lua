@@ -157,5 +157,18 @@ h.dict2py = function(ll)
     return string.format('{%s}', table.concat(ll2, ', '))
 end
 
+h.make_group = function(dst, src)
+    return function(...)
+        local orig_names = {...}
+        local name = orig_names[1]
+        local orig_funcs = {}
+        for _, orig_name in ipairs(orig_names) do
+            table.insert(orig_funcs, src[orig_name])
+        end
+        assert(#orig_funcs >= 1)
+        dst[name] = h.one_of_getter(h.unpack(orig_funcs))
+    end
+end
+
 return h
 
