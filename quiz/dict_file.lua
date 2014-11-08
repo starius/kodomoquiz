@@ -130,7 +130,7 @@ function dict_file.list_as_keys(req)
     local cc_fake3 = 0
     local cc_fake2 = 0
     for i = 1, n do
-        local v = rr(2, n)
+        local v = rr(2, n) + n
         table.insert(ll, v)
         dd[v] = true
         cc_fake3 = cc_fake3 + v
@@ -173,7 +173,7 @@ function dict_file.list_as_keys2(req)
     local cc_fake3 = 0
     local cc_fake2 = 0
     for i = 1, n do
-        local v = rr(2, n)
+        local v = rr(2, n) + n
         table.insert(ll, v)
         dd[v] = true
         cc_fake3 = cc_fake3 + v
@@ -216,7 +216,7 @@ function dict_file.list_as_keys3(req)
     local cc_fake3 = 0
     local cc = 0
     for i = 1, n do
-        local v = rr(2, n)
+        local v = rr(2, n) + n
         table.insert(ll, v)
         dd[v] = true
         cc_fake3 = cc_fake3 + v
@@ -259,7 +259,7 @@ function dict_file.list_as_keys4(req)
     local cc_fake3 = 0
     local cc = 0
     for i = 1, n do
-        local v = rr(2, n)
+        local v = rr(2, n) + n
         table.insert(ll, v)
         dd[v] = true
         cc_fake3 = cc_fake3 + 1
@@ -306,7 +306,7 @@ function dict_file.slice1(req)
     local n = rr(8, 12)
     local text = h.shortrand(n)
     local start = rr(2, 4)
-    local stop = rr(n - 5, n - 3)
+    local stop = rr(start + 1, n - 1)
     local pystart = start - 1
     local pystop = stop - 1 + 1
     return
@@ -322,7 +322,7 @@ function dict_file.slice_rev(req)
     local n = rr(8, 12)
     local text = h.shortrand(n)
     local start = rr(2, 4)
-    local stop = rr(n - 5, n - 3)
+    local stop = rr(start + 1, n - 1)
     local pystart = start - 1
     local pystop = stop - 1 + 1
     local textq = h.f("'%s'", text)
@@ -338,7 +338,7 @@ end
 function dict_file.slice_list(req)
     local n = rr(8, 12)
     local start = rr(2, 4)
-    local stop = rr(n - 5, n - 3)
+    local stop = rr(start + 1, n - 1)
     local pystart = start - 1
     local pystop = stop - 1 + 1
     local ll = {}
