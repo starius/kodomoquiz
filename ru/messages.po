@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-08 23:22+0300\n"
+"POT-Creation-Date: 2014-11-08 23:24+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgstr "Отменить тест"
 
 #: quiz/dict_file.lua:430
 msgid "Complete the script (write result to the file)"
-msgstr ""
+msgstr "Завершите скрипт (запишите результат в файл)"
 
 #: views/helpers.lua:59 views/helpers.lua:56 views/helpers.lua:74
 msgid "Dangerous zone"
@@ -90,7 +90,7 @@ msgstr "Пройдите этот тест ещё раз:"
 
 #: quiz/dict_file.lua:440
 msgid "How to close file (variable myfile)?"
-msgstr ""
+msgstr "Как закрыть файл (переменная myfile)?"
 
 #: quiz/hello.lua:96 quiz/hello.lua:105 quiz/hello.lua:106 quiz/hello.lua:162
 #: quiz/hello.lua:139
@@ -103,7 +103,7 @@ msgstr "Как выполнить скрипт Python с командной ст
 msgid ""
 "How to get list of all lines of file\n"
 "        (variable aaa)?"
-msgstr ""
+msgstr "Как получить список строк файла (переменная aaa)?"
 
 #: quiz/hello.lua:126 quiz/hello.lua:127 quiz/hello.lua:183 quiz/hello.lua:160
 msgid "How to interrupt interactive Python session?"
@@ -111,11 +111,11 @@ msgstr "Как прервать интерактивную сессию Python?"
 
 #: quiz/dict_file.lua:383
 msgid "How to open file aaa.txt for reading?"
-msgstr ""
+msgstr "Как открыть файл aaa.txt на чтение?"
 
 #: quiz/dict_file.lua:393
 msgid "How to open file aaa.txt for writing?"
-msgstr ""
+msgstr "Как открыть файл aaa.txt на запись?"
 
 #: quiz/hello.lua:136 quiz/hello.lua:137 quiz/hello.lua:193 quiz/hello.lua:170
 msgid ""
