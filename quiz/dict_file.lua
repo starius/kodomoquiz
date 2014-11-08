@@ -336,5 +336,42 @@ function dict_file.slice_rev(req)
     h.task2(req)
 end
 
+function dict_file.slice_list(req)
+    local n = rr(8, 12)
+    local start = rr(2, 4)
+    local stop = rr(n - 5, n - 3)
+    local pystart = start - 1
+    local pystop = stop - 1 + 1
+    local ll = {}
+    local slice = {}
+    local fake1 = {}
+    local fake2 = {}
+    local fake3 = {}
+    local initv = rr(10, 20)
+    for i = 1, n do
+        local v = initv - i
+        table.insert(ll, v)
+        if i >= start and i <= stop then
+            table.insert(slice, v)
+        end
+        if i >= start and i <= stop + 1 then
+            table.insert(fake1, v)
+        end
+        if i >= start - 1 and i <= stop - 1 then
+            table.insert(fake2, v)
+        end
+        if i >= start - 1 and i <= stop - 1 + 1 then
+            table.insert(fake3, v)
+        end
+    end
+    return
+    index_task(h.list2py(ll), pystart .. ':' .. pystop),
+    h.list2py(slice),
+    h.list2py(fake1),
+    h.list2py(fake2),
+    h.list2py(fake3),
+    h.task(req)
+end
+
 return dict_file
 
