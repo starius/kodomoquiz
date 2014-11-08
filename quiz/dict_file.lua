@@ -372,6 +372,39 @@ function dict_file.slice_list(req)
     h.task(req)
 end
 
+function dict_file.slice_list_to_end(req)
+    local n = rr(6, 8)
+    local start = rr(2, 4)
+    local pystart = start - 1
+    local ll = {}
+    local slice = {}
+    local fake_list1 = {}
+    local fake_list2 = {}
+    local fake3
+    local initv = rr(10, 20)
+    for i = 1, n do
+        local v = initv - i
+        table.insert(ll, v)
+        if i >= start then
+            table.insert(slice, v)
+        end
+        if i <= start then
+            table.insert(fake_list1, v)
+        end
+        if i == start then
+            table.insert(fake_list2, v)
+            fake3 = v
+        end
+    end
+    return
+    index_task(h.list2py(ll), pystart .. ':'),
+    h.list2py(slice),
+    h.list2py(fake_list1),
+    h.list2py(fake_list2),
+    h.f('%i', fake3),
+    h.task(req)
+end
+
 function dict_file.open_file_r(req)
     return
     '',
