@@ -31,14 +31,12 @@ function dict_file.dict_get_fake(req)
     ]]
     local val = rr(1, 3)
     local result = val + 1
-    local fake = val + 2
-    local for_str = (rr(1, 2) == 1) and result or fake
     return
     h.f(task, val),
     'Error',
     h.f("%i", result),
-    h.f("%i", fake),
-    h.f("'%i'", for_str),
+    '0',
+    'None',
     h.task(req)
 end
 
