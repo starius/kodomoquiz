@@ -376,37 +376,37 @@ end
 function dict_file.open_file_r(req)
     return
     '',
-    "aaa = open('my.txt', 'r')",
-    "aaa = open('my.txt', 'w')",
-    "aaa = open(my.txt, r)",
-    "aaa = open(my.txt, w)",
+    "aaa = open('aaa.txt', 'r')",
+    "aaa = open('aaa.txt', 'w')",
+    "aaa = open(aaa.txt, r)",
+    "aaa = open(aaa.txt, w)",
     _([[How to open file aaa.txt for reading?]], req)
 end
 
 function dict_file.open_file_w(req)
     return
     '',
-    "aaa = open('my.txt', 'w')",
-    "aaa = open('my.txt', 'r')",
-    "aaa = open(my.txt, r)",
-    "aaa = open(my.txt, w)",
+    "aaa = open('aaa.txt', 'w')",
+    "aaa = open('aaa.txt', 'r')",
+    "aaa = open(aaa.txt, r)",
+    "aaa = open(aaa.txt, w)",
     _([[How to open file aaa.txt for writing?]], req)
 end
 
 function dict_file.file_to_list(req)
     return
     '',
-    "lines = list(file)",
-    "lines = file(file)",
-    "lines = read(file)",
-    "lines = file.read()",
+    "lines = list(aaa)",
+    "lines = file(aaa)",
+    "lines = read(aaa)",
+    "lines = aaa.read()",
     _([[How to get list of all lines of file
         (variable aaa)?]], req)
 end
 
 function dict_file.write_int(req)
     return
-    h.f([[>>> age = raw_input('Enter your age: ')
+    h.f([[>>> age = int(raw_input('Enter your age: '))
     >>> age5 = age + 5
     >>> f = open('out.txt')
     >>> f.write('Your age in 5 years is ')
