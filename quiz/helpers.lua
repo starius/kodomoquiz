@@ -36,6 +36,7 @@ h.shortrand = function(l)
         while not v or used[v] do
             v = math.random(65, 90) -- A-Z
         end
+        used[v] = true
         table.insert(t, v)
     end
     return string.char(h.unpack(t))
