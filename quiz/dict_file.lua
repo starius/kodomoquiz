@@ -4,6 +4,7 @@ math.randomseed(os.time())
 
 local h = require('quiz.helpers')
 local rr = h.rr
+local _ = h._
 
 local dict_file = {}
 
