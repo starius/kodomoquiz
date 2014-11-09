@@ -1,7 +1,7 @@
 local schema = require("lapis.db.schema")
 local Model = require("lapis.db.model").Model
 
-local quizs = require('quiz.all')
+local quizs = require('quiz.all').available
 local shuffle = require('quiz.helpers').shuffle
 
 local model = {}

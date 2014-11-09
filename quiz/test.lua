@@ -1,4 +1,4 @@
-local all = require('quiz.all')
+local all = require('quiz.all').all
 local all_different = require('quiz.helpers').all_different
 local has_nil = require('quiz.helpers').has_nil
 

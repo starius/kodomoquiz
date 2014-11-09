@@ -2,6 +2,8 @@ import Widget from require "lapis.html"
 
 Helpers = require('views.helpers')
 
+quizs = require('quiz.all').available
+
 class QuizResults extends Widget
   @include Helpers
 
@@ -13,12 +15,13 @@ class QuizResults extends Widget
       a href: url, ->
         text @_("Other quizes by ") .. @quiz.user
     h2 @quiz.right_answers .. ' / ' .. @quiz.tasks
-    element 'table', ->
-      element 'tr', ->
-        element 'td', ->
-          text @_('Go through this test again:')
-        element 'td', ->
-          @new_test_button @quiz.name
+    if quizs[@quiz.name]
+      element 'table', ->
+        element 'tr', ->
+          element 'td', ->
+            text @_('Go through this test again:')
+          element 'td', ->
+            @new_test_button @quiz.name
     raw '<br/>'
     for task in *(@quiz\all_tasks!)
       @task_table task

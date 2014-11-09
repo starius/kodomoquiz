@@ -1,7 +1,7 @@
 import Widget from require "lapis.html"
 
-quizs = {'dict_file_short', 'dict_file',
-    'if_list_for_range', 'hello'}
+quizs = require('quiz.all').available
+
 model = require('model')
 msk_time = require "msk_time"
 
@@ -28,7 +28,11 @@ class AllTests extends Widget
           text @_("kr2")
       p @_("Start new quiz:")
       element 'table', -> element 'tr', ->
-        for name in *quizs
+        names = {}
+        for name, _ in pairs(quizs)
+          table.insert(names, name)
+        table.sort(names)
+        for name in *names
           element 'td', ->
             @new_test_button name
       my_quizs = (text, state) ->
