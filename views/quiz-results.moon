@@ -15,6 +15,7 @@ class QuizResults extends Widget
       a href: url, ->
         text @_("Other quizes by ") .. @quiz.user
     h2 @quiz.right_answers .. ' / ' .. @quiz.tasks
+    h2 @quiz.created_at .. ' - ' .. @quiz.updated_at
     if quizs[@quiz.name]
       element 'table', ->
         element 'tr', ->
