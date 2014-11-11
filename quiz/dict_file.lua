@@ -9,8 +9,8 @@ local _ = h._
 local dict_file = {}
 
 function dict_file.dict_get(req)
-    local task = [[>>> d = {1: 2, 2: 3, 3: 4, 4: 5}
-    >>> d[%i]
+    local task = [[>>> mydict = {1: 2, 2: 3, 3: 4, 4: 5}
+    >>> mydict[%i]
     ]]
     local val = rr(1, 3)
     local result = val + 1
@@ -26,8 +26,8 @@ function dict_file.dict_get(req)
 end
 
 function dict_file.dict_get_fake(req)
-    local task = [[>>> d = {1: 2, 2: 3, 3: 4, 4: 5}
-    >>> d["%i"]
+    local task = [[>>> mydict = {1: 2, 2: 3, 3: 4, 4: 5}
+    >>> mydict["%i"]
     ]]
     local val = rr(1, 3)
     local result = val + 1
@@ -41,8 +41,8 @@ function dict_file.dict_get_fake(req)
 end
 
 function dict_file.dict_get_fake2(req)
-    local task = [[>>> d = {1: 2, 2: 3, 3: 4, 4: 5}
-    >>> d[0]
+    local task = [[>>> mydict = {1: 2, 2: 3, 3: 4, 4: 5}
+    >>> mydict[0]
     ]]
     local val = rr(1, 3)
     local result = val + 1
@@ -58,9 +58,9 @@ function dict_file.dict_get_fake2(req)
 end
 
 function dict_file.dict_set(req)
-    local task = [[>>> d = {1: 2, 2: 3, 3: 4, 4: 5}
-    >>> d[%i] = d[%i] * 100
-    >>> a = d[%i]
+    local task = [[>>> mydict = {1: 2, 2: 3, 3: 4, 4: 5}
+    >>> mydict[%i] = mydict[%i] * 100
+    >>> a = mydict[%i]
     >>> print(a)
     ]]
     local i0 = rr(1, 3)
@@ -80,9 +80,9 @@ function dict_file.dict_set(req)
 end
 
 function dict_file.dict_set_fake(req)
-    local task = [[>>> d = {1: 2, 2: 3, 3: 4, 4: 5}
-    >>> d[%i] = d[%i] * 100
-    >>> a = d[%i]
+    local task = [[>>> mydict = {1: 2, 2: 3, 3: 4, 4: 5}
+    >>> mydict[%i] = mydict[%i] * 100
+    >>> a = mydict[%i]
     >>> print(a)
     ]]
     local i0 = 0
@@ -102,9 +102,9 @@ function dict_file.dict_set_fake(req)
 end
 
 function dict_file.dict_set_fake2(req)
-    local task = [[>>> d = {1: 2, 2: 3, 3: 4, 4: 5}
-    >>> d['%i'] = d[%i] * 100
-    >>> a = d[%i]
+    local task = [[>>> mydict = {1: 2, 2: 3, 3: 4, 4: 5}
+    >>> mydict['%i'] = mydict[%i] * 100
+    >>> a = mydict[%i]
     >>> print(a)
     ]]
     local i0 = rr(1, 3)
@@ -142,8 +142,8 @@ function dict_file.list_as_keys(req)
         cc = cc + v
         cc_fake = cc_fake + 1
     end
-    local lname = 'l' .. rr(1, 3)
-    local dname = 'd' .. rr(2, 4)
+    local lname = 'list' .. rr(1, 3)
+    local dname = 'dict' .. rr(2, 4)
     local dvalue = 100
     local task0 = [[
 %s = %s
@@ -185,8 +185,8 @@ function dict_file.list_as_keys2(req)
         cc = cc + 1
         cc_fake = cc_fake + v
     end
-    local lname = 'l' .. rr(1, 3)
-    local dname = 'd' .. rr(2, 4)
+    local lname = 'list' .. rr(1, 3)
+    local dname = 'dict' .. rr(2, 4)
     local dvalue = 100
     local task0 = [[
 %s = %s
@@ -228,8 +228,8 @@ function dict_file.list_as_keys3(req)
         cc_fake = cc_fake + 1
         cc_fake2 = cc_fake2 + v
     end
-    local lname = 'l' .. rr(1, 3)
-    local dname = 'd' .. rr(2, 4)
+    local lname = 'list' .. rr(1, 3)
+    local dname = 'dict' .. rr(2, 4)
     local dvalue = 100
     local task0 = [[
 %s = %s
@@ -271,8 +271,8 @@ function dict_file.list_as_keys4(req)
         cc_fake = cc_fake + 1
         cc_fake2 = cc_fake2 + v
     end
-    local lname = 'l' .. rr(1, 3)
-    local dname = 'd' .. rr(2, 4)
+    local lname = 'list' .. rr(1, 3)
+    local dname = 'dict' .. rr(2, 4)
     local dvalue = 100
     local task0 = [[
 %s = %s
@@ -296,7 +296,7 @@ print(cc)
 end
 
 local index_task = function(text, index)
-    local sname = 's' .. rr(1, 9)
+    local sname = 'myvar' .. rr(1, 9)
     return h.f([[>>> %s = %s
             >>> %s[%s] ]],
             sname, text, sname, index)
@@ -440,24 +440,24 @@ function dict_file.write_int(req)
     return
     h.f([[>>> age = int(raw_input('Enter your age: '))
     >>> age5 = age + 5
-    >>> f = open('out.txt')
-    >>> f.write('Your age in 5 years is ')
+    >>> myfile = open('out.txt')
+    >>> myfile.write('Your age in 5 years is ')
     ]]),
     h.f([[
-    >>> f.write(str(age5))
-    >>> f.close()
+    >>> myfile.write(str(age5))
+    >>> myfile.close()
     ]]),
     h.f([[
-    >>> f.write([age5])
-    >>> f.close()
+    >>> myfile.write([age5])
+    >>> myfile.close()
     ]]),
     h.f([[
-    >>> f.write(age5)
-    >>> f.close()
+    >>> myfile.write(age5)
+    >>> myfile.close()
     ]]),
     h.f([[
-    >>> f.write([str(age5)])
-    >>> f.close()
+    >>> myfile.write([str(age5)])
+    >>> myfile.close()
     ]]),
     _([[Complete the script (write result to the file)]], req)
 end
