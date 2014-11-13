@@ -26,6 +26,10 @@ class AllTests extends Widget
           name: 'if_list_for_range_short'})
         a href: url, ->
           text @_("kr2")
+        url = @url_for("prep-kr", {
+          name: 'dict_file_short'})
+        a href: url, ->
+          text @_("kr3")
       p @_("Start new quiz:")
       element 'table', -> element 'tr', ->
         names = {}
