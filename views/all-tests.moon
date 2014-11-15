@@ -1,6 +1,6 @@
 import Widget from require "lapis.html"
 
-quizs = require('quiz.all').available
+quizs = require('quiz.all')
 
 model = require('model')
 msk_time = require "msk_time"
@@ -35,7 +35,8 @@ class AllTests extends Widget
       element 'table', -> element 'tr', ->
         names = {}
         for name, _ in pairs(quizs)
-          table.insert(names, name)
+          if model.Quiz.can_create(name)
+            table.insert(names, name)
         table.sort(names)
         for name in *names
           element 'td', ->

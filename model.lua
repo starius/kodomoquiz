@@ -1,7 +1,7 @@
 local schema = require("lapis.db.schema")
 local Model = require("lapis.db.model").Model
 
-local quizs = require('quiz.all').available
+local quizs = require('quiz.all')
 local shuffle = require('quiz.helpers').shuffle
 
 local model = {}
@@ -44,6 +44,18 @@ function model.create_schema()
     schema.create_index('quiz', 'user')
     schema.create_index('quiz', 'created_at')
     schema.create_index('quiz', 'state')
+
+    schema.create_table("quiz-state", {
+        {"name", types.varchar({primary_key=true})},
+        {"enabled", types.boolean},
+        "PRIMARY KEY (name)"
+    })
+    for quiz_name, _ in pairs(quizs) do
+        if not model.QuizState:find(quiz_name) then
+            model.QuizState:create(
+                {name=quiz_name, enabled=true})
+        end
+    end
 end
 
 model.Task = Model:extend("task", {
@@ -139,6 +151,15 @@ model.Quiz = Model:extend("quiz", {
     end,
 })
 
+model.QuizState = Model:extend("quiz-state", {
+    primary_key = {"name"}
+})
+
+model.Quiz.can_create = function(name)
+    local state = model.QuizState:find(name)
+    return state and state.enabled
+end
+
 local table_size = function(t)
     local size = 0
     for _ in pairs(t) do
@@ -160,6 +181,9 @@ end
 function model.new_quiz(req)
     local user = req.session.user
     local quiz_name = req.req.params_post.name
+    if not model.Quiz.can_create(quiz_name) then
+        error("Can't create instance of this quiz")
+    end
     local q = quizs[quiz_name]
     if not q or type(q) ~= 'table' then
         error("No such quiz found")

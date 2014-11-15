@@ -2,7 +2,8 @@ import Widget from require "lapis.html"
 
 Helpers = require('views.helpers')
 
-quizs = require('quiz.all').available
+quizs = require('quiz.all')
+model = require('model')
 
 class QuizResults extends Widget
   @include Helpers
@@ -16,7 +17,7 @@ class QuizResults extends Widget
         text @_("Other quizes by ") .. @quiz.user
     h2 @quiz.right_answers .. ' / ' .. @quiz.tasks
     h2 @quiz.created_at .. ' - ' .. @quiz.updated_at
-    if quizs[@quiz.name]
+    if quizs[@quiz.name] and model.Quiz.can_create(@quiz.name)
       element 'table', ->
         element 'tr', ->
           element 'td', ->

@@ -2,7 +2,7 @@ import Widget from require "lapis.html"
 
 model = require('model')
 msk_time = require "msk_time"
-all = require('quiz.all').all
+all = require('quiz.all')
 
 Helpers = require('views.helpers')
 
