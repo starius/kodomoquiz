@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-15 19:17+0300\n"
+"POT-Creation-Date: 2014-11-15 19:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -254,7 +254,7 @@ msgstr "Тесты за сегодня"
 
 #: views/quiz-state.lua:37
 msgid "Update"
-msgstr ""
+msgstr "Обновить"
 
 #: views/welcome.lua:14
 msgid "Welcome to Kodomo Quiz!"
@@ -297,7 +297,7 @@ msgstr "Ваше имя: "
 
 #: views/all-tests.lua:35
 msgid "enable/disable quiz"
-msgstr ""
+msgstr "включить/отключить тест"
 
 #: app.lua:138 app.lua:142 app.lua:148 app.lua:149 app.lua:150
 msgid "error: invalid username"
@@ -309,7 +309,7 @@ msgstr "завершено"
 
 #: views/all-tests.lua:23
 msgid "finished quizes"
-msgstr ""
+msgstr "завершенные тесты"
 
 #: views/welcome.lua:69
 msgid "guest login"
@@ -317,15 +317,7 @@ msgstr "гостевой вход"
 
 #: views/all-tests.lua:44
 msgid "kr"
-msgstr ""
-
-#: views/all-tests.lua:40
-msgid "kr1"
-msgstr ""
-
-#: views/all-tests.lua:49
-msgid "kr2"
-msgstr ""
+msgstr "кр"
 
 #: views/prep-quizs.lua:24 views/prep-quizs.lua:29 views/prep-quizs.lua:30
 msgid "quiz"
@@ -347,7 +339,7 @@ msgstr "заданий"
 
 #: views/all-tests.lua:29
 msgid "today quizes"
-msgstr ""
+msgstr "тесты за сегодня"
 
 #: views/prep-quizs.lua:27 views/prep-quizs.lua:32 views/prep-quizs.lua:33
 #: views/prep-quizs-name.lua:25 views/helpers.lua:222
