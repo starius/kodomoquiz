@@ -8,6 +8,7 @@ local fbb = require("fbb")
 local preps = require("preps")
 local kodomo = require("kodomo")
 local model = require("model")
+local quizs = require('quiz.all')
 
 local app = lapis.Application()
 
@@ -258,6 +259,25 @@ end))
 
 app:get("prep-quizs", "/admin", check_prep(function(self)
     return {render='prep-quizs'}
+end))
+
+app:get("quiz-state", "/admin/quiz-state",
+check_prep(function(self)
+    return {render='quiz-state'}
+end))
+
+app:post("set-quiz-state", "/admin/quiz-state/set",
+check_prep(function(self)
+    for name, _ in pairs(quizs) do
+        local state = model.QuizState:find(name)
+        if self.params[name] == 'on' then
+            state:update({enabled=true})
+        else
+            state:update({enabled=false})
+        end
+    end
+    local url = self:url_for('quiz-state')
+    return {redirect_to=url}
 end))
 
 app:get("prep-quizs-today", "/admin/today",

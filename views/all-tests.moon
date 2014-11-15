@@ -19,6 +19,9 @@ class AllTests extends Widget
         a href: @url_for("prep-quizs-today"), ->
           text @_("(today)")
         text ' '
+        a href: @url_for("quiz-state"), ->
+          text @_("enable/disable quiz")
+        text ' '
         a href: @url_for("prep-kr", {name: 'hello'}), ->
           text @_("kr1")
         text ' '
