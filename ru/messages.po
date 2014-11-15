@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-15 19:19+0300\n"
+"POT-Creation-Date: 2014-11-16 01:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,6 +88,10 @@ msgstr "Завершенные тесты"
 msgid "Go through this test again:"
 msgstr "Пройдите этот тест ещё раз:"
 
+#: quiz/func.lua:189
+msgid "How to calculate complement DNA sequence?"
+msgstr "Как рассчитать комплементарную последовательность ДНК?"
+
 #: quiz/dict_file.lua:440 quiz/dict_file.lua:472
 msgid "How to close file (variable myfile)?"
 msgstr "Как закрыть файл (переменная myfile)?"
@@ -99,11 +103,31 @@ msgid ""
 "        from command line?"
 msgstr "Как выполнить скрипт Python с командной строки?"
 
+#: quiz/func.lua:121
+msgid "How to get argument 'input.fasta'?"
+msgstr "Как получить аргумент командной строки 'input.fasta'?"
+
+#: quiz/func.lua:101
+msgid "How to get command line arguments?"
+msgstr "Как получить аргументы командной строки?"
+
+#: quiz/func.lua:141
+msgid "How to get content of web page http://ya.ru as string?"
+msgstr "Как получить содержимое веб-страницы http://ya.ru как строку?"
+
 #: quiz/dict_file.lua:403 quiz/dict_file.lua:435
 msgid ""
 "How to get list of all lines of file\n"
 "        (variable aaa)?"
 msgstr "Как получить список строк файла (переменная aaa)?"
+
+#: quiz/func.lua:151
+msgid "How to get random number in range [1; 10]?"
+msgstr "Как получить целое случайное число в отрезке [1; 10]?"
+
+#: quiz/func.lua:131
+msgid "How to get script name ('prog.py')?"
+msgstr "Как получить имя файла со скриптом ('prog.py')?"
 
 #: quiz/hello.lua:126 quiz/hello.lua:127 quiz/hello.lua:183 quiz/hello.lua:160
 msgid "How to interrupt interactive Python session?"
@@ -116,6 +140,10 @@ msgstr "Как открыть файл aaa.txt на чтение?"
 #: quiz/dict_file.lua:393 quiz/dict_file.lua:425
 msgid "How to open file aaa.txt for writing?"
 msgstr "Как открыть файл aaa.txt на запись?"
+
+#: quiz/func.lua:111
+msgid "How to run external command ('dir')?"
+msgstr "Как запустить внешнюю команду ('dir')?"
 
 #: quiz/hello.lua:136 quiz/hello.lua:137 quiz/hello.lua:193 quiz/hello.lua:170
 msgid ""
