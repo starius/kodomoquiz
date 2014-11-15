@@ -181,7 +181,8 @@ end
 function model.new_quiz(req)
     local user = req.session.user
     local quiz_name = req.req.params_post.name
-    if not model.Quiz.can_create(quiz_name) then
+    if not model.Quiz.can_create(quiz_name) and
+            not req.prep then
         error("Can't create instance of this quiz")
     end
     local q = quizs[quiz_name]

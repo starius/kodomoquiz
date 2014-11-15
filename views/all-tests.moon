@@ -38,7 +38,7 @@ class AllTests extends Widget
       element 'table', -> element 'tr', ->
         names = {}
         for name, _ in pairs(quizs)
-          if model.Quiz.can_create(name)
+          if model.Quiz.can_create(name) or @prep
             table.insert(names, name)
         table.sort(names)
         for name in *names
