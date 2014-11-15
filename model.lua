@@ -48,7 +48,6 @@ function model.create_schema()
     schema.create_table("quiz-state", {
         {"name", types.varchar({primary_key=true})},
         {"enabled", types.boolean},
-        "PRIMARY KEY (name)"
     })
     for quiz_name, _ in pairs(quizs) do
         if not model.QuizState:find(quiz_name) then
