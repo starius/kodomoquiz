@@ -111,7 +111,7 @@ function func.system(req)
     _("How to run external command ('dir')?")
 end
 
-function func.argv(req)
+function func.argv1(req)
     return
     'python prog.py 19 input.fasta 6',
     'sys.argv[2]',
@@ -151,7 +151,7 @@ function func.randint(req)
     _("How to get random number in range [1; 10]?")
 end
 
-function func.randint(req)
+function func.complement(req)
     return
     'seq = "ATTGC"',
 [[seq_compl = ""
