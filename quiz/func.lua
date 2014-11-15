@@ -98,7 +98,7 @@ function func.argv(req)
     'os.argv',
     'sys.argv()',
     'os.argv()',
-    _("How to get command line arguments?")
+    _("How to get command line arguments?", req)
 end
 
 function func.system(req)
@@ -108,7 +108,7 @@ function func.system(req)
     'sys.system("dir")',
     'os.ostem("dir")',
     'sys.ostem("dir")',
-    _("How to run external command ('dir')?")
+    _("How to run external command ('dir')?", req)
 end
 
 function func.argv1(req)
@@ -118,7 +118,7 @@ function func.argv1(req)
     'sys.argv(2)',
     'sys.argv(1)',
     'sys.argv[1]',
-    _("How to get argument 'input.fasta'?")
+    _("How to get argument 'input.fasta'?", req)
 end
 
 function func.argv2(req)
@@ -128,7 +128,7 @@ function func.argv2(req)
     'sys.argv(0)',
     'sys.argv(1)',
     'sys.argv[1]',
-    _("How to get script name ('prog.py')?")
+    _("How to get script name ('prog.py')?", req)
 end
 
 function func.urllib2(req)
@@ -138,7 +138,8 @@ function func.urllib2(req)
     'list(urllib2.urlopen("http://ya.ru"))',
     'str(urllib2.urlopen("http://ya.ru"))',
     'wget http://ya.ru :3',
-    _("How to get content of web page http://ya.ru as string?")
+    _("How to get content of web page http://ya.ru as string?",
+    req)
 end
 
 function func.randint(req)
@@ -148,7 +149,7 @@ function func.randint(req)
     'random.randint(1, 11)',
     'random.randint(range(1, 11))',
     'random.randint(range(1, 10))',
-    _("How to get random number in range [1; 10]?")
+    _("How to get random number in range [1; 10]?", req)
 end
 
 function func.complement(req)
@@ -186,7 +187,7 @@ for i in range(len(seq)):
     nucl_compl = compl_dict[nucl]
     seq_compl.append(nucl_compl)
 print(seq_compl)]],
-    _("How to calculate complement DNA sequence?")
+    _("How to calculate complement DNA sequence?", req)
 end
 
 return func
