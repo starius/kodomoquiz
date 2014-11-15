@@ -11,8 +11,9 @@ class QuizStates extends Widget
       for name, _ in pairs(quizs) do
         state = model.QuizState\find(name)
         value = state.enabled and 'on' or nil
-        input type: "checkbox", name: name, checked: value
-        text name
+        element 'label', ->
+          input type: "checkbox", name: name, checked: value
+          text name
         raw '<br/>'
       input type: "submit", value: @_('Update')
 
