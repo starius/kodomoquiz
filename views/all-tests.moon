@@ -14,22 +14,22 @@ class AllTests extends Widget
     div class: "body", ->
       if @prep
         a href: @url_for("prep-quizs"), ->
-          text @_("Finished quizes")
-        text ' '
+          text @_("finished quizes")
+        text ' | '
         a href: @url_for("prep-quizs-today"), ->
-          text @_("(today)")
-        text ' '
+          text @_("today quizes")
+        text ' | '
         a href: @url_for("quiz-state"), ->
           text @_("enable/disable quiz")
-        text ' '
+        text ' | '
         a href: @url_for("prep-kr", {name: 'hello'}), ->
           text @_("kr1")
-        text ' '
+        text ' | '
         url = @url_for("prep-kr", {
           name: 'if_list_for_range_short'})
         a href: url, ->
           text @_("kr2")
-        text ' '
+        text ' | '
         url = @url_for("prep-kr", {
           name: 'dict_file_short'})
         a href: url, ->
