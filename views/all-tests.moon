@@ -1,6 +1,7 @@
 import Widget from require "lapis.html"
 
 quizs = require('quiz.all')
+kr = require('quiz.kr')
 
 model = require('model')
 msk_time = require "msk_time"
@@ -21,19 +22,10 @@ class AllTests extends Widget
         text ' | '
         a href: @url_for("quiz-state"), ->
           text @_("enable/disable quiz")
-        text ' | '
-        a href: @url_for("prep-kr", {name: 'hello'}), ->
-          text @_("kr1")
-        text ' | '
-        url = @url_for("prep-kr", {
-          name: 'if_list_for_range_short'})
-        a href: url, ->
-          text @_("kr2")
-        text ' | '
-        url = @url_for("prep-kr", {
-          name: 'dict_file_short'})
-        a href: url, ->
-          text @_("kr3")
+        for i, name in ipairs kr
+          text ' | '
+          a href: @url_for("prep-kr", {name: name}), ->
+            text @_("kr") .. i
       p @_("Start new quiz:")
       element 'table', -> element 'tr', ->
         names = {}
