@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-16 01:33+0300\n"
+"POT-Creation-Date: 2014-11-17 01:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,7 +88,7 @@ msgstr "Завершенные тесты"
 msgid "Go through this test again:"
 msgstr "Пройдите этот тест ещё раз:"
 
-#: quiz/func.lua:189
+#: quiz/func.lua:189 quiz/func.lua:190
 msgid "How to calculate complement DNA sequence?"
 msgstr "Как рассчитать комплементарную последовательность ДНК?"
 
@@ -121,7 +121,11 @@ msgid ""
 "        (variable aaa)?"
 msgstr "Как получить список строк файла (переменная aaa)?"
 
-#: quiz/func.lua:151
+#: quiz/func.lua:141
+msgid "How to get list of lines of web page http://ya.ru?"
+msgstr "Как получить список строк веб-страницы http://ya.ru?"
+
+#: quiz/func.lua:151 quiz/func.lua:152
 msgid "How to get random number in range [1; 10]?"
 msgstr "Как получить целое случайное число в отрезке [1; 10]?"
 
