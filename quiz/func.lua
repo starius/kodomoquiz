@@ -134,11 +134,11 @@ end
 function func.urllib2(req)
     return
     'import urllib2',
-    'urllib2.urlopen("http://ya.ru").read()',
     'list(urllib2.urlopen("http://ya.ru"))',
+    'urllib2.urlopen("http://ya.ru").read()',
     'str(urllib2.urlopen("http://ya.ru"))',
     'wget http://ya.ru :3',
-    _("How to get content of web page http://ya.ru as string?",
+    _("How to get list of lines of web page http://ya.ru?",
     req)
 end
 
