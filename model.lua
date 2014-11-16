@@ -258,6 +258,12 @@ function model.kr(name)
       start2 = '2014-11-14 07:55:00'
       stop2 = '2014-11-14 08:25:00'
     end
+    if name == 'func_short' then
+      start1 = '2014-11-21 06:00:00'
+      stop1 = '2014-11-21 06:30:00'
+      start2 = '2014-11-21 07:55:00'
+      stop2 = '2014-11-21 08:25:00'
+    end
     return model.Quiz:select(
         [[where name = ? and state = ? and
         (created_at >= ? and updated_at <= ?) or
