@@ -3,6 +3,7 @@ local Model = require("lapis.db.model").Model
 
 local quizs = require('quiz.all')
 local shuffle = require('quiz.helpers').shuffle
+local kr_times = require('kr_times')
 
 local model = {}
 
@@ -239,38 +240,17 @@ function model.all_quizs(state)
 end
 
 function model.kr(name)
-    local start1, stop1, start2, stop2
-    if name == 'hello' then
-      start1 = '2014-10-31 06:00:00'
-      stop1 = '2014-10-31 06:30:00'
-      start2 = '2014-10-31 07:55:00'
-      stop2 = '2014-10-31 08:25:00'
-    end
-    if name == 'if_list_for_range_short' then
-      start1 = '2014-11-07 06:00:00'
-      stop1 = '2014-11-07 06:30:00'
-      start2 = '2014-11-07 07:55:00'
-      stop2 = '2014-11-07 08:25:00'
-    end
-    if name == 'dict_file_short' then
-      start1 = '2014-11-14 06:00:00'
-      stop1 = '2014-11-14 06:30:00'
-      start2 = '2014-11-14 07:55:00'
-      stop2 = '2014-11-14 08:25:00'
-    end
-    if name == 'func_short' then
-      start1 = '2014-11-21 06:00:00'
-      stop1 = '2014-11-21 06:30:00'
-      start2 = '2014-11-21 07:55:00'
-      stop2 = '2014-11-21 08:25:00'
+    local times = kr_times[name]
+    if not times then
+        error('Unknown kr')
     end
     return model.Quiz:select(
         [[where name = ? and state = ? and
         (created_at >= ? and updated_at <= ?) or
         (created_at >= ? and updated_at <= ?)
         order by id]],
-        name, model.FINISHED, start1, stop1,
-        start2, stop2)
+        name, model.FINISHED,
+        times.start1, times.stop1, times.start2, times.stop2)
 end
 
 return model
