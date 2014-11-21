@@ -246,8 +246,8 @@ function model.kr(name)
     end
     return model.Quiz:select(
         [[where name = ? and state = ? and
-        (created_at >= ? and updated_at <= ?) or
-        (created_at >= ? and updated_at <= ?)
+        ((created_at >= ? and updated_at <= ?) or
+        (created_at >= ? and updated_at <= ?))
         order by id]],
         name, model.FINISHED,
         times.start1, times.stop1, times.start2, times.stop2)
