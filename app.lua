@@ -98,7 +98,8 @@ local check_quiz = function(f)
             -- preps can view finished quizes
             if not (self.quiz.state == model.FINISHED and
                     self.prep) then
-                return self:_("It is not your quiz")
+                return self:_([[It is not your quiz and
+                    it is canceled]])
             end
         end
         return f(self)
