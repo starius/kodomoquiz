@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-17 01:46+0300\n"
+"POT-Creation-Date: 2014-11-21 13:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr "Плохой csrf"
 msgid "Can't find this quiz"
 msgstr "Не могу найти тест"
 
-#: app.lua:106 app.lua:110 app.lua:111 app.lua:112
+#: app.lua:106 app.lua:110 app.lua:111 app.lua:112 app.lua:113
 msgid "Can't find this task"
 msgstr "Не могу найти задание"
 
@@ -169,6 +169,12 @@ msgstr ""
 msgid "It is not your quiz"
 msgstr "Это чужой тест"
 
+#: app.lua:101
+msgid ""
+"It is not your quiz and\n"
+"                    it is canceled"
+msgstr "Это не ваш тест и он отменён"
+
 #: app.lua:31 views/layout.lua:16 views/layout.lua:21 app.lua:32
 #: views/layout.lua:26 app.lua:33
 msgid "Kodomo Quiz"
@@ -215,7 +221,7 @@ msgstr "Остальные тесты участника "
 
 #: app.lua:37 app.lua:79 app.lua:137 app.lua:143 app.lua:141 app.lua:147
 #: app.lua:153 app.lua:38 app.lua:80 app.lua:148 app.lua:154 app.lua:39
-#: app.lua:81 app.lua:149 app.lua:155
+#: app.lua:81 app.lua:149 app.lua:155 app.lua:150 app.lua:156
 msgid "Permission denied"
 msgstr "Доступ отклонен"
 
@@ -273,10 +279,12 @@ msgstr ""
 #: app.lua:210 app.lua:220 app.lua:196 app.lua:204 app.lua:215 app.lua:225
 #: app.lua:221 app.lua:229 app.lua:240 app.lua:250 app.lua:222 app.lua:230
 #: app.lua:242 app.lua:252 app.lua:223 app.lua:231 app.lua:243 app.lua:253
+#: app.lua:224 app.lua:232 app.lua:244 app.lua:254
 msgid "This quiz is not active"
 msgstr "Этот тест не является активным"
 
 #: app.lua:180 app.lua:184 app.lua:189 app.lua:200 app.lua:201 app.lua:202
+#: app.lua:203
 msgid "This quiz was canceled"
 msgstr "Этот тест отменен"
 
@@ -331,7 +339,7 @@ msgstr "Ваше имя: "
 msgid "enable/disable quiz"
 msgstr "включить/отключить тест"
 
-#: app.lua:138 app.lua:142 app.lua:148 app.lua:149 app.lua:150
+#: app.lua:138 app.lua:142 app.lua:148 app.lua:149 app.lua:150 app.lua:151
 msgid "error: invalid username"
 msgstr "ошибка, неверное имя"
 
