@@ -36,10 +36,10 @@ class AllTests extends Widget
         for name in *names
           element 'td', ->
             @new_test_button name
-      my_quizs = (text, state) ->
+      my_quizs = (t, state) ->
         qq = model.my_quizs(@, state)
         if #qq > 0
-          p text
+          p t
         element 'ul', ->
           for quiz in *qq
             element 'li', ->
@@ -48,7 +48,9 @@ class AllTests extends Widget
               if quiz.state == model.FINISHED
                 r = quiz.right_answers
                 a = quiz.tasks
-                b " | #{r} / #{a}"
+                text " | "
+                b style: 'color: ' .. quiz\color!, ->
+                  text "#{r} / #{a}"
       my_quizs @_("Your active quizes:"), model.ACTIVE
       my_quizs @_("Your finished quizes:"), model.FINISHED
 

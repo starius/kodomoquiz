@@ -15,7 +15,8 @@ class QuizResults extends Widget
       url = @url_for("prep-quizs-of", {user: @quiz.user})
       a href: url, ->
         text @_("Other quizes by ") .. @quiz.user
-    h2 @quiz.right_answers .. ' / ' .. @quiz.tasks
+    h2 style: 'color: ' .. @quiz\color!, ->
+      text @quiz.right_answers .. ' / ' .. @quiz.tasks
     h2 @quiz.created_at .. ' - ' .. @quiz.updated_at
     if quizs[@quiz.name] and model.Quiz.can_create(@quiz.name)
       element 'table', ->
