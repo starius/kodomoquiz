@@ -7,7 +7,7 @@ function kodomo.url_of(user)
 end
 
 function kodomo.a_of(u)
-    return '<a href="' .. url_of(u) ..
+    return '<a href="' .. kodomo.url_of(u) ..
         '" target="_blank">' .. u ..'</a>'
 end
 
