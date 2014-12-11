@@ -35,9 +35,10 @@ end)
 
 local check_csrf = function(f)
     return function(self)
-        if not csrf.validate_token(self) then
+        local csrf_ok, msg = csrf.validate_token(self)
+        if not csrf_ok then
             self.title = self:_("Permission denied")
-            return self:_("Bad csrf token")
+            return self:_("Bad csrf token") .. ' ' .. msg
         else
             return f(self)
         end
