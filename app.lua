@@ -1,3 +1,4 @@
+local date = require("date")
 local lapis = require("lapis")
 local http = require("lapis.nginx.http")
 local csrf = require("lapis.csrf")
@@ -13,6 +14,11 @@ local quizs = require('quiz.all')
 local app = lapis.Application()
 
 app.layout = require("views.layout")
+
+app.cookie_attributes = function(self)
+    local expires = date(true):adddays(365):fmt("${http}")
+    return "Expires=" .. expires .. "; Path=/; HttpOnly"
+end
 
 -- FIXME https://github.com/leafo/lapis/issues/188
 app.__class:before_filter(function(self)
