@@ -35,8 +35,9 @@ end)
 
 local check_csrf = function(f)
     return function(self)
-        local csrf_ok, msg = csrf.validate_token(self)
-        if not csrf_ok then
+        local key = self.session.key
+        local csrf_ok, msg = csrf.validate_token(self, key)
+        if not key or not csrf_ok then
             self.title = self:_("Permission denied")
             return self:_("Bad csrf token") .. ' ' .. msg
         else
@@ -47,7 +48,12 @@ end
 
 local gen_csrf = function(f)
     return function(self)
-        self.new_csrf = csrf.generate_token(self)
+        local key = self.session.key
+        if not key then
+            key = 'csrf' .. random_token()
+            self.session.key = key
+        end
+        self.new_csrf = csrf.generate_token(self, key)
         return f(self)
     end
 end
