@@ -43,18 +43,20 @@ class Helpers
     form = task\quiz().state == model.ACTIVE
     element "table", border: 1, ->
       element "tr", ->
-        element "td", colspan: 4, style: "padding:10px", ->
+        element "td", colspan: 2, style: "padding:10px", ->
           if task\quiz().state == model.FINISHED
             b task.name
           p @help_for(task)
           pre task.text
-      element "tr", ->
-        for i = 1, 4
-          element "td", {width: 100, style: "padding:10px",
-              bgcolor: bgcolor(task, i)}, ->
-            pre task\ans(i)
-            if form
-              @ans_form task, i
+      for i = 0, 1
+        element "tr", ->
+          for j = 0, 1
+            k = i * 2 + j + 1
+            element "td", {width: 100, style: "padding:10px",
+                bgcolor: bgcolor(task, k)}, ->
+              pre task\ans(k)
+              if form
+                @ans_form task, k
 
   tasks_number_switcher: (quiz) =>
     element 'table', -> element 'tr', ->
