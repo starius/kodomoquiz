@@ -10,6 +10,7 @@ all.func = require('quiz.func')
 all.func_short = require('quiz.func_short')
 all.logic = require('quiz.logic')
 all.lua0 = require('quiz.lua0')
+all.lua1hw = require('quiz.lua1hw')
 
 return all
 
