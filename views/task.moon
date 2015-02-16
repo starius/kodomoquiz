@@ -12,5 +12,6 @@ class Task extends Widget
     @tasks_number_switcher @quiz
     @finish_quiz_button!
     @task_table @task
+    @finish_quiz_button!
     @cancel_form!
 

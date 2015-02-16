@@ -13,5 +13,5 @@ class QuizFinalCheck extends Widget
       a name: task.name, id: task.name
       @task_table task
       raw '<br/>'
+    @finish_quiz_button!
     @cancel_form!
-
