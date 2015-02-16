@@ -41,16 +41,6 @@ function lua0.two100(req)
     'На какую цифру оканчивается число 2 в степени 100?'
 end
 
-function lua0.factorial(req)
-    return
-    '',
-    '24',
-    '21',
-    '22',
-    '23',
-    'Сколько подряд нулей в записи числа факториал от 100, считая с конца?'
-end
-
 function lua0.consequence(req)
     return
     '',
