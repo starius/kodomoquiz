@@ -9,6 +9,7 @@ all.dict_file_short = require('quiz.dict_file_short')
 all.func = require('quiz.func')
 all.func_short = require('quiz.func_short')
 all.logic = require('quiz.logic')
+all.lua0 = require('quiz.lua0')
 
 return all
 
