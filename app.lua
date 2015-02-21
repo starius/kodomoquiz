@@ -290,7 +290,7 @@ check_prep(function(self)
             state:update({enabled=false})
         end
     end
-    local url = self:url_for('quiz-state')
+    local url = self:url_for('all-tests')
     return {redirect_to=url}
 end))
 
