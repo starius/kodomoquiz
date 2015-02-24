@@ -150,6 +150,27 @@ end)(1)(2))
     [[Что распечатает следующий код на Lua?]]
 end
 
+function lua2hw.function_expression(req)
+    return
+    'function() return 1 end',
+    'функцию',
+    '1',
+    'nil',
+    'ошибку',
+    [[Что возвращает следующее выражение?]]
+end
+
+function lua2hw.function_is_anonymous(req)
+    return
+    '',
+    '[0, +∞)',
+    '[1, +∞)',
+    '[1, 1]',
+    '[0, 1]',
+    [[Под сколькими именами может быть известна
+    одна и та же функция в Lua?]]
+end
+
 function lua2hw.closure(req)
     return
     [[
