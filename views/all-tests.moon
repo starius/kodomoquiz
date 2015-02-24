@@ -27,15 +27,16 @@ class AllTests extends Widget
           a href: @url_for("prep-kr", {name: name}), ->
             text @_("kr") .. i
       p @_("Start new quiz:")
-      element 'table', -> element 'tr', ->
-        names = {}
-        for name, _ in pairs(quizs)
-          if model.Quiz.can_create(name) or @prep
-            table.insert(names, name)
-        table.sort(names)
-        for name in *names
-          element 'td', ->
-            @new_test_button name
+      names = {}
+      for name, _ in pairs(quizs)
+        if model.Quiz.can_create(name) or @prep
+          table.insert(names, name)
+      table.sort(names)
+      for name in *names
+        element 'table', style: 'display:inline-table', ->
+          tr ->
+            td ->
+              @new_test_button name
       my_quizs = (t, state) ->
         qq = model.my_quizs(@, state)
         if #qq > 0
