@@ -55,51 +55,11 @@ local funcs = {
 ["table.sort"] = "сортирует список",
 }
 
-local keys = {}
-for k, v in pairs(funcs) do
-    table.insert(keys, k)
-end
+local helpers = require 'quiz.helpers'
 
-local function makeSkeys()
-    local selected = {}
-    local skeys = {}
-    for i = 1, 4 do
-        local key
-        while not key do
-            local k = keys[math.random(1, #keys)]
-            if not selected[k] then
-                key = k
-            end
-        end
-        selected[key] = true
-        table.insert(skeys, key)
-    end
-    return skeys
-end
-
-local function lua2text()
-    local skeys = makeSkeys()
-    return
-    skeys[1],
-    funcs[skeys[1]],
-    funcs[skeys[2]],
-    funcs[skeys[3]],
-    funcs[skeys[4]],
-    [[Укажите описание следующей глобальной переменной:]]
-end
-
-local function text2lua()
-    local skeys = makeSkeys()
-    return
-    funcs[skeys[1]],
-    skeys[1],
-    skeys[2],
-    skeys[3],
-    skeys[4],
-    [[Какая переменная соответствует этому описанию:]]
-end
+local d = helpers.testDefinitions(funcs)
 
 return {
-    lua2text = lua2text,
-    text2lua = text2lua,
+    lua2text = d.direct,
+    text2lua = d.reverse,
 }

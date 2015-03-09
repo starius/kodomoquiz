@@ -170,5 +170,56 @@ h.make_group = function(dst, src)
     end
 end
 
+h.testDefinitions = function(definitions)
+    local keys = {}
+    for k, v in pairs(definitions) do
+        table.insert(keys, k)
+    end
+
+    local function makeSkeys()
+        local selected = {}
+        local skeys = {}
+        for i = 1, 4 do
+            local key
+            while not key do
+                local k = keys[math.random(1, #keys)]
+                if not selected[k] then
+                    key = k
+                end
+            end
+            selected[key] = true
+            table.insert(skeys, key)
+        end
+        return skeys
+    end
+
+    local function direct()
+        local skeys = makeSkeys()
+        return
+        skeys[1],
+        definitions[skeys[1]],
+        definitions[skeys[2]],
+        definitions[skeys[3]],
+        definitions[skeys[4]],
+        [[Выберите подходящее описание:]]
+    end
+
+    local function reverse()
+        local skeys = makeSkeys()
+        return
+        definitions[skeys[1]],
+        skeys[1],
+        skeys[2],
+        skeys[3],
+        skeys[4],
+        [[Что соответствует данному описанию?]]
+    end
+
+    return {
+        direct = direct,
+        reverse = reverse,
+    }
+end
+
 return h
 
