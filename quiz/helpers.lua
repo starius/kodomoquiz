@@ -177,17 +177,21 @@ h.testDefinitions = function(definitions)
     end
 
     local function makeSkeys()
-        local selected = {}
+        local selected_keys = {}
+        local selected_values = {}
         local skeys = {}
         for i = 1, 4 do
             local key
             while not key do
                 local k = keys[math.random(1, #keys)]
-                if not selected[k] then
+                local v = definitions[k]
+                if not selected_keys[k] and
+                        not selected_values[v] then
                     key = k
                 end
             end
-            selected[key] = true
+            selected_keys[key] = true
+            selected_values[definitions[key]] = true
             table.insert(skeys, key)
         end
         return skeys
