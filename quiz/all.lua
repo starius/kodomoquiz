@@ -16,6 +16,7 @@ all.lua2hw = require('quiz.lua2hw')
 all.lua2quiz = require('quiz.lua2quiz')
 all.lua3hw = require('quiz.lua3hw')
 all.lua3quiz = require('quiz.lua3quiz')
+all.c1 = require('quiz.c1')
 
 return all
 
