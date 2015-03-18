@@ -78,4 +78,47 @@ function c1quiz.headers_and_sources(req)
     end
 end
 
+function c1quiz.progress_github(req)
+    return
+    'Опрос',
+    [[да]],
+    [[нет]],
+    [[-]],
+    [[не знаю]],
+    [[Есть ли у вас аккаунт на Github?]]
+end
+
+function c1quiz.progress_repo_for_project(req)
+    return
+    'Опрос',
+    [[да]],
+    [[нет]],
+    [[-]],
+    [[не знаю]],
+    [[Создан ли репозиторий вашего учебного проекта?]]
+end
+
+function c1quiz.progress_commit(req)
+    return
+    'Опрос',
+    [[да]],
+    [[нет]],
+    [[-]],
+    [[не знаю]],
+    [[Сделали ли вы хотя бы один коммит?
+    (Initial commit не считается)]]
+end
+
+function c1quiz.progress_gcc(req)
+    return
+    'Опрос',
+    [[да]],
+    [[нет]],
+    [[-]],
+    [[не знаю]],
+    [[Удалось ли вам установить компилятор и прочие утилиты,
+    необходимые для сборки программ, и собрать программу
+    из нескольких файлов (считающую факториалы)?]]
+end
+
 return c1quiz
