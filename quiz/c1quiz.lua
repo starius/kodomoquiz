@@ -47,15 +47,15 @@ function c1quiz.linking(req)
     local headers = math.random(3, 5)
     local sources = math.random(6, 8)
     return
-    '',
+    ([[Вася написал программу, состоящую из %i заголовочных
+    файлов и %i файлов с исходным кодом. Сколько раз ему
+    придётся запускать команду компиляции во время сборки
+    программы?]]):format(headers, sources),
     tostring(sources),
     tostring(headers),
     tostring(headers + sources),
     tostring(headers * sources),
-    [[Вася написал программу, состоящую из 5-ти заголовочных
-    файлов и 8-ми файлов с исходным кодом. Сколько раз ему
-    придётся запускать команду компиляции во время сборки
-    программы?]]
+    ''
 end
 
 function c1quiz.headers_and_sources(req)
