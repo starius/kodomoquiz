@@ -39,4 +39,9 @@ class extends html.Widget
                     value: @new_csrf}
                 input type: "submit", value: @_('Logout')
         @content_for "inner"
-
+        br!
+        p 'Copyright (C) 2014-2015 Boris Nagaev '
+        text @_([[The kodomoquiz is under the MIT license and
+          available at ]])
+        a href: 'https://github.com/starius/kodomoquiz',->
+          text 'Github'

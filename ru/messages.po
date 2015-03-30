@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-21 13:47+0300\n"
+"POT-Creation-Date: 2015-03-30 23:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,6 +43,7 @@ msgid "All quizes of "
 msgstr "Все тесты участника "
 
 #: views/helpers.lua:126 views/helpers.lua:130 views/helpers.lua:136
+#: views/helpers.lua:139
 msgid "All tasks at one page"
 msgstr "Все задания на одной странице"
 
@@ -50,15 +51,15 @@ msgstr "Все задания на одной странице"
 msgid "Alternatively, you can use "
 msgstr "А ещё можно использовать "
 
-#: app.lua:38 app.lua:39 app.lua:40
+#: app.lua:38 app.lua:39 app.lua:40 app.lua:48
 msgid "Bad csrf token"
 msgstr "Плохой csrf"
 
-#: app.lua:93 app.lua:94 app.lua:95
+#: app.lua:93 app.lua:94 app.lua:95 app.lua:108
 msgid "Can't find this quiz"
 msgstr "Не могу найти тест"
 
-#: app.lua:106 app.lua:110 app.lua:111 app.lua:112 app.lua:113
+#: app.lua:106 app.lua:110 app.lua:111 app.lua:112 app.lua:113 app.lua:126
 msgid "Can't find this task"
 msgstr "Не могу найти задание"
 
@@ -75,7 +76,7 @@ msgid "Dangerous zone"
 msgstr "Осторожно, не нажмите на эту кнопку по ошибке vv"
 
 #: views/quiz-final-check.lua:31 views/quiz-final-check.lua:32
-#: views/helpers.lua:196 views/helpers.lua:202
+#: views/helpers.lua:196 views/helpers.lua:202 views/helpers.lua:205
 msgid "Finish this quiz"
 msgstr "Завершить этот тест"
 
@@ -85,6 +86,7 @@ msgid "Finished quizes"
 msgstr "Завершенные тесты"
 
 #: views/quiz-results.lua:28 views/kr-results.lua:28 views/quiz-results.lua:32
+#: views/quiz-results.lua:36
 msgid "Go through this test again:"
 msgstr "Пройдите этот тест ещё раз:"
 
@@ -169,14 +171,14 @@ msgstr ""
 msgid "It is not your quiz"
 msgstr "Это чужой тест"
 
-#: app.lua:101
+#: app.lua:101 app.lua:114
 msgid ""
 "It is not your quiz and\n"
 "                    it is canceled"
 msgstr "Это не ваш тест и он отменён"
 
 #: app.lua:31 views/layout.lua:16 views/layout.lua:21 app.lua:32
-#: views/layout.lua:26 app.lua:33
+#: views/layout.lua:26 app.lua:33 app.lua:39
 msgid "Kodomo Quiz"
 msgstr "Тесты Кодомо"
 
@@ -208,10 +210,11 @@ msgid "No such quiz found"
 msgstr "Такого теста нет"
 
 #: views/helpers.lua:145 views/helpers.lua:149 views/helpers.lua:155
+#: views/helpers.lua:158
 msgid "One task at one page"
 msgstr "Одно задание на одной странице"
 
-#: app.lua:80 app.lua:81 app.lua:82
+#: app.lua:80 app.lua:81 app.lua:82 app.lua:95
 msgid "Only preps can see this page"
 msgstr "Эта страница только для преподавателей"
 
@@ -221,7 +224,8 @@ msgstr "Остальные тесты участника "
 
 #: app.lua:37 app.lua:79 app.lua:137 app.lua:143 app.lua:141 app.lua:147
 #: app.lua:153 app.lua:38 app.lua:80 app.lua:148 app.lua:154 app.lua:39
-#: app.lua:81 app.lua:149 app.lua:155 app.lua:150 app.lua:156
+#: app.lua:81 app.lua:149 app.lua:155 app.lua:150 app.lua:156 app.lua:47
+#: app.lua:94 app.lua:163 app.lua:169
 msgid "Permission denied"
 msgstr "Доступ отклонен"
 
@@ -234,7 +238,7 @@ msgstr "Пожалуйста, создайте файл "
 msgid "Quiz "
 msgstr "Тест "
 
-#: views/helpers.lua:203 views/helpers.lua:209
+#: views/helpers.lua:203 views/helpers.lua:209 views/helpers.lua:212
 msgid ""
 "Quiz is not finished untill\n"
 "          you press the button"
@@ -267,6 +271,12 @@ msgstr "Учащийся "
 msgid "Task "
 msgstr "Задание "
 
+#: views/layout.lua:83
+msgid ""
+"The kodomoquiz is under the MIT license and\n"
+"          available at "
+msgstr "Исходный код сайта kodomoquiz доступен на условиях лицензии MIT на "
+
 #: views/welcome.lua:46
 msgid ""
 "Then you can remove the file.\n"
@@ -279,12 +289,13 @@ msgstr ""
 #: app.lua:210 app.lua:220 app.lua:196 app.lua:204 app.lua:215 app.lua:225
 #: app.lua:221 app.lua:229 app.lua:240 app.lua:250 app.lua:222 app.lua:230
 #: app.lua:242 app.lua:252 app.lua:223 app.lua:231 app.lua:243 app.lua:253
-#: app.lua:224 app.lua:232 app.lua:244 app.lua:254
+#: app.lua:224 app.lua:232 app.lua:244 app.lua:254 app.lua:237 app.lua:245
+#: app.lua:257 app.lua:267
 msgid "This quiz is not active"
 msgstr "Этот тест не является активным"
 
 #: app.lua:180 app.lua:184 app.lua:189 app.lua:200 app.lua:201 app.lua:202
-#: app.lua:203
+#: app.lua:203 app.lua:216
 msgid "This quiz was canceled"
 msgstr "Этот тест отменен"
 
@@ -321,13 +332,13 @@ msgstr "Какой код на Python приведёт к такому резу�
 
 #: views/all-tests.lua:64 views/all-tests.lua:66 views/all-tests.lua:73
 #: views/all-tests.lua:80 views/all-tests.lua:62 views/all-tests.lua:84
-#: views/all-tests.lua:87
+#: views/all-tests.lua:87 views/all-tests.lua:94
 msgid "Your active quizes:"
 msgstr "Ваши активные тесты:"
 
 #: views/all-tests.lua:65 views/all-tests.lua:67 views/all-tests.lua:74
 #: views/all-tests.lua:81 views/all-tests.lua:63 views/all-tests.lua:85
-#: views/all-tests.lua:88
+#: views/all-tests.lua:88 views/all-tests.lua:95
 msgid "Your finished quizes:"
 msgstr "Ваши завершенные тесты:"
 
@@ -340,6 +351,7 @@ msgid "enable/disable quiz"
 msgstr "включить/отключить тест"
 
 #: app.lua:138 app.lua:142 app.lua:148 app.lua:149 app.lua:150 app.lua:151
+#: app.lua:164
 msgid "error: invalid username"
 msgstr "ошибка, неверное имя"
 
@@ -364,7 +376,7 @@ msgid "quiz"
 msgstr "тест"
 
 #: views/prep-quizs.lua:39 views/prep-quizs.lua:41 views/prep-quizs.lua:42
-#: views/prep-quizs-name.lua:28 views/helpers.lua:225
+#: views/prep-quizs-name.lua:28 views/helpers.lua:225 views/helpers.lua:228
 msgid "right answers"
 msgstr "правильные ответы"
 
@@ -373,7 +385,7 @@ msgid "started"
 msgstr "начато"
 
 #: views/prep-quizs.lua:36 views/prep-quizs.lua:44 views/prep-quizs.lua:45
-#: views/prep-quizs-name.lua:31 views/helpers.lua:228
+#: views/prep-quizs-name.lua:31 views/helpers.lua:228 views/helpers.lua:231
 msgid "tasks"
 msgstr "заданий"
 
@@ -382,6 +394,6 @@ msgid "today quizes"
 msgstr "тесты за сегодня"
 
 #: views/prep-quizs.lua:27 views/prep-quizs.lua:32 views/prep-quizs.lua:33
-#: views/prep-quizs-name.lua:25 views/helpers.lua:222
+#: views/prep-quizs-name.lua:25 views/helpers.lua:222 views/helpers.lua:225
 msgid "user"
 msgstr "пользователь"
