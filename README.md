@@ -1,5 +1,5 @@
-Python quiz application written in Lapis
-========================================
+Python, Lua and C quiz application written in Lapis
+===================================================
 
 http://kodomoquiz.tk
 
