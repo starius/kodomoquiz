@@ -1,5 +1,7 @@
+local date = require("date")
 local schema = require("lapis.db.schema")
 local Model = require("lapis.db.model").Model
+local config = require("lapis.config").get()
 
 local quizs = require('quiz.all')
 local shuffle = require('quiz.helpers').shuffle
@@ -12,10 +14,25 @@ model.CANCELLED = 2
 model.FINISHED = 3
 
 function model.create_schema()
-    local types = schema.types
+    local types = {
+        varchar = schema.types.varchar,
+        integer = schema.types.integer,
+        boolean = schema.types.boolean,
+    }
+    if config.postgres then
+        types.id = schema.types.serial({primary_key=true})
+        types.foreign_key = schema.types.foreign_key
+        types.datetime = schema.types.time
+    elseif config.mysql then
+        types.id = schema.types.id
+        types.foreign_key = schema.types.integer
+        types.datetime = schema.types.datetime
+    else
+        error('Unknown database type')
+    end
 
     schema.create_table("task", {
-        {"id", types.serial},
+        {"id", types.id},
         {"quiz_id", types.foreign_key},
         {"name", types.varchar},
         {"text", types.varchar},
@@ -25,22 +42,20 @@ function model.create_schema()
         {"a4", types.varchar},
         {"sequence", types.varchar}, -- e.g. "2143"
         {"selected", types.integer},
-        "PRIMARY KEY (id)"
     })
 
     schema.create_table("quiz", {
-        {"id", types.serial},
+        {"id", types.id},
         {"name", types.varchar},
         {"user", types.varchar},
-        {"created_at", types.time},
-        {"updated_at", types.time},
+        {"created_at", types.datetime},
+        {"updated_at", types.datetime},
         {"tasks", types.integer},
         {"answers", types.integer},
         {"right_answers", types.integer},
         {"state", types.integer},
         {"ip", types.varchar},
         {"ua", types.varchar},
-        "PRIMARY KEY (id)"
     })
     schema.create_index('quiz', 'user')
     schema.create_index('quiz', 'created_at')
@@ -194,6 +209,7 @@ function model.new_quiz(req)
     local quiz = model.Quiz:create({name=quiz_name, user=user,
         tasks=table_size(q), answers=0, right_answers=0,
         state=model.ACTIVE, ip=ip, ua=ua})
+    assert(quiz.id)
     local task_names = {}
     for task_name, func in pairs(q) do
         table.insert(task_names, task_name)
@@ -211,20 +227,20 @@ end
 
 function model.my_quizs(req, state)
     local user = req.session.user
-    return model.Quiz:select('where "user" = ? and state = ?',
+    return model.Quiz:select(
+        'where quiz.user = ? and state = ?',
         user, state)
 end
 
 function model.today_quizs(state)
-    return model.Quiz:select(
-        'where (now() at time zone ?) - created_at < ' ..
-        'interval ? and state = ? order by id',
-        'utc', '1 day', state)
+    local yesterday = date(true):adddays(-1):fmt("%Y-%m-%d %T")
+    return model.Quiz:select([[where created_at > ? and
+        state = ? order by id]], yesterday, state)
 end
 
 function model.quizs_of(user, state)
     return model.Quiz:select(
-        'where "user" = ? and state = ? order by id',
+        'where quiz.user = ? and state = ? order by id',
         user, state)
 end
 

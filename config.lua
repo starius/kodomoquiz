@@ -3,6 +3,8 @@ local config = require("lapis.config")
 config({"development", "production"}, {
   port = 3612,
   secret = require('secret'),
+  -- mysql = {
+  --   backend = "lua_resty_mysql", -- or luasql
   postgres = {
     backend = "pgmoon",
     host = "127.0.0.1",

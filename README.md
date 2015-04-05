@@ -6,7 +6,7 @@ http://kodomoquiz.tk
 Dependencies
 ------------
 
- - postgres
+ - postgres or mysql
  - openresty
  - lapis
  - lua module "date" (from luarocks)
