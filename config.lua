@@ -8,7 +8,7 @@ config({"development", "production"}, {
     host = "127.0.0.1",
     user = "kodomoquiz",
     password = "kodomoquiz",
-    database = "kodomoquiz"
+    database = "kodomoquiz",
   }
 })
 
