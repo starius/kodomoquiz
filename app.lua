@@ -284,9 +284,9 @@ app:post("set-quiz-state", "/admin/quiz-state/set",
 check_prep(function(self)
     for name, _ in pairs(quizs) do
         local state = model.QuizState:find(name)
-        if self.params[name] == 'on' then
+        if self.params[name] == 'on' and not state.enabled then
             state:update({enabled=true})
-        else
+        elseif self.params[name] ~= 'on' and state.enabled then
             state:update({enabled=false})
         end
     end
