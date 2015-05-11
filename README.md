@@ -10,4 +10,5 @@ Dependencies
  - openresty
  - lapis
  - lua module "date" (from luarocks)
+ - lua module "mo" (from luarocks)
 
