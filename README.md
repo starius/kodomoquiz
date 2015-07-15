@@ -11,4 +11,4 @@ Dependencies
  - lapis
  - lua module "date" (from luarocks)
  - lua module "mo" (from luarocks)
-
+ - lua module "yaml" (from luarocks)

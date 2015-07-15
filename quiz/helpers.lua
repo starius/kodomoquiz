@@ -225,5 +225,73 @@ h.testDefinitions = function(definitions)
     }
 end
 
+h.fromTable = function(t)
+    --[[
+    Keys of t are strings.
+    Values of t can be values of macros and questions.
+    Macro is a string. It causes substitution Key => Value.
+    Question is a table with 4 keys:
+     - "Q" - question (if absent, macro "Q" is used)
+     - "T" - task (if absent, macro "T" is used)
+     - "A" - right answer
+     - "W" - wrong answers (list of 3 strings)
+    If any of them are equal to a macro, the substitution
+    happens.
+    ]]
+    assert(type(t) == 'table')
+    -- check keys and values
+    for key, v in pairs(t) do
+        assert(type(key) == 'string')
+        assert(type(v) == 'string' or type(v) == 'table')
+    end
+    -- find macros
+    local macros = {}
+    for key, v in pairs(t) do
+        if type(v) == 'string' then
+            macros[key] = v
+        end
+    end
+    local function expandMacro(text)
+        return macros[text] or text
+    end
+    -- check values (questions)
+    for key, v in pairs(t) do
+        if type(v) == 'table' then
+            assert((v.Q and type(v.Q) == 'string') or macros.Q)
+            assert((v.T and type(v.T) == 'string') or macros.T)
+            assert(v.A and type(v.A) == 'string')
+            assert(v.W and type(v.W) == 'table')
+            assert(#v.W == 3)
+            for i = 1, 3 do
+                assert(type(v.W[i]) == 'string')
+            end
+        end
+    end
+    -- create module object
+    local m = {}
+    for key, v in pairs(t) do
+        if type(v) == 'table' then
+            m[key] = function(req)
+                return expandMacro(v.T or macros.T),
+                    expandMacro(v.A),
+                    expandMacro(v.W[1]),
+                    expandMacro(v.W[2]),
+                    expandMacro(v.W[3]),
+                    expandMacro(v.Q or macros.Q)
+            end
+        end
+    end
+    return m
+end
+
+h.fromYamlFile = function(filename)
+    local file = io.open(filename, 'r')
+    local yml = file:read('*all')
+    file:close()
+    local yaml = require 'yaml'
+    local t = yaml.load(yml)
+    return h.fromTable(t)
+end
+
 return h
 
