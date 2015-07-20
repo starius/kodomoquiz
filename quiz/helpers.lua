@@ -234,7 +234,7 @@ h.fromTable = function(t)
      - "Q" - question (if absent, macro "Q" is used)
      - "T" - task (if absent, macro "T" is used)
      - "A" - right answer
-     - "W" - wrong answers (list of 3 strings)
+     - "W" - wrong answers (list of >= 3 strings)
     If any of them are equal to a macro, the substitution
     happens.
     ]]
@@ -261,8 +261,8 @@ h.fromTable = function(t)
             assert((v.T and type(v.T) == 'string') or macros.T)
             assert(v.A and type(v.A) == 'string')
             assert(v.W and type(v.W) == 'table')
-            assert(#v.W == 3)
-            for i = 1, 3 do
+            assert(#v.W >= 3)
+            for i = 1, #v.W do
                 assert(type(v.W[i]) == 'string')
             end
         end
@@ -272,11 +272,16 @@ h.fromTable = function(t)
     for key, v in pairs(t) do
         if type(v) == 'table' then
             m[key] = function(req)
+                local indexes = {}
+                for i = 1, #v.W do
+                    table.insert(indexes, i)
+                end
+                indexes = h.shuffle(indexes)
                 return expandMacro(v.T or macros.T),
                     expandMacro(v.A),
-                    expandMacro(v.W[1]),
-                    expandMacro(v.W[2]),
-                    expandMacro(v.W[3]),
+                    expandMacro(v.W[indexes[1]]),
+                    expandMacro(v.W[indexes[2]]),
+                    expandMacro(v.W[indexes[3]]),
                     expandMacro(v.Q or macros.Q)
             end
         end
