@@ -1,6 +1,6 @@
 import Widget from require "lapis.html"
 
-quizs = require('quiz.all')
+quizs = require('quiz.groups')
 kr = require('quiz.kr')
 
 model = require('model')
@@ -27,16 +27,17 @@ class AllTests extends Widget
           a href: @url_for("prep-kr", {name: name}), ->
             text @_("kr") .. i
       p @_("Start new quiz:")
-      names = {}
-      for name, _ in pairs(quizs)
-        if model.Quiz.can_create(name) or @prep
-          table.insert(names, name)
-      table.sort(names)
-      for name in *names
-        element 'table', style: 'display:inline-table', ->
-          tr ->
-            td ->
-              @new_test_button name
+      for _, group in ipairs(quizs)
+        group_name = group[1]
+        group_quizs = group[2]
+        element 'table', -> tr ->
+          td ->
+            text group_name
+          for _, quiz in ipairs(group_quizs)
+            quiz_name = quiz[1]
+            if model.Quiz.can_create(quiz_name) or @prep
+              td ->
+                @new_test_button quiz_name
       my_quizs = (t, state) ->
         qq = model.my_quizs(@, state)
         if #qq > 0
