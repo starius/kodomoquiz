@@ -1,24 +1,14 @@
 local all = {}
 
-all.hello = require('quiz.hello')
-all.if_list_for_range = require('quiz.if_list_for_range')
-all.if_list_for_range_short =
-    require('quiz.if_list_for_range_short')
-all.dict_file = require('quiz.dict_file')
-all.dict_file_short = require('quiz.dict_file_short')
-all.func = require('quiz.func')
-all.func_short = require('quiz.func_short')
-all.logic = require('quiz.logic')
-all.lua0 = require('quiz.lua0')
-all.lua1hw = require('quiz.lua1hw')
-all.lua1quiz = require('quiz.lua1quiz')
-all.lua2hw = require('quiz.lua2hw')
-all.lua2quiz = require('quiz.lua2quiz')
-all.lua3hw = require('quiz.lua3hw')
-all.lua3quiz = require('quiz.lua3quiz')
-all.c1 = require('quiz.c1')
-all.c1quiz = require('quiz.c1quiz')
-all.c2 = require('quiz.c2')
+local groups = require 'quiz.groups'
+
+for _, group in ipairs(groups) do
+    local tests = group[2]
+    for _, test in ipairs(tests) do
+        local name = test[1]
+        local mod = test[2]
+        all[name] = mod
+    end
+end
 
 return all
-
