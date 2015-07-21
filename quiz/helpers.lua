@@ -170,10 +170,29 @@ h.make_group = function(dst, src)
     end
 end
 
+h.cloneTable = function(t)
+    local result = {}
+    for k, v in pairs(t) do
+        result[k] = v
+    end
+    return result
+end
+
 h.testDefinitions = function(definitions)
     local keys = {}
     for k, v in pairs(definitions) do
         table.insert(keys, k)
+    end
+
+    -- tries to return new key.
+    -- If all keys were returned, starts new round
+    local new_keys = h.shuffle(h.cloneTable(keys))
+    local function newKey()
+        local result = table.remove(new_keys)
+        if #new_keys == 0 then
+            new_keys = h.shuffle(h.cloneTable(keys))
+        end
+        return result
     end
 
     local function makeSkeys()
@@ -182,6 +201,9 @@ h.testDefinitions = function(definitions)
         local skeys = {}
         for i = 1, 4 do
             local key
+            if i == 1 then
+                key = newKey()
+            end
             while not key do
                 local k = keys[math.random(1, #keys)]
                 local v = definitions[k]
