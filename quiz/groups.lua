@@ -19,6 +19,7 @@ return {
 
     {'Logic', group {
         'logic',
+        'logic_defs',
     }},
 
     {'LuaAndC', group {
