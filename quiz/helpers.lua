@@ -260,6 +260,16 @@ h.fromTable = function(t)
              - "W" - wrong answers (list of >= 3 strings)
             If any of them are equal to a macro, the
             substitution happens.
+        'dictionaries' - a table from dict name to a dict
+            Dictionary is a string-to-string table.
+            It is used to store definitions.
+            Number of items in a dictionary must be >= 4.
+        'definitions' - a table from base name to definition
+            Definition is a table with the following fields:
+                - dictionary
+                - direct: true | false
+                - n - number of questions for this dictionary
+            Name of question is derived from definition name
     ]]
     assert(type(t) == 'table')
     -- find macros
@@ -269,6 +279,11 @@ h.fromTable = function(t)
     end
     local function expandMacro(text)
         return macros[text] or text
+    end
+    -- dictionaries
+    local dicts = {}
+    for name, dict in pairs(t.dictionaries or {}) do
+        dicts[name] = dict
     end
     -- create questions
     local m = {}
@@ -285,6 +300,19 @@ h.fromTable = function(t)
                 expandMacro(v.W[indexes[2]]),
                 expandMacro(v.W[indexes[3]]),
                 expandMacro(v.Q or macros.Q)
+        end
+    end
+    -- create dictionary questions
+    for base_name, definition in pairs(t.definitions or {}) do
+        local dictionary = dicts[definition.dictionary]
+        local td = h.testDefinitions(dictionary)
+        for i = 1, definition.n do
+            local name = base_name .. i
+            if definition.direct then
+                m[name] = td.direct
+            else
+                m[name] = td.reverse
+            end
         end
     end
     return m
