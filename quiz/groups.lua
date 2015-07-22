@@ -1,7 +1,13 @@
 local function group(names)
     local g = {}
     for _, name in ipairs(names) do
-        table.insert(g, {name, require('quiz.' .. name)})
+        local ok, module = pcall(require, 'quiz.' .. name)
+        if not ok then
+            local helpers = require 'quiz.helpers'
+            local yml = ('quiz/%s.yml'):format(name)
+            module = helpers.fromYamlFile(yml)
+        end
+        table.insert(g, {name, module})
     end
     return g
 end
