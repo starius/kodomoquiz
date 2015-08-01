@@ -11,7 +11,12 @@ config({"development", "production"}, {
     user = "kodomoquiz",
     password = "kodomoquiz",
     database = "kodomoquiz",
-  }
+  },
+  rating_uploader = {
+    HOST_NAME = '127.0.0.1',
+    PORT_NUMBER = 18780,
+    password = 'password',
+  },
 })
 
 config("production", {

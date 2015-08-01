@@ -6,6 +6,7 @@ local config = require("lapis.config").get()
 local quizs = require('quiz.all')
 local shuffle = require('quiz.helpers').shuffle
 local kr_times = require('kr_times')
+local rating_uploader = require('rating_uploader')
 
 local model = {}
 
@@ -135,6 +136,12 @@ model.Quiz = Model:extend("quiz", {
         self:update({state = model.FINISHED,
             answers = answers, right_answers = right_answers,
         })
+        if config.rating_uploader then
+            local login = self.user
+            local task = 'quiz.' .. self.name
+            local rating = self.right_answers
+            rating_uploader(login, task, rating)
+        end
     end,
 
     fresh_task = function(self)
