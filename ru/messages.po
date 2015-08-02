@@ -83,11 +83,11 @@ msgstr "Осторожно, не нажмите на эту кнопку по о
 
 #: views/submission.lua:32
 msgid "Date "
-msgstr "Дата"
+msgstr "Дата "
 
 #: views/submission.lua:33
 msgid "File "
-msgstr "Файл"
+msgstr "Файл "
 
 #: views/quiz-final-check.lua:31 views/quiz-final-check.lua:32
 #: views/helpers.lua:196 views/helpers.lua:202 views/helpers.lua:205
@@ -208,7 +208,7 @@ msgstr "Сообщите нам временное гостевое имя, ин
 
 #: views/submission.lua:35
 msgid "Log "
-msgstr "Журнал"
+msgstr "Журнал "
 
 #: views/welcome.lua:41 views/welcome.lua:38
 msgid "Login"
@@ -278,7 +278,7 @@ msgstr "Тест не будет завершен, пока Вы не нажмё
 
 #: views/submission.lua:14
 msgid "Result "
-msgstr "результат"
+msgstr "результат "
 
 #: views/helpers.lua:46 views/helpers.lua:43
 msgid "Select"
@@ -300,7 +300,7 @@ msgstr "Учащийся "
 
 #: views/submission.lua:12
 msgid "Submission "
-msgstr "Решение"
+msgstr "Решение "
 
 #: views/helpers.lua:240
 msgid "Submissions"
