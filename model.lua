@@ -16,6 +16,7 @@ model.FINISHED = 3
 
 function model.create_schema()
     local types = {
+        text = schema.types.text,
         varchar = schema.types.varchar,
         integer = schema.types.integer,
         boolean = schema.types.boolean,
@@ -31,6 +32,21 @@ function model.create_schema()
     else
         error('Unknown database type')
     end
+
+    schema.create_table("submission", {
+        {"id", types.id},
+        {"filename", types.varchar},
+        {"text", types.text},
+        {"log", types.text},
+        {"pr", types.varchar},
+        {"task", types.varchar},
+        {"user", types.varchar},
+        {"created_at", types.datetime},
+        {"updated_at", types.datetime},
+        {"rating", types.varchar},
+        {"ip", types.varchar},
+        {"ua", types.varchar},
+    })
 
     schema.create_table("task", {
         {"id", types.id},
@@ -73,6 +89,10 @@ function model.create_schema()
         end
     end
 end
+
+model.Submission = Model:extend("submission", {
+    timestamp = true,
+})
 
 model.Task = Model:extend("task", {
     quiz = function(self)
@@ -198,6 +218,36 @@ local rand_sequence = function()
         result = result .. i
     end
     return result
+end
+
+function model.new_submission(self, filename, text, body)
+    local log = body:match('<pre>(.*)</pre></body></html>$')
+    local rating = tonumber(log:match('Оценка (%d)'))
+    local pr, task = filename:match('_(%w+)_([%w-]+).[^.]+$')
+    local ip = self.req.headers['X-Forwarded-For'] or '0.0.0.0'
+    local ua = self.req.headers['User-Agent']
+    local user = self.session.user
+    local submission = model.Submission:create({
+        filename = filename,
+        text = text,
+        log = log,
+        pr = pr,
+        task = task,
+        user = user,
+        rating = rating,
+        ip = ip,
+        ua = ua,
+    })
+    if config.rating_uploader then
+        model.upload_submission(submission)
+    end
+    return submission
+end
+
+function model.upload_submission(submission)
+    rating_uploader(submission.user,
+        submission.task,
+        submission.rating)
 end
 
 function model.new_quiz(req)

@@ -95,6 +95,38 @@ class Helpers
         font color: 'red', @_([[Quiz is not finished untill
           you press the button]])
 
+  submission_form: =>
+    url = @url_for("new-submission")
+    form {method: "POST", action: url,
+        enctype: "multipart/form-data"}, ->
+      input {type: "hidden", name: "csrf_token",
+          value: @new_csrf}
+      input type: "file", name: "uploaded_file"
+      input type: "submit"
+
+  print_submissions: (submissions) =>
+    h1 @_[[Submissions]]
+    element 'table', border: 1, ->
+      element 'tr', ->
+        element 'td' -- #
+        element 'td', -> text @_("student")
+        element 'td', -> text @_("file")
+        element 'td', -> text @_("result")
+        element 'td', -> text @_("date")
+      for s in *submissions
+        element 'tr', ->
+          element 'td', ->
+            a href: @url_for("prep-submission", {id: s.id}), ->
+              text '#'
+          element 'td', ->
+            text s.user
+          element 'td', ->
+            text s.filename
+          element 'td', ->
+            text s.rating
+          element 'td', ->
+            text msk_time(s.created_at)
+
   detailed_results: (q, quizs) =>
     h1 @quiz_name
     print_header = ->

@@ -4,6 +4,8 @@ local http = require("lapis.nginx.http")
 local csrf = require("lapis.csrf")
 local tr_ru = require('tr_ru')
 local random_token = require("random_token")
+require('httpclient') -- httprequest
+local config = require("lapis.config").get()
 
 local fbb = require("fbb")
 local preps = require("preps")
@@ -271,6 +273,66 @@ check_quiz(function(self)
     return {redirect_to = url}
 end))
 
+-- submissions
+
+app:post("new-submission", "/submission/new",
+check_user(function(self)
+    local file = self.params.uploaded_file
+    if not file or not file.filename or
+            file.filename == '' then
+        return 'No file uploaded'
+    end
+    local filename = file.filename
+    local text = file.content
+    local tmpname = os.tmpname()
+    do
+        local f = io.open(tmpname, 'w')
+        f:write(text)
+        f:close()
+    end
+    local f = io.open(tmpname, 'r')
+    local httprequest = httpclient.httprequest
+        config.checker_url = 'http://127.0.0.1:3613/send'
+    local resp = httprequest(config.checker_url, {
+        data = {
+            uploaded_file = {
+                file = f,
+                name = filename,
+                type = 'text/plain'
+            },
+        }
+    })
+    os.remove(tmpname)
+    if resp.status ~= 200 then
+        return 'Bad response from back-end'
+    end
+    local body = resp.body
+    local s = model.new_submission(self, filename, text, body)
+    --
+    local url = self:url_for('submission', {id=s.id})
+    return {redirect_to = url}
+end))
+
+app:post("push-submission", "/submission/push/:id",
+check_user(function(self)
+    local s = model.Submission:find({id=self.params.id})
+    model.upload_submission(s)
+    --
+    local url = self:url_for('submission', {id=s.id})
+    return {redirect_to = url}
+end))
+
+app:get("submission", "/submission/:id",
+check_user(function(self)
+    self.submission = model.Submission:find({id=self.params.id})
+    if self.submission.user ~= self.session.user then
+        return 'Access denied'
+    end
+    return {render='submission'}
+end))
+
+-- admin
+
 app:get("prep-quizs", "/admin", check_prep(function(self)
     return {render='prep-quizs'}
 end))
@@ -322,6 +384,19 @@ app:get("prep-quiz", "/admin/quiz/:id",
 check_quiz(check_prep(function(self)
     return {render='quiz-results'}
 end)))
+
+app:get("prep-submission", "/admin/submission/:id",
+check_prep(function(self)
+    self.submission = model.Submission:find({id=self.params.id})
+    return {render='submission'}
+end))
+
+app:get("prep-submissions", "/admin/submission/",
+check_prep(function(self)
+    return {render='prep-submissions'}
+end))
+
+-- languages
 
 app:get("russian", "/ru", function(self)
     self.session.lang = 'ru'

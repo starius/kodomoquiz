@@ -5,6 +5,7 @@ kr = require('quiz.kr')
 
 model = require('model')
 msk_time = require "msk_time"
+config = require("lapis.config").get!
 
 Helpers = require('views.helpers')
 
@@ -14,6 +15,9 @@ class AllTests extends Widget
   content: =>
     div class: "body", ->
       if @prep
+        a href: @url_for("prep-submissions"), ->
+          text @_("code submissions")
+        text ' | '
         a href: @url_for("prep-quizs"), ->
           text @_("finished quizes")
         text ' | '
@@ -26,6 +30,9 @@ class AllTests extends Widget
           text ' | '
           a href: @url_for("prep-kr", {name: name}), ->
             text @_("kr") .. i
+      if config.checker_url
+        p @_("Submit programming assignment")
+        @submission_form!
       p @_("Start new quiz:")
       for _, group in ipairs(quizs)
         group_name = group[1]
@@ -55,4 +62,7 @@ class AllTests extends Widget
                   text "#{r} / #{a}"
       my_quizs @_("Your active quizes:"), model.ACTIVE
       my_quizs @_("Your finished quizes:"), model.FINISHED
-
+      h1 @_[[Your submissions]]
+      submissions = model.Submission\select(
+        'where submission.user = ? order by id', @session.user)
+      @print_submissions(submissions)

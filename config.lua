@@ -17,6 +17,7 @@ config({"development", "production"}, {
     PORT_NUMBER = 18780,
     password = 'password',
   },
+  checker_url = 'http://hometask.kodomoquiz.tk/send',
 })
 
 config("production", {
