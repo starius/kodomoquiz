@@ -157,10 +157,7 @@ model.Quiz = Model:extend("quiz", {
             answers = answers, right_answers = right_answers,
         })
         if config.rating_uploader then
-            local login = self.user
-            local task = 'quiz.' .. self.name
-            local rating = self.right_answers
-            rating_uploader(login, task, rating)
+            model.upload_quiz(self)
         end
     end,
 
@@ -248,6 +245,13 @@ function model.upload_submission(submission)
     rating_uploader(submission.user,
         submission.task,
         submission.rating)
+end
+
+function model.upload_quiz(quiz)
+    local login = quiz.user
+    local task = 'quiz.' .. quiz.name
+    local rating = quiz.right_answers
+    rating_uploader(login, task, rating)
 end
 
 function model.new_quiz(req)

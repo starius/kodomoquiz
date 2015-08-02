@@ -220,6 +220,14 @@ app:get("quiz", "/tests/quiz/:id", check_quiz(function(self)
     return "???"
 end))
 
+app:post("push-quiz", "/quiz/push/:id",
+check_user(check_quiz(function(self)
+    model.upload_quiz(self.quiz)
+    --
+    local url = self:url_for('quiz', {id=self.quiz.id})
+    return {redirect_to = url}
+end)))
+
 app:post("all-tasks", "/tests/quiz/:id/all-tasks",
 check_quiz(function(self)
     self.session.all_tasks = true
