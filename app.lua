@@ -2,6 +2,7 @@ local date = require("date")
 local lapis = require("lapis")
 local http = require("lapis.nginx.http")
 local csrf = require("lapis.csrf")
+local db = require("lapis.db")
 local tr_ru = require('tr_ru')
 local random_token = require("random_token")
 require('httpclient') -- httprequest
@@ -392,6 +393,42 @@ app:get("prep-quiz", "/admin/quiz/:id",
 check_quiz(check_prep(function(self)
     return {render='quiz-results'}
 end)))
+
+app:get("prep-submissions-download", "/admin/submission/download",
+check_prep(function(self)
+    local submissions = db.select [[
+        DISTINCT ON (submission.user, task)
+        submission.user, task, filename, text
+        FROM submission
+        ORDER BY submission.user, task, rating desc, created_at desc
+    ]]
+    local tmpname = os.tmpname()
+    local tmpdir = tmpname .. '.dir'
+    local path = tmpdir .. '/submissions/'
+    os.execute('mkdir -p ' .. path)
+    for _, submission in ipairs(submissions) do
+        local dir = path .. submission.user
+        os.execute('mkdir -p ' .. dir)
+        local fname = ('%s/%s_%s'):format(dir,
+            submission.task, submission.filename)
+        local f = io.open(fname, 'w')
+        f:write(submission.text)
+        f:close()
+    end
+    local tar = tmpdir .. '/submissions.tar.gz'
+    os.execute(('tar -czf %s -C %s .'):format(tar, tmpdir))
+    local f = io.open(tar)
+    local tar_data = f:read('*a')
+    f:close()
+    os.execute('rm -r ' .. path .. ' ' .. tmpdir)
+    ngx.header['Content-Disposition'] =
+        'inline; filename="submissions.tar.gz"'
+    return {
+        content_type = 'application/x-compressed',
+        layout = false,
+        tar_data,
+    }
+end))
 
 app:get("prep-submission", "/admin/submission/:id",
 check_prep(function(self)

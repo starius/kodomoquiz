@@ -10,5 +10,7 @@ class PrepSubmissions extends Widget
 
   content: =>
     h1 @_[[All submissions]]
+    a href: @url_for("prep-submissions-download"), ->
+      text @_("Download all")
     submissions = model.Submission\select('order by id')
     @print_submissions(submissions)
