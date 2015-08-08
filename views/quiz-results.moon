@@ -18,11 +18,7 @@ class QuizResults extends Widget
     h2 style: 'color: ' .. @quiz\color!, ->
       text @quiz.right_answers .. ' / ' .. @quiz.tasks
     -- push
-    url = @url_for("push-quiz", {id: @quiz.id})
-    form method: "POST", action: url, ->
-      input {type: "hidden", name: "csrf_token",
-          value: @new_csrf}
-      input type: "submit", value: @_('Push to Google Docs')
+    @push_form @url_for("push-quiz", {id: @quiz.id})
     h2 @quiz.created_at .. ' - ' .. @quiz.updated_at
     if quizs[@quiz.name] and model.Quiz.can_create(@quiz.name)
       element 'table', ->

@@ -185,3 +185,8 @@ class Helpers
               text 0
       print_header!
 
+  push_form: (url) =>
+    form method: "POST", action: url, ->
+      input {type: "hidden", name: "csrf_token",
+          value: @new_csrf}
+      input type: "submit", value: @_('Push to Google Docs')
