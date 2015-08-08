@@ -5,6 +5,7 @@ Helpers = require('views.helpers')
 quizs = require('quiz.all')
 model = require('model')
 msk_time = require('msk_time')
+ago = require('ago')
 
 class QuizResults extends Widget
   @include Helpers
@@ -18,8 +19,9 @@ class QuizResults extends Widget
         text @_("Other quizes by ") .. @quiz.user
     h2 style: 'color: ' .. @quiz\color!, ->
       text @quiz.right_answers .. ' / ' .. @quiz.tasks
-    -- push
-    @push_form @url_for("push-quiz", {id: @quiz.id})
+    -- hide push if he has finishe just now
+    if ago(@quiz.updated_at) > 5
+      @push_form @url_for("push-quiz", {id: @quiz.id})
     created_at = msk_time(@quiz.created_at)
     updated_at = msk_time(@quiz.updated_at)
     h2 created_at .. ' - ' .. updated_at
