@@ -62,7 +62,6 @@ class AllTests extends Widget
                   text "#{r} / #{a}"
       my_quizs @_("Your active quizes:"), model.ACTIVE
       my_quizs @_("Your finished quizes:"), model.FINISHED
-      h1 @_[[Your submissions]]
       submissions = model.Submission\select(
         'where submission.user = ? order by id', @session.user)
       @print_submissions(submissions)
