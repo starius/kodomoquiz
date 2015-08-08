@@ -1,5 +1,6 @@
 model = require('model')
 quizs = require('quiz.all')
+msk_time = require('msk_time')
 
 bgcolor = (task, i) ->
   form = task\quiz().state == model.ACTIVE
