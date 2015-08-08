@@ -4,6 +4,7 @@ Helpers = require('views.helpers')
 
 quizs = require('quiz.all')
 model = require('model')
+msk_time = require('msk_time')
 
 class QuizResults extends Widget
   @include Helpers
@@ -19,7 +20,9 @@ class QuizResults extends Widget
       text @quiz.right_answers .. ' / ' .. @quiz.tasks
     -- push
     @push_form @url_for("push-quiz", {id: @quiz.id})
-    h2 @quiz.created_at .. ' - ' .. @quiz.updated_at
+    created_at = msk_time(@quiz.created_at)
+    updated_at = msk_time(@quiz.updated_at)
+    h2 created_at .. ' - ' .. updated_at
     if quizs[@quiz.name] and model.Quiz.can_create(@quiz.name)
       element 'table', ->
         element 'tr', ->
