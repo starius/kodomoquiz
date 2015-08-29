@@ -220,7 +220,8 @@ end
 function model.new_submission(self, filename, text, body)
     local log = body:match('<pre>(.*)</pre></body></html>$')
     local rating = tonumber(log:match('Оценка (%d)'))
-    local pr, task = filename:match('_(%w+)_([%w-]+).[^.]+$')
+    local pr, task = assert(filename:match('_(%w+)_([%w-]+).[^.]+$'),
+        "Bad filename: " .. filename)
     local ip = self.req.headers['X-Forwarded-For'] or '0.0.0.0'
     local ua = self.req.headers['User-Agent']
     local user = self.session.user
