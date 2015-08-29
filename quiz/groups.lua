@@ -21,6 +21,7 @@ return {
         'dict_file_short',
         'func',
         'func_short',
+        'test2',
     }},
 
     {'Logic', group {
