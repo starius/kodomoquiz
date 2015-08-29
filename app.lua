@@ -301,7 +301,6 @@ check_user(function(self)
     end
     local f = io.open(tmpname, 'r')
     local httprequest = httpclient.httprequest
-        config.checker_url = 'http://127.0.0.1:3613/send'
     local resp = httprequest(config.checker_url, {
         data = {
             uploaded_file = {
