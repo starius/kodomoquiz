@@ -29,6 +29,10 @@ return {
         'logic_defs',
     }},
 
+    {'Bioinf', group {
+        'bioinf1',
+    }},
+
     {'LuaAndC', group {
         'lua0',
         'lua1hw',

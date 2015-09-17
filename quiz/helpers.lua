@@ -157,6 +157,19 @@ h.dict2py = function(ll)
     return string.format('{%s}', table.concat(ll2, ', '))
 end
 
+h.complement = function(seq)
+    return seq:reverse():gsub('%w',
+        {A='T', T='A', G='C', C='G'})
+end
+
+h.atgc_rand = function(n)
+    local t = ''
+    for i = 1, n do
+        t = t .. h.one_of('A', 'T', 'G', 'C')
+    end
+    return t
+end
+
 h.make_group = function(dst, src)
     return function(...)
         local orig_names = {...}
