@@ -5,7 +5,13 @@ local function group(names)
         if not ok then
             local helpers = require 'quiz.helpers'
             local yml = ('quiz/%s.yml'):format(name)
-            module = helpers.fromYamlFile(yml)
+            local ok = pcall(function()
+                module = helpers.fromYamlFile(yml)
+            end)
+            if not ok then
+                print("Can't load " .. name)
+                module = {}
+            end
         end
         table.insert(g, {name, module})
     end
