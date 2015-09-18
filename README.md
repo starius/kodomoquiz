@@ -21,7 +21,9 @@ Dependencies
 Идентификаторы тестов, вопросов и т.п. должны быть человеческими:
 без пробелов, русских букв и всякого такого.
 
- - `git clone https://github.com/starius/kodomoquiz`
+ - Склонировать репозиторий:
+   `git clone https://github.com/starius/kodomoquiz`
+ - `cd kodomoquiz`
  - сделать файл `quiz/testName.yml` с тестом. Пример и краткое описание
     формата см. в файле `quiz/test2.yml`
  - [проверить](http://www.yamllint.com/) файл на валидность синтаксиса YAML.
