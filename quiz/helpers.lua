@@ -273,6 +273,8 @@ h.fromTable = function(t)
              - "W" - wrong answers (list of >= 3 strings)
             If any of them are equal to a macro, the
             substitution happens.
+            To add multiple variants of T,A,W, create field
+            'variants' with a list of tables with T,A,W.
         'dictionaries' - a table from dict name to a dict
             Dictionary is a string-to-string table.
             It is used to store definitions.
@@ -302,16 +304,21 @@ h.fromTable = function(t)
     local m = {}
     for key, v in pairs(t.questions or {}) do
         m[key] = function(req)
+            local variant = v
+            if v.variants then
+                -- multiple variants, chose random
+                variant = h.one_of(h.unpack(v.variants))
+            end
             local indexes = {}
-            for i = 1, #v.W do
+            for i = 1, #variant.W do
                 table.insert(indexes, i)
             end
             indexes = h.shuffle(indexes)
-            return expandMacro(v.T or macros.T),
-                expandMacro(v.A),
-                expandMacro(v.W[indexes[1]]),
-                expandMacro(v.W[indexes[2]]),
-                expandMacro(v.W[indexes[3]]),
+            return expandMacro(variant.T or macros.T),
+                expandMacro(variant.A),
+                expandMacro(variant.W[indexes[1]]),
+                expandMacro(variant.W[indexes[2]]),
+                expandMacro(variant.W[indexes[3]]),
                 expandMacro(v.Q or macros.Q)
         end
     end
