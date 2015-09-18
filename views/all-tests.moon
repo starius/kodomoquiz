@@ -26,10 +26,6 @@ class AllTests extends Widget
         text ' | '
         a href: @url_for("quiz-state"), ->
           text @_("enable/disable quiz")
-        for i, name in ipairs kr
-          text ' | '
-          a href: @url_for("prep-kr", {name: name}), ->
-            text @_("kr") .. i
       if config.checker_url
         p @_("Submit programming assignment")
         @submission_form!
