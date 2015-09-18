@@ -440,6 +440,13 @@ check_prep(function(self)
     return {render='prep-submissions'}
 end))
 
+app:post("update-code", "/admin/update-code",
+check_prep(function(self)
+    os.execute('git pull && make && killall -s SIGHUP nginx')
+    local url = self:url_for('all-tests')
+    return {redirect_to=url}
+end))
+
 -- languages
 
 app:get("russian", "/ru", function(self)

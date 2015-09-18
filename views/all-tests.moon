@@ -26,6 +26,12 @@ class AllTests extends Widget
         text ' | '
         a href: @url_for("quiz-state"), ->
           text @_("enable/disable quiz")
+        url = @url_for("update-code")
+        form {method: "POST", action: url,
+            enctype: "multipart/form-data"}, ->
+          input {type: "hidden", name: "csrf_token",
+              value: @new_csrf}
+          input type: "submit", value: @_("Update code")
       if config.checker_url
         p @_("Submit programming assignment")
         @submission_form!
