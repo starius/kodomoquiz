@@ -34,6 +34,9 @@ Dependencies
    `git commit quiz/testName.yml quiz/testName.yml -m 'new quiz testName'`
  - отправить коммит на гитхаб: `git push`
  - зайти на http://kodomoquiz.tk/ и нажать кнопку "Update code"
+ - открыть URL http://kodomoquiz.tk/schema
+ - зайти в http://kodomoquiz.tk/admin/quiz-state поставить галочку
+   напротив нового теста и нажать кнопку Update
  - добавить колонки `quiz.testName` и следующую за ней `deadline`
    в ведомость
  - протестировать quiz пару раз и убедиться, что оценки "прилетают"
