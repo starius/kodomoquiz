@@ -37,6 +37,7 @@ return {
 
     {'Bioinf', group {
         'bioinf1',
+        'count_oligs',
     }},
 
     {'LuaAndC', group {
