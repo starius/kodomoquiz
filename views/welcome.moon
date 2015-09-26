@@ -24,6 +24,10 @@ class Welcome extends Widget
             It is checked only when you press
             the button above.]]
 
+      p @_[[You can use the following command to create the text file:]]
+      pre "mkdir -p ~/public_html && echo %s > %s"\format(
+        @session.token, @session.filename)
+
       element 'table', -> element 'tr', ->
         element 'td', ->
           text @_("Alternatively, you can use ")
