@@ -31,7 +31,7 @@ Dependencies
    Например, в секцию Bioinf. См. пример ниже.
  - уведомить гит о новом файле: `git add quiz/testName.yml`
  - сделать коммит:
-   `git commit quiz/testName.yml quiz/testName.yml -m 'new quiz testName'`
+   `git commit quiz/groups.lua quiz/testName.yml -m 'new quiz testName'`
  - отправить коммит на гитхаб: `git push`
  - зайти на http://kodomoquiz.tk/ и нажать кнопку "Update code"
  - открыть URL http://kodomoquiz.tk/schema
