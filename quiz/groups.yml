@@ -1,0 +1,29 @@
+- Python:
+    - hello
+    - if_list_for_range
+    - if_list_for_range_short
+    - dict_file
+    - dict_file_short
+    - func
+    - func_short
+    - test2
+
+- Logic:
+    - logic
+    - logic_defs
+
+- Bioinf:
+    - bioinf1
+    - count_oligs
+
+- LuaAndC:
+    - lua0
+    - lua1hw
+    - lua1quiz
+    - lua2hw
+    - lua2quiz
+    - lua3hw
+    - lua3quiz
+    - c1
+    - c1quiz
+    - c2

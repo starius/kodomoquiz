@@ -18,38 +18,19 @@ local function group(names)
     return g
 end
 
-return {
-    {'Python', group {
-        'hello',
-        'if_list_for_range',
-        'if_list_for_range_short',
-        'dict_file',
-        'dict_file_short',
-        'func',
-        'func_short',
-        'test2',
-    }},
 
-    {'Logic', group {
-        'logic',
-        'logic_defs',
-    }},
+local file = io.open('quiz/groups.yml', 'r')
+local yml = file:read('*all')
+file:close()
 
-    {'Bioinf', group {
-        'bioinf1',
-        'count_oligs',
-    }},
+local yaml = require 'yaml'
+local groups_yml = yaml.load(yml)
 
-    {'LuaAndC', group {
-        'lua0',
-        'lua1hw',
-        'lua1quiz',
-        'lua2hw',
-        'lua2quiz',
-        'lua3hw',
-        'lua3quiz',
-        'c1',
-        'c1quiz',
-        'c2',
-    }},
-}
+local groups = {}
+
+for i, g in ipairs(groups_yml) do
+    local name, quizs = next(g)
+    groups[i] = {name, group(quizs)}
+end
+
+return groups

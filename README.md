@@ -27,11 +27,11 @@ Dependencies
  - сделать файл `quiz/testName.yml` с тестом. Пример и краткое описание
     формата см. в файле `quiz/test2.yml`
  - [проверить](http://www.yamllint.com/) файл на валидность синтаксиса YAML.
- - добавить имя теста в соответствующее место файла `quiz/groups.lua`.
+ - добавить имя теста в соответствующее место файла `quiz/groups.yml`.
    Например, в секцию Bioinf. См. пример ниже.
  - уведомить гит о новом файле: `git add quiz/testName.yml`
  - сделать коммит:
-   `git commit quiz/groups.lua quiz/testName.yml -m 'new quiz testName'`
+   `git commit quiz/groups.yml quiz/testName.yml -m 'new quiz testName'`
  - отправить коммит на гитхаб: `git push`
  - зайти на http://kodomoquiz.tk/ и нажать кнопку "Update code"
  - открыть URL http://kodomoquiz.tk/schema
@@ -42,11 +42,9 @@ Dependencies
  - протестировать quiz пару раз и убедиться, что оценки "прилетают"
    в ведомость
 
- ```lua
- {'Bioinf', group {
-      'bioinf1',
-      'bioinf2',
-      ...
-      'testName', -- вот такую строчку надо добавить
- }
+ ```yml
+- Bioinf:
+    - bioinf1
+    - count_oligs
+    - testName
  ```
