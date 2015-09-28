@@ -42,8 +42,8 @@ Dependencies
  - протестировать quiz пару раз и убедиться, что оценки "прилетают"
    в ведомость
 
- ```yml
-- Bioinf:
+ ```yaml
+  - Bioinf:
     - bioinf1
     - count_oligs
     - testName
