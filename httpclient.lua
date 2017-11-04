@@ -104,6 +104,14 @@ function httprequest(url, params)
 		return nil, err
 	end
 
+	if protocol == "https" then
+		local ok, err = sock:sslhandshake()
+		if not ok then
+			sock:close()
+			return nil, err
+		end
+	end
+
 	if params.host then
 		hostname = params.host
 	end
